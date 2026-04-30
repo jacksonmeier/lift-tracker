@@ -17,6 +17,7 @@ type Action =
   | { type: 'DELETE_LIFT'; id: string }
   | { type: 'START_WORKOUT'; workout: Workout }
   | { type: 'FINISH_WORKOUT'; id: string; completedAt: string }
+  | { type: 'UPDATE_WORKOUT_DATE'; id: string; date: string }
   | { type: 'ADD_EXERCISE'; workoutId: string; exercise: Exercise }
   | { type: 'REMOVE_EXERCISE'; workoutId: string; exerciseId: string }
   | { type: 'ADD_SET'; workoutId: string; exerciseId: string; id: string; timestamp: string }
@@ -56,6 +57,9 @@ function reducer(state: AppState, action: Action): AppState {
         status: 'complete',
         completedAt: action.completedAt,
       }));
+
+    case 'UPDATE_WORKOUT_DATE':
+      return mapWorkout(state, action.id, (w) => ({ ...w, date: action.date }));
 
     case 'ADD_EXERCISE':
       return mapWorkout(state, action.workoutId, (w) => ({
@@ -114,6 +118,7 @@ interface Actions {
 
   startWorkout: () => Workout;
   finishWorkout: (id: string) => void;
+  updateWorkoutDate: (id: string, date: string) => void;
   deleteWorkout: (id: string) => void;
   addExercise: (workoutId: string, liftId: string) => Exercise;
   removeExercise: (workoutId: string, exerciseId: string) => void;
@@ -159,6 +164,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
       },
       finishWorkout: (id) =>
         dispatch({ type: 'FINISH_WORKOUT', id, completedAt: new Date().toISOString() }),
+      updateWorkoutDate: (id, date) => dispatch({ type: 'UPDATE_WORKOUT_DATE', id, date }),
       deleteWorkout: (id) => dispatch({ type: 'DELETE_WORKOUT', id }),
       addExercise: (workoutId, liftId) => {
         const exercise: Exercise = { id: uuid(), liftId, sets: [] };
