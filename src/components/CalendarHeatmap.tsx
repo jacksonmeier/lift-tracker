@@ -11,9 +11,9 @@ function bucketClass(count: number, isFuture: boolean): string {
     return 'bg-transparent border border-dashed border-[var(--hairline-soft)]';
   }
   if (count <= 0) return 'bg-[rgba(120,120,135,0.10)] dark:bg-[rgba(255,255,255,0.05)]';
-  if (count <= 5) return 'bg-[rgba(255,149,0,0.25)]';
-  if (count <= 15) return 'bg-[rgba(255,149,0,0.55)]';
-  return 'bg-[rgba(255,149,0,0.92)]';
+  if (count <= 5) return 'bg-[rgb(var(--accent-rgb)/0.25)]';
+  if (count <= 15) return 'bg-[rgb(var(--accent-rgb)/0.55)]';
+  return 'bg-[rgb(var(--accent-rgb)/0.92)]';
 }
 
 function localKey(d: Date): string {

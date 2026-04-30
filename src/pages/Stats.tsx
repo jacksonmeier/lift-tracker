@@ -360,9 +360,9 @@ export default function Stats() {
             <div className="text-faint mt-3 flex items-center justify-end gap-1.5 text-[10px]">
               <span>Less</span>
               <span className="h-2.5 w-2.5 rounded-[3px] bg-[rgba(120,120,135,0.10)] dark:bg-[rgba(255,255,255,0.05)]" />
-              <span className="h-2.5 w-2.5 rounded-[3px] bg-[rgba(255,149,0,0.25)]" />
-              <span className="h-2.5 w-2.5 rounded-[3px] bg-[rgba(255,149,0,0.55)]" />
-              <span className="h-2.5 w-2.5 rounded-[3px] bg-[rgba(255,149,0,0.92)]" />
+              <span className="h-2.5 w-2.5 rounded-[3px] bg-[rgb(var(--accent-rgb)/0.25)]" />
+              <span className="h-2.5 w-2.5 rounded-[3px] bg-[rgb(var(--accent-rgb)/0.55)]" />
+              <span className="h-2.5 w-2.5 rounded-[3px] bg-[rgb(var(--accent-rgb)/0.92)]" />
               <span>More</span>
             </div>
           </SectionCard>
@@ -411,7 +411,7 @@ export default function Stats() {
                     />
                     <Tooltip
                       contentStyle={tooltipStyle}
-                      cursor={{ fill: 'rgba(255,149,0,0.08)' }}
+                      cursor={{ fill: 'rgb(var(--accent-rgb) / 0.08)' }}
                       formatter={(value: number, name: string) => {
                         if (name === 'Workouts') return [value, name];
                         return [value.toLocaleString(), name];
@@ -516,7 +516,7 @@ export default function Stats() {
                     />
                     <Tooltip
                       contentStyle={tooltipStyle}
-                      cursor={{ fill: 'rgba(255,149,0,0.08)' }}
+                      cursor={{ fill: 'rgb(var(--accent-rgb) / 0.08)' }}
                       formatter={(v: number) => [v.toLocaleString(), 'Volume']}
                     />
                     <Bar

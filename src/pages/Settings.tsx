@@ -1,7 +1,24 @@
 import { useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useApp } from '../context/AppContext';
+import { useTheme } from '../context/ThemeContext';
 import { exportJSON, importJSON } from '../storage';
+import {
+  THEME_COLORS,
+  THEME_COLOR_LABEL,
+  THEME_MODES,
+  THEME_MODE_LABEL,
+  type ThemeColor,
+} from '../lib/theme';
+
+const COLOR_SWATCH: Record<ThemeColor, string> = {
+  red: '#ff2d2d',
+  orange: '#ff9500',
+  yellow: '#eab308',
+  green: '#1aa84f',
+  blue: '#1d6fe8',
+  neutral: 'linear-gradient(135deg, #0a0a0c 0% 50%, #f5f5f7 50% 100%)',
+};
 
 type Status =
   | { kind: 'idle' }
@@ -10,6 +27,7 @@ type Status =
 
 export default function Settings() {
   const { state, actions } = useApp();
+  const { prefs, setColor, setMode } = useTheme();
   const fileRef = useRef<HTMLInputElement>(null);
   const [status, setStatus] = useState<Status>({ kind: 'idle' });
 
@@ -58,6 +76,69 @@ export default function Settings() {
       </header>
 
       <div className="flex flex-col gap-6 px-4 py-5">
+        <section className="flex flex-col gap-3">
+          <h2 className="text-faint px-1 text-[11px] font-semibold uppercase tracking-[0.12em]">
+            Appearance
+          </h2>
+          <div className="glass rounded-2xl px-4 py-4">
+            <div className="flex items-center justify-between">
+              <span className="text-strong text-[14px] font-medium">Accent</span>
+              <span className="text-muted text-[12px]">{THEME_COLOR_LABEL[prefs.color]}</span>
+            </div>
+            <div className="mt-3 grid grid-cols-6 gap-2">
+              {THEME_COLORS.map((color) => {
+                const active = prefs.color === color;
+                return (
+                  <button
+                    key={color}
+                    type="button"
+                    onClick={() => setColor(color)}
+                    aria-label={`Use ${THEME_COLOR_LABEL[color]} theme`}
+                    aria-pressed={active}
+                    className={`relative aspect-square rounded-full border transition-transform active:scale-95 ${
+                      active
+                        ? 'border-[var(--text-strong)] ring-2 ring-[var(--color-accent-500)]/40'
+                        : 'border-[var(--hairline)]'
+                    }`}
+                    style={{
+                      background: COLOR_SWATCH[color],
+                      backgroundSize: 'cover',
+                    }}
+                  />
+                );
+              })}
+            </div>
+
+            <div className="mt-5 flex items-center justify-between">
+              <span className="text-strong text-[14px] font-medium">Mode</span>
+              <span className="text-muted text-[12px]">{THEME_MODE_LABEL[prefs.mode]}</span>
+            </div>
+            <div
+              role="radiogroup"
+              aria-label="Theme mode"
+              className="pill-segment mt-2 grid grid-cols-3 gap-1 rounded-full p-1"
+            >
+              {THEME_MODES.map((mode) => {
+                const active = prefs.mode === mode;
+                return (
+                  <button
+                    key={mode}
+                    type="button"
+                    role="radio"
+                    aria-checked={active}
+                    onClick={() => setMode(mode)}
+                    className={`min-h-9 rounded-full text-[13px] font-medium transition-colors ${
+                      active ? 'pill-segment-active' : 'text-muted'
+                    }`}
+                  >
+                    {THEME_MODE_LABEL[mode]}
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+
         <section className="flex flex-col gap-3">
           <h2 className="text-faint px-1 text-[11px] font-semibold uppercase tracking-[0.12em]">
             Backup
