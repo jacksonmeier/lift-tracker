@@ -2,6 +2,7 @@ import { useMemo } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useApp } from '../context/AppContext';
 import type { Workout } from '../types';
+import { workoutTypeLabel, workoutTypePillClasses } from '../lib/workoutType';
 
 function formatRowDate(iso: string): string {
   const d = new Date(iso);
@@ -108,15 +109,24 @@ export default function Home() {
                     </div>
                     <div className="text-muted text-[13px]">{summarize(w)}</div>
                   </div>
-                  <span
-                    className={`shrink-0 rounded-full border px-2.5 py-0.5 text-[11px] font-medium ${
-                      w.status === 'complete'
-                        ? 'border-emerald-500/25 bg-emerald-500/15 text-emerald-700 dark:text-emerald-300'
-                        : 'border-[var(--color-accent-500)]/30 bg-[var(--color-accent-500)]/15 text-[var(--color-accent-700)] dark:text-[var(--color-accent-300)]'
-                    }`}
-                  >
-                    {w.status === 'complete' ? 'Complete' : 'In progress'}
-                  </span>
+                  <div className="flex shrink-0 items-center gap-1.5">
+                    {w.type && (
+                      <span
+                        className={`rounded-full border px-2.5 py-0.5 text-[11px] font-medium ${workoutTypePillClasses(w.type)}`}
+                      >
+                        {workoutTypeLabel(w.type)}
+                      </span>
+                    )}
+                    <span
+                      className={`rounded-full border px-2.5 py-0.5 text-[11px] font-medium ${
+                        w.status === 'complete'
+                          ? 'border-emerald-500/25 bg-emerald-500/15 text-emerald-700 dark:text-emerald-300'
+                          : 'border-[var(--color-accent-500)]/30 bg-[var(--color-accent-500)]/15 text-[var(--color-accent-700)] dark:text-[var(--color-accent-300)]'
+                      }`}
+                    >
+                      {w.status === 'complete' ? 'Complete' : 'In progress'}
+                    </span>
+                  </div>
                 </Link>
                 <button
                   type="button"

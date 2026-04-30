@@ -6,7 +6,7 @@ import {
   useReducer,
   type ReactNode,
 } from 'react';
-import type { AppState, Exercise, Lift, Workout, WorkoutSet } from '../types';
+import type { AppState, Exercise, Lift, Workout, WorkoutSet, WorkoutType } from '../types';
 import { load, save } from '../storage';
 import { uuid } from '../lib/uuid';
 
@@ -18,6 +18,7 @@ type Action =
   | { type: 'START_WORKOUT'; workout: Workout }
   | { type: 'FINISH_WORKOUT'; id: string; completedAt: string }
   | { type: 'UPDATE_WORKOUT_DATE'; id: string; date: string }
+  | { type: 'UPDATE_WORKOUT_TYPE'; id: string; workoutType: WorkoutType | undefined }
   | { type: 'ADD_EXERCISE'; workoutId: string; exercise: Exercise }
   | { type: 'REMOVE_EXERCISE'; workoutId: string; exerciseId: string }
   | { type: 'ADD_SET'; workoutId: string; exerciseId: string; id: string; timestamp: string }
@@ -60,6 +61,15 @@ function reducer(state: AppState, action: Action): AppState {
 
     case 'UPDATE_WORKOUT_DATE':
       return mapWorkout(state, action.id, (w) => ({ ...w, date: action.date }));
+
+    case 'UPDATE_WORKOUT_TYPE':
+      return mapWorkout(state, action.id, (w) => {
+        if (action.workoutType === undefined) {
+          const { type: _omit, ...rest } = w;
+          return rest;
+        }
+        return { ...w, type: action.workoutType };
+      });
 
     case 'ADD_EXERCISE':
       return mapWorkout(state, action.workoutId, (w) => ({
@@ -119,6 +129,7 @@ interface Actions {
   startWorkout: () => Workout;
   finishWorkout: (id: string) => void;
   updateWorkoutDate: (id: string, date: string) => void;
+  updateWorkoutType: (id: string, workoutType: WorkoutType | undefined) => void;
   deleteWorkout: (id: string) => void;
   addExercise: (workoutId: string, liftId: string) => Exercise;
   removeExercise: (workoutId: string, exerciseId: string) => void;
@@ -165,6 +176,8 @@ export function AppProvider({ children }: { children: ReactNode }) {
       finishWorkout: (id) =>
         dispatch({ type: 'FINISH_WORKOUT', id, completedAt: new Date().toISOString() }),
       updateWorkoutDate: (id, date) => dispatch({ type: 'UPDATE_WORKOUT_DATE', id, date }),
+      updateWorkoutType: (id, workoutType) =>
+        dispatch({ type: 'UPDATE_WORKOUT_TYPE', id, workoutType }),
       deleteWorkout: (id) => dispatch({ type: 'DELETE_WORKOUT', id }),
       addExercise: (workoutId, liftId) => {
         const exercise: Exercise = { id: uuid(), liftId, sets: [] };

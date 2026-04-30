@@ -3,6 +3,8 @@ import { Link, useNavigate, useParams } from 'react-router-dom';
 import { useApp } from '../context/AppContext';
 import ExerciseCard from '../components/ExerciseCard';
 import AddExerciseModal from '../components/AddExerciseModal';
+import { WORKOUT_TYPES, type WorkoutType } from '../types';
+import { workoutTypeLabel, workoutTypePillClasses } from '../lib/workoutType';
 
 function isoToLocalDateInput(iso: string): string {
   const d = new Date(iso);
@@ -88,11 +90,37 @@ export default function Workout() {
             aria-label="Workout date"
             className="text-strong mx-auto block min-h-11 rounded-lg border border-transparent bg-transparent px-2 text-center text-[14px] font-medium tabular-nums tracking-tight transition-colors hover:border-[var(--hairline)] focus:border-[var(--color-accent-500)] focus:outline-none"
           />
-          {isComplete && (
-            <div className="text-[10px] font-semibold uppercase tracking-[0.14em] text-emerald-600 dark:text-emerald-400">
-              Complete
-            </div>
-          )}
+          <div className="mt-0.5 flex items-center justify-center gap-1.5">
+            <label className="relative inline-flex">
+              <select
+                value={workout.type ?? ''}
+                onChange={(e) =>
+                  actions.updateWorkoutType(
+                    workout.id,
+                    (e.target.value || undefined) as WorkoutType | undefined,
+                  )
+                }
+                aria-label="Workout type"
+                className={`appearance-none rounded-full border px-2.5 py-0.5 text-[11px] font-medium leading-tight focus:outline-none focus:ring-2 focus:ring-[var(--color-accent-500)]/40 ${
+                  workout.type
+                    ? workoutTypePillClasses(workout.type)
+                    : 'border-dashed border-[var(--hairline)] bg-transparent text-[var(--text-faint)]'
+                }`}
+              >
+                <option value="">+ Type</option>
+                {WORKOUT_TYPES.map((t) => (
+                  <option key={t} value={t}>
+                    {workoutTypeLabel(t)}
+                  </option>
+                ))}
+              </select>
+            </label>
+            {isComplete && (
+              <span className="rounded-full border border-emerald-500/30 bg-emerald-500/15 px-2.5 py-0.5 text-[11px] font-medium text-emerald-700 dark:text-emerald-300">
+                Complete
+              </span>
+            )}
+          </div>
         </div>
         {isComplete ? (
           <span className="min-w-11" />

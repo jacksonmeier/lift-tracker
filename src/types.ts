@@ -2,6 +2,8 @@ export type LiftCategory = 'push' | 'pull' | 'legs' | 'core' | 'other';
 
 export type WorkoutStatus = 'in-progress' | 'complete';
 
+export type WorkoutType = 'push' | 'pull' | 'legs';
+
 export interface Lift {
   id: string;
   name: string;
@@ -29,6 +31,7 @@ export interface Workout {
   date: string;
   status: WorkoutStatus;
   completedAt?: string;
+  type?: WorkoutType;
   exercises: Exercise[];
 }
 
@@ -45,3 +48,5 @@ export const LIFT_CATEGORIES: readonly LiftCategory[] = [
   'core',
   'other',
 ] as const;
+
+export const WORKOUT_TYPES: readonly WorkoutType[] = ['push', 'pull', 'legs'] as const;
