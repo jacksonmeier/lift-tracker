@@ -1,0 +1,47 @@
+export type LiftCategory = 'push' | 'pull' | 'legs' | 'core' | 'other';
+
+export type WorkoutStatus = 'in-progress' | 'complete';
+
+export interface Lift {
+  id: string;
+  name: string;
+  category: LiftCategory;
+  notes?: string;
+}
+
+export interface WorkoutSet {
+  id: string;
+  weight: number;
+  reps: number;
+  isWarmup: boolean;
+  completed: boolean;
+  timestamp: string;
+}
+
+export interface Exercise {
+  id: string;
+  liftId: string;
+  sets: WorkoutSet[];
+}
+
+export interface Workout {
+  id: string;
+  date: string;
+  status: WorkoutStatus;
+  completedAt?: string;
+  exercises: Exercise[];
+}
+
+export interface AppState {
+  lifts: Lift[];
+  workouts: Workout[];
+  schemaVersion: 1;
+}
+
+export const LIFT_CATEGORIES: readonly LiftCategory[] = [
+  'push',
+  'pull',
+  'legs',
+  'core',
+  'other',
+] as const;
