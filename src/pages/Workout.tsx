@@ -33,6 +33,13 @@ function dateInputToIso(value: string, originalIso: string): string {
   return next.toISOString();
 }
 
+function formatTonnage(n: number): string {
+  if (n >= 1_000_000) return `${(n / 1_000_000).toFixed(1)}M`;
+  if (n >= 10_000) return `${(n / 1000).toFixed(0)}k`;
+  if (n >= 1000) return `${(n / 1000).toFixed(1)}k`;
+  return Math.round(n).toLocaleString();
+}
+
 export default function Workout() {
   const { id } = useParams();
   const { state, actions } = useApp();
@@ -46,7 +53,7 @@ export default function Workout() {
 
   if (!workout) {
     return (
-      <div className="mx-auto max-w-md p-4">
+      <div className="route mx-auto max-w-md p-4">
         <h1 className="text-strong text-xl font-semibold tracking-tight">
           Workout not found
         </h1>
@@ -62,7 +69,21 @@ export default function Workout() {
     (n, e) => n + e.sets.filter((s) => s.completed).length,
     0,
   );
+  const totalNonWarm = workout.exercises.reduce(
+    (n, e) => n + e.sets.filter((s) => !s.isWarmup).length,
+    0,
+  );
+  const tonnage = workout.exercises.reduce(
+    (n, e) =>
+      n +
+      e.sets
+        .filter((s) => !s.isWarmup && s.completed)
+        .reduce((m, s) => m + s.weight * s.reps, 0),
+    0,
+  );
   const canFinish = completedSetCount > 0;
+  const progressPct =
+    totalNonWarm === 0 ? 0 : Math.round((100 * completedSetCount) / totalNonWarm);
 
   function handleFinish() {
     if (!workout) return;
@@ -72,13 +93,16 @@ export default function Workout() {
   }
 
   return (
-    <div className="mx-auto max-w-md pb-32">
+    <div className="route mx-auto max-w-md pb-32">
       <header className="glass-bar sticky top-0 z-20 flex items-center justify-between gap-2 px-3 py-2.5">
         <Link
           to="/"
-          className="btn-ghost-accent -ml-1 flex min-h-11 items-center px-2 text-[15px]"
+          className="btn-ghost-accent -ml-1 flex min-h-11 items-center px-2 text-[14px] font-medium"
         >
-          ← Home
+          <span aria-hidden="true" className="mr-0.5 text-[18px] leading-none">
+            ‹
+          </span>
+          Home
         </Link>
         <div className="min-w-0 flex-1 text-center">
           <input
@@ -88,7 +112,7 @@ export default function Workout() {
               actions.updateWorkoutDate(workout.id, dateInputToIso(e.target.value, workout.date))
             }
             aria-label="Workout date"
-            className="text-strong mx-auto block min-h-11 rounded-lg border border-transparent bg-transparent px-2 text-center text-[14px] font-medium tabular-nums tracking-tight transition-colors hover:border-[var(--hairline)] focus:border-[var(--color-accent-500)] focus:outline-none"
+            className="text-strong mx-auto block min-h-9 rounded-lg border border-transparent bg-transparent px-2 text-center text-[13px] font-semibold tabular-nums tracking-tight transition-colors hover:border-[var(--hairline)] focus:border-[var(--color-accent-500)] focus:outline-none"
           />
           <div className="mt-0.5 flex items-center justify-center gap-1.5">
             <label className="relative inline-flex">
@@ -101,7 +125,7 @@ export default function Workout() {
                   )
                 }
                 aria-label="Workout type"
-                className={`appearance-none rounded-full border px-2.5 py-0.5 text-[11px] font-medium leading-tight focus:outline-none focus:ring-2 focus:ring-[var(--color-accent-500)]/40 ${
+                className={`appearance-none rounded-full border px-2.5 py-0.5 text-[11px] font-semibold leading-tight focus:outline-none focus:ring-2 focus:ring-[var(--color-accent-500)]/40 ${
                   workout.type
                     ? workoutTypePillClasses(workout.type)
                     : 'border-dashed border-[var(--hairline)] bg-transparent text-[var(--text-faint)]'
@@ -116,8 +140,8 @@ export default function Workout() {
               </select>
             </label>
             {isComplete && (
-              <span className="rounded-full border border-emerald-500/30 bg-emerald-500/15 px-2.5 py-0.5 text-[11px] font-medium text-emerald-700 dark:text-emerald-300">
-                Complete
+              <span className="rounded-full border border-emerald-500/30 bg-emerald-500/15 px-2.5 py-0.5 text-[11px] font-semibold text-emerald-700 dark:text-emerald-300">
+                ✓ Complete
               </span>
             )}
           </div>
@@ -129,12 +153,36 @@ export default function Workout() {
             type="button"
             onClick={handleFinish}
             disabled={!canFinish}
-            className="btn-accent min-h-11 rounded-full px-4 text-[14px] font-semibold tracking-tight"
+            className="btn-accent min-h-9 rounded-full px-3.5 text-[13px] font-semibold tracking-tight"
           >
             Finish
           </button>
         )}
       </header>
+
+      {!isComplete && (
+        <div className="px-3.5 pt-2">
+          <div className="glass-quiet flex items-center gap-2.5 rounded-full px-3 py-1.5">
+            <span className="num-mono text-faint text-[10px] tracking-[0.06em]">
+              {String(completedSetCount).padStart(2, '0')}/
+              {String(totalNonWarm).padStart(2, '0')}
+            </span>
+            <div className="rail flex-1" style={{ height: 4 }}>
+              <i
+                style={{
+                  width: `${progressPct}%`,
+                  background: 'var(--color-accent-500)',
+                  transition: 'width 400ms var(--ease-spring)',
+                }}
+              />
+            </div>
+            <span className="num-mono text-strong text-[10px] tracking-[0.06em]">
+              {formatTonnage(tonnage)}
+              <span className="text-faint ml-0.5">lbs</span>
+            </span>
+          </div>
+        </div>
+      )}
 
       <div className="flex flex-col gap-3 px-3 py-4">
         {workout.exercises.length === 0 && (
@@ -146,12 +194,13 @@ export default function Workout() {
           </div>
         )}
 
-        {workout.exercises.map((exercise) => (
+        {workout.exercises.map((exercise, idx) => (
           <ExerciseCard
             key={exercise.id}
             workoutId={workout.id}
             exercise={exercise}
             readOnly={isComplete}
+            index={idx + 1}
           />
         ))}
 
@@ -159,9 +208,12 @@ export default function Workout() {
           <button
             type="button"
             onClick={() => setAdding(true)}
-            className="btn-glass min-h-12 w-full rounded-2xl text-[15px] font-semibold tracking-tight text-[var(--color-accent-600)] dark:text-[var(--color-accent-300)]"
+            className="btn-glass anim-slide min-h-12 w-full rounded-2xl text-[14px] font-semibold tracking-tight text-[var(--color-accent-600)] dark:text-[var(--color-accent-300)]"
           >
-            + Add Exercise
+            <span aria-hidden="true" className="mr-1 text-[16px] leading-none">
+              +
+            </span>
+            Add Exercise
           </button>
         )}
       </div>

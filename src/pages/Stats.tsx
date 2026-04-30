@@ -27,6 +27,7 @@ import type { LiftCategory, WorkoutType } from '../types';
 import { LIFT_CATEGORIES } from '../types';
 import { workoutTypeLabel } from '../lib/workoutType';
 import CalendarHeatmap from '../components/CalendarHeatmap';
+import HeroNumber from '../components/HeroNumber';
 
 type Range = '1w' | '4w' | '12w' | 'all';
 
@@ -128,30 +129,44 @@ const ACCENT_SOFT = 'var(--color-accent-300)';
 function KpiTile({
   label,
   value,
+  numeric,
+  format,
   sub,
   delta,
+  highlight,
 }: {
   label: string;
   value: string;
+  numeric?: number;
+  format?: (n: number) => string;
   sub?: string;
   delta?: Delta | null;
+  highlight?: boolean;
 }) {
   const deltaClasses =
     delta?.direction === 'up'
       ? 'border-emerald-500/25 bg-emerald-500/15 text-emerald-700 dark:text-emerald-300'
       : 'border-rose-500/25 bg-rose-500/15 text-rose-700 dark:text-rose-300';
   return (
-    <div className="glass overflow-hidden rounded-2xl px-3.5 py-3">
-      <div className="text-faint text-[10px] font-semibold uppercase tracking-[0.12em]">
-        {label}
-      </div>
+    <div
+      className={`${highlight ? 'glass-strong' : 'glass'} relative overflow-hidden rounded-2xl px-3.5 py-3`}
+    >
+      <div className="section-label">{label}</div>
       <div className="mt-1 flex items-baseline gap-1.5">
-        <span className="text-strong text-[22px] font-semibold tabular-nums tracking-tight">
-          {value}
-        </span>
+        {typeof numeric === 'number' ? (
+          <HeroNumber
+            value={numeric}
+            format={format}
+            style={{ fontSize: 26, color: 'var(--text-strong)' }}
+          />
+        ) : (
+          <span className="hero-num text-strong" style={{ fontSize: 26 }}>
+            {value}
+          </span>
+        )}
         {delta && (
           <span
-            className={`inline-flex shrink-0 items-center rounded-full border px-1.5 py-[1px] text-[10px] font-semibold tabular-nums ${deltaClasses}`}
+            className={`num-mono inline-flex shrink-0 items-center rounded-full border px-1.5 py-[1px] text-[10px] font-semibold ${deltaClasses}`}
           >
             {delta.display}
           </span>
@@ -274,15 +289,18 @@ export default function Stats() {
   } as const;
 
   return (
-    <div className="mx-auto max-w-md pb-12">
+    <div className="route mx-auto max-w-md pb-12">
       <header className="glass-bar sticky top-0 z-20 flex items-center justify-between gap-2 px-3 py-2.5">
         <Link
           to="/"
-          className="btn-ghost-accent -ml-1 flex min-h-11 items-center px-2 text-[15px]"
+          className="btn-ghost-accent -ml-1 flex min-h-11 items-center px-2 text-[14px] font-medium"
         >
-          ← Home
+          <span aria-hidden="true" className="mr-0.5 text-[18px] leading-none">
+            ‹
+          </span>
+          Home
         </Link>
-        <h1 className="text-strong text-[17px] font-semibold tracking-tight">Stats</h1>
+        <h1 className="text-strong text-[15px] font-semibold tracking-tight">Stats</h1>
         <span className="min-w-11" />
       </header>
 
@@ -322,27 +340,34 @@ export default function Stats() {
             <KpiTile
               label="Workouts"
               value={currentTotals.workouts.toLocaleString()}
+              numeric={currentTotals.workouts}
               delta={deltas.workouts}
             />
             <KpiTile
               label="Working sets"
               value={currentTotals.workingSets.toLocaleString()}
+              numeric={currentTotals.workingSets}
               delta={deltas.workingSets}
             />
             <KpiTile
               label="Tonnage"
               value={formatTonnage(currentTotals.tonnage)}
+              numeric={currentTotals.tonnage}
+              format={formatTonnage}
               delta={deltas.tonnage}
+              highlight
             />
             <KpiTile
               label="Weekly streak"
               value={streak.toLocaleString()}
+              numeric={streak}
               sub={streak === 1 ? 'week' : 'weeks'}
             />
             <div className="col-span-2">
               <KpiTile
                 label="PRs hit"
                 value={prs.length.toLocaleString()}
+                numeric={prs.length}
                 delta={deltas.prs}
                 sub={
                   prs.length === 0

@@ -20,6 +20,7 @@ import {
   topWeightPerSession,
   weeklyVolume,
 } from '../lib/stats';
+import HeroNumber from '../components/HeroNumber';
 
 type Range = '1w' | '4w' | '12w' | 'all';
 
@@ -133,15 +134,18 @@ export default function Progress() {
   const axisTick = { fontSize: 11, fill: 'var(--text-faint)' } as const;
 
   return (
-    <div className="mx-auto max-w-md pb-12">
+    <div className="route mx-auto max-w-md pb-12">
       <header className="glass-bar sticky top-0 z-20 flex items-center justify-between gap-2 px-3 py-2.5">
         <Link
           to="/"
-          className="btn-ghost-accent -ml-1 flex min-h-11 items-center px-2 text-[15px]"
+          className="btn-ghost-accent -ml-1 flex min-h-11 items-center px-2 text-[14px] font-medium"
         >
-          ← Home
+          <span aria-hidden="true" className="mr-0.5 text-[18px] leading-none">
+            ‹
+          </span>
+          Home
         </Link>
-        <h1 className="text-strong text-[17px] font-semibold tracking-tight">Progress</h1>
+        <h1 className="text-strong text-[15px] font-semibold tracking-tight">Progress</h1>
         <span className="min-w-11" />
       </header>
 
@@ -211,25 +215,62 @@ export default function Progress() {
       {liftId && hasData && (
         <div className="flex flex-col gap-3 px-4 pt-4">
           {bestPr && (
-            <section className="glass overflow-hidden rounded-2xl px-4 py-3.5">
+            <section className="glass-strong relative overflow-hidden rounded-2xl px-4 py-4">
+              <svg
+                width="160"
+                height="160"
+                viewBox="0 0 160 160"
+                aria-hidden="true"
+                className="pointer-events-none absolute -right-8 -top-8 opacity-50"
+              >
+                <defs>
+                  <linearGradient id="prog-arc" x1="0" x2="1" y1="0" y2="1">
+                    <stop offset="0" stopColor="var(--color-accent-400)" stopOpacity="0.65" />
+                    <stop offset="1" stopColor="var(--color-accent-600)" stopOpacity="0.1" />
+                  </linearGradient>
+                </defs>
+                <circle
+                  cx="80"
+                  cy="80"
+                  r="76"
+                  fill="none"
+                  stroke="var(--hairline-strong)"
+                  strokeOpacity="0.3"
+                />
+                <circle
+                  cx="80"
+                  cy="80"
+                  r="60"
+                  fill="none"
+                  stroke="url(#prog-arc)"
+                  strokeWidth="2"
+                  strokeDasharray="2 4"
+                />
+              </svg>
               <div className="flex items-center justify-between gap-3">
                 <div>
-                  <div className="text-faint text-[11px] font-semibold uppercase tracking-[0.12em]">
+                  <div className="section-label">
+                    <span className="dot" />
                     Best e1RM
                   </div>
-                  <div className="text-strong mt-1 text-[28px] font-semibold tabular-nums tracking-tight">
-                    {bestPr.e1RM.toFixed(1)}
-                  </div>
+                  <HeroNumber
+                    value={bestPr.e1RM}
+                    format={(v) => v.toFixed(1)}
+                    style={{
+                      fontSize: 36,
+                      color: 'var(--text-strong)',
+                      display: 'inline-block',
+                      marginTop: 6,
+                    }}
+                  />
                 </div>
                 <div className="text-right">
-                  <div className="text-faint text-[11px] font-semibold uppercase tracking-[0.12em]">
-                    Set
-                  </div>
-                  <div className="text-strong mt-1 text-[15px] font-medium tabular-nums tracking-tight">
+                  <div className="section-label justify-end">Set</div>
+                  <div className="text-strong num-display mt-1 text-[15px] tracking-tight">
                     {bestPr.weight} × {bestPr.reps}
                   </div>
-                  <div className="text-faint mt-0.5 text-[12px]">
-                    {formatLongDate(bestPr.date)}
+                  <div className="text-faint num-mono mt-0.5 text-[11px] tracking-[0.05em]">
+                    {formatLongDate(bestPr.date).toUpperCase()}
                   </div>
                 </div>
               </div>

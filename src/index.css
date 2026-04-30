@@ -4,9 +4,12 @@
 
 @theme {
   --font-sans:
-    -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display",
-    "Inter", "Segoe UI", Roboto, Helvetica, Arial, sans-serif,
+    "Inter", -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display",
+    "Segoe UI", Roboto, Helvetica, Arial, sans-serif,
     "Apple Color Emoji", "Segoe UI Emoji";
+  --font-mono:
+    "JetBrains Mono", "SF Mono", "IBM Plex Mono", ui-monospace, Menlo, Consolas,
+    monospace;
 
   --color-accent-50: #fff5e6;
   --color-accent-100: #ffe7c2;
@@ -59,8 +62,16 @@
   --text-muted: #5c5f68;
   --text-faint: #8a8d96;
 
-  --hairline: rgba(15, 17, 22, 0.08);
-  --hairline-soft: rgba(15, 17, 22, 0.05);
+  --hairline: rgba(15, 17, 22, 0.07);
+  --hairline-soft: rgba(15, 17, 22, 0.04);
+  --hairline-strong: rgba(15, 17, 22, 0.12);
+
+  --ease-spring: cubic-bezier(0.22, 1.2, 0.36, 1);
+  --ease-out: cubic-bezier(0.2, 0.7, 0.2, 1);
+
+  --ok: #1aa84f;
+  --warn: #eab308;
+  --bad: #ff2d2d;
 }
 
 /* -------- Dark mode (explicit) -------- */
@@ -92,8 +103,9 @@
   --text-muted: #a8abb4;
   --text-faint: #71747c;
 
-  --hairline: rgba(255, 255, 255, 0.1);
-  --hairline-soft: rgba(255, 255, 255, 0.06);
+  --hairline: rgba(255, 255, 255, 0.09);
+  --hairline-soft: rgba(255, 255, 255, 0.05);
+  --hairline-strong: rgba(255, 255, 255, 0.16);
 }
 
 /* -------- Color themes -------- */
@@ -238,6 +250,7 @@ body {
 
 body {
   font-family: var(--font-sans);
+  font-feature-settings: "ss01", "cv11", "tnum";
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: var(--text-default);
@@ -420,4 +433,389 @@ input[type="checkbox"] {
 
 ::selection {
   background-color: rgb(var(--accent-rgb) / 0.3);
+}
+
+/* ============================================================
+   Refresh — watch-face / lab-instrument layer
+   ============================================================ */
+
+/* Numerals */
+.num {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum", "ss01";
+}
+.num-mono {
+  font-family: var(--font-mono);
+  font-feature-settings: "tnum", "zero", "ss01";
+}
+.num-display {
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  font-variant-numeric: tabular-nums;
+}
+.hero-num {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  letter-spacing: -0.04em;
+  font-variant-numeric: tabular-nums;
+  line-height: 0.95;
+}
+
+/* Brand mark — conic-gradient + tetris L silhouette */
+.brand-mark {
+  display: inline-block;
+  width: 22px;
+  height: 22px;
+  border-radius: 6px;
+  background: conic-gradient(
+    from 220deg,
+    var(--color-accent-400),
+    var(--color-accent-600),
+    var(--color-accent-300),
+    var(--color-accent-500)
+  );
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.4) inset,
+    0 0 0 0.5px rgba(0, 0, 0, 0.08),
+    0 4px 10px -4px rgb(var(--accent-rgb) / 0.7);
+  position: relative;
+  flex-shrink: 0;
+}
+.brand-mark::after {
+  content: "";
+  position: absolute;
+  inset: 4px;
+  border-radius: 3px;
+  background: var(--text-strong);
+  opacity: 0.85;
+  clip-path: polygon(
+    0 35%,
+    25% 35%,
+    25% 0,
+    50% 0,
+    50% 35%,
+    100% 35%,
+    100% 65%,
+    50% 65%,
+    50% 100%,
+    25% 100%,
+    25% 65%,
+    0 65%
+  );
+}
+:root[data-mode="dark"] .brand-mark::after {
+  background: #0a0a0c;
+}
+
+/* Section label with optional accent dot */
+.section-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.section-label .dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 999px;
+  background: var(--color-accent-500);
+  flex-shrink: 0;
+}
+
+/* Lab-instrument tick marks */
+.ticks {
+  display: flex;
+  align-items: flex-end;
+  gap: 3px;
+  height: 14px;
+}
+.ticks i {
+  display: block;
+  width: 1px;
+  background: var(--hairline-strong);
+  flex: 1;
+}
+.ticks i.tall {
+  height: 100%;
+  background: var(--color-accent-500);
+}
+.ticks i.med {
+  height: 60%;
+}
+.ticks i.short {
+  height: 35%;
+}
+
+/* Progress rail (workout header strip) */
+.rail {
+  height: 6px;
+  border-radius: 999px;
+  background: var(--glass-surface-quiet);
+  border: 1px solid var(--hairline-soft);
+  overflow: hidden;
+  display: flex;
+}
+.rail > i {
+  display: block;
+  height: 100%;
+}
+
+/* Custom tick checkbox — square (done) and round (warm) variants */
+.tick-cb {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+.tick-cb input {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  cursor: pointer;
+  margin: 0;
+}
+.tick-cb .box {
+  width: 22px;
+  height: 22px;
+  border-radius: 7px;
+  background: var(--glass-input);
+  border: 1.5px solid var(--hairline-strong);
+  transition: background 180ms var(--ease-spring),
+    border-color 180ms var(--ease-spring),
+    box-shadow 180ms var(--ease-spring);
+  display: grid;
+  place-items: center;
+  position: relative;
+}
+.tick-cb .box::after {
+  content: "";
+  width: 10px;
+  height: 6px;
+  border-left: 2px solid white;
+  border-bottom: 2px solid white;
+  transform: rotate(-45deg) scale(0.5);
+  opacity: 0;
+  transition: opacity 140ms var(--ease-out),
+    transform 220ms var(--ease-spring);
+  margin-top: -2px;
+}
+.tick-cb input:checked + .box {
+  background: var(--color-accent-500);
+  border-color: var(--color-accent-600);
+  box-shadow:
+    0 0 0 1px rgb(var(--accent-rgb) / 0.32) inset,
+    0 6px 14px -6px rgb(var(--accent-rgb) / 0.7);
+}
+.tick-cb input:checked + .box::after {
+  opacity: 1;
+  transform: rotate(-45deg) scale(1);
+}
+.tick-cb.warm .box {
+  border-radius: 50%;
+}
+.tick-cb.warm input:checked + .box {
+  background: var(--warn);
+  border-color: #b78906;
+  box-shadow: 0 6px 14px -6px rgb(234 179 8 / 0.55);
+}
+.tick-cb.warm input:checked + .box::after {
+  border-color: #1f1d0d;
+}
+.tick-cb input:disabled + .box {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+.tick-cb input:focus-visible + .box {
+  outline: 2px solid rgb(var(--accent-rgb) / 0.55);
+  outline-offset: 2px;
+}
+
+/* Set row states */
+.set-row {
+  display: grid;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 6px;
+  margin-top: 6px;
+  border-radius: 12px;
+  position: relative;
+  transition: background 200ms var(--ease-out), opacity 200ms var(--ease-out),
+    box-shadow 200ms var(--ease-out);
+}
+.set-row:first-of-type {
+  margin-top: 2px;
+}
+.set-row.warmup {
+  opacity: 0.6;
+}
+.set-row.completed {
+  background: color-mix(in oklab, var(--ok) 11%, transparent);
+  box-shadow: inset 0 0 0 1px color-mix(in oklab, var(--ok) 22%, transparent);
+}
+.set-row.pr {
+  background: rgb(var(--accent-rgb) / 0.14);
+  box-shadow: inset 0 0 0 1px rgb(var(--accent-rgb) / 0.32);
+}
+.set-row > .best-tag {
+  position: absolute;
+  top: -8px;
+  right: 12px;
+  z-index: 2;
+  pointer-events: none;
+  background: var(--glass-surface-strong);
+  -webkit-backdrop-filter: saturate(180%) blur(10px);
+  backdrop-filter: saturate(180%) blur(10px);
+  box-shadow: 0 2px 6px -2px rgba(15, 17, 22, 0.18);
+}
+.set-row.pr > .best-tag {
+  background: color-mix(in oklab, var(--color-accent-500) 22%, var(--glass-surface-strong));
+  border-color: rgb(var(--accent-rgb) / 0.45);
+}
+
+/* Inline ★ PR / BEST tag */
+.best-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  height: 16px;
+  padding: 0 5px;
+  border-radius: 4px;
+  color: var(--color-accent-700);
+  background: rgb(var(--accent-rgb) / 0.16);
+  border: 0.5px solid rgb(var(--accent-rgb) / 0.32);
+  white-space: nowrap;
+}
+.best-tag.muted {
+  color: var(--text-muted);
+  background: var(--glass-surface-quiet);
+  border-color: var(--hairline);
+}
+:root[data-mode="dark"] .best-tag {
+  color: var(--color-accent-300);
+}
+
+/* Spark / particle burst on set complete */
+.spark-host {
+  position: relative;
+}
+.spark {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  display: grid;
+  place-items: center;
+  z-index: 1;
+}
+.spark span {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  border-radius: 999px;
+  background: var(--color-accent-500);
+  animation: spark 600ms var(--ease-out) forwards;
+}
+
+/* Animations */
+@keyframes pop-in {
+  0% {
+    transform: scale(0.85);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(1.04);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+@keyframes slide-up {
+  from {
+    transform: translateY(8px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes spark {
+  0% {
+    transform: scale(0.4);
+    opacity: 0;
+  }
+  35% {
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1.6);
+    opacity: 0;
+  }
+}
+@keyframes ring-pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgb(var(--accent-rgb) / 0.6);
+  }
+  100% {
+    box-shadow: 0 0 0 12px rgb(var(--accent-rgb) / 0);
+  }
+}
+@keyframes route-fade {
+  from {
+    opacity: 0;
+    transform: translateY(2px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.anim-pop {
+  animation: pop-in 280ms var(--ease-spring) both;
+}
+.anim-slide {
+  animation: slide-up 320ms var(--ease-spring) both;
+}
+.anim-fade {
+  animation: fade-in 220ms var(--ease-out) both;
+}
+.anim-ring {
+  animation: ring-pulse 1.6s var(--ease-out) infinite;
+}
+.route {
+  animation: route-fade 240ms var(--ease-out) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .anim-pop,
+  .anim-slide,
+  .anim-fade,
+  .anim-ring,
+  .route,
+  .spark span {
+    animation: none !important;
+  }
 }

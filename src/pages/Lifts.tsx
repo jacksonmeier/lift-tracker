@@ -6,6 +6,14 @@ import { LIFT_CATEGORIES, type AppState, type Lift, type LiftCategory } from '..
 
 type Editing = { kind: 'new' } | { kind: 'edit'; lift: Lift } | null;
 
+const CATEGORY_DOT: Record<LiftCategory, string> = {
+  push: 'rgb(14 165 233)',
+  pull: 'rgb(139 92 246)',
+  legs: 'rgb(244 63 94)',
+  core: 'var(--color-accent-500)',
+  other: 'var(--text-faint)',
+};
+
 function isLiftUsed(state: AppState, liftId: string): boolean {
   return state.workouts.some((w) => w.exercises.some((e) => e.liftId === liftId));
 }
@@ -42,19 +50,22 @@ export default function Lifts() {
   }
 
   return (
-    <div className="mx-auto max-w-md pb-24">
+    <div className="route mx-auto max-w-md pb-24">
       <header className="glass-bar sticky top-0 z-20 flex items-center justify-between gap-2 px-3 py-2.5">
         <Link
           to="/"
-          className="btn-ghost-accent -ml-1 flex min-h-11 items-center px-2 text-[15px]"
+          className="btn-ghost-accent -ml-1 flex min-h-11 items-center px-2 text-[14px] font-medium"
         >
-          ← Home
+          <span aria-hidden="true" className="mr-0.5 text-[18px] leading-none">
+            ‹
+          </span>
+          Home
         </Link>
-        <h1 className="text-strong text-[17px] font-semibold tracking-tight">Lifts</h1>
+        <h1 className="text-strong text-[15px] font-semibold tracking-tight">Lifts</h1>
         <button
           type="button"
           onClick={() => setEditing({ kind: 'new' })}
-          className="btn-ghost-accent -mr-1 min-h-11 px-2 text-[15px] font-semibold"
+          className="btn-ghost-accent -mr-1 min-h-11 px-2 text-[14px] font-semibold"
         >
           + Add
         </button>
@@ -76,8 +87,15 @@ export default function Lifts() {
             if (lifts.length === 0) return null;
             return (
               <section key={category} className="mt-6 first:mt-4">
-                <h2 className="text-faint mb-2 px-1 text-[11px] font-semibold uppercase tracking-[0.12em]">
-                  {category}
+                <h2 className="section-label mb-2 flex items-center gap-2 px-1">
+                  <span
+                    className="dot"
+                    style={{ background: CATEGORY_DOT[category] }}
+                  />
+                  <span>{category}</span>
+                  <span className="num-mono ml-auto text-[10px] tracking-[0.06em]">
+                    {String(lifts.length).padStart(2, '0')}
+                  </span>
                 </h2>
                 <ul className="glass divide-y divide-[var(--hairline-soft)] overflow-hidden rounded-2xl">
                   {lifts.map((lift) => (

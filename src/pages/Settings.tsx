@@ -63,15 +63,18 @@ export default function Settings() {
   }
 
   return (
-    <div className="mx-auto max-w-md pb-12">
+    <div className="route mx-auto max-w-md pb-12">
       <header className="glass-bar sticky top-0 z-20 flex items-center justify-between gap-2 px-3 py-2.5">
         <Link
           to="/"
-          className="btn-ghost-accent -ml-1 flex min-h-11 items-center px-2 text-[15px]"
+          className="btn-ghost-accent -ml-1 flex min-h-11 items-center px-2 text-[14px] font-medium"
         >
-          ← Home
+          <span aria-hidden="true" className="mr-0.5 text-[18px] leading-none">
+            ‹
+          </span>
+          Home
         </Link>
-        <h1 className="text-strong text-[17px] font-semibold tracking-tight">Settings</h1>
+        <h1 className="text-strong text-[15px] font-semibold tracking-tight">Settings</h1>
         <span className="min-w-11" />
       </header>
 
