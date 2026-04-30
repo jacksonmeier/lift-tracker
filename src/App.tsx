@@ -7,6 +7,7 @@ import Lifts from './pages/Lifts';
 import Settings from './pages/Settings';
 
 const Progress = lazy(() => import('./pages/Progress'));
+const Stats = lazy(() => import('./pages/Stats'));
 
 function ProgressFallback() {
   return (
@@ -29,6 +30,14 @@ export default function App() {
           element={
             <Suspense fallback={<ProgressFallback />}>
               <Progress />
+            </Suspense>
+          }
+        />
+        <Route
+          path="stats"
+          element={
+            <Suspense fallback={<ProgressFallback />}>
+              <Stats />
             </Suspense>
           }
         />

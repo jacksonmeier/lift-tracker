@@ -57,19 +57,25 @@ export default function Home() {
         <nav className="flex items-center gap-0.5 text-[15px]">
           <Link
             to="/lifts"
-            className="btn-ghost-accent flex min-h-11 items-center px-2.5"
+            className="btn-ghost-accent flex min-h-11 items-center px-2"
           >
             Lifts
           </Link>
           <Link
+            to="/stats"
+            className="btn-ghost-accent flex min-h-11 items-center px-2"
+          >
+            Stats
+          </Link>
+          <Link
             to="/progress"
-            className="btn-ghost-accent flex min-h-11 items-center px-2.5"
+            className="btn-ghost-accent flex min-h-11 items-center px-2"
           >
             Progress
           </Link>
           <Link
             to="/settings"
-            className="btn-ghost-accent flex min-h-11 items-center px-2.5"
+            className="btn-ghost-accent flex min-h-11 items-center px-2"
           >
             Settings
           </Link>
