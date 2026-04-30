@@ -42,46 +42,60 @@ export default function AddExerciseModal({ onCancel, onSelect }: Props) {
   }
 
   return (
-    <div className="fixed inset-0 z-50 flex flex-col bg-white">
-      <header className="flex items-center justify-between border-b border-gray-200 px-4 py-3">
+    <div
+      className="fixed inset-0 z-50 flex flex-col"
+      style={{
+        background:
+          'radial-gradient(120% 80% at 0% 0%, var(--bg-grad-1) 0%, transparent 55%),' +
+          'radial-gradient(120% 80% at 100% 0%, var(--bg-grad-2) 0%, transparent 55%),' +
+          'linear-gradient(180deg, var(--bg-grad-3) 0%, var(--bg-grad-4) 100%)',
+      }}
+    >
+      <header className="glass-bar flex items-center justify-between gap-2 px-3 py-2.5">
         <button
           type="button"
           onClick={onCancel}
-          className="min-h-11 px-2 -ml-2 text-base text-blue-600"
+          className="btn-ghost-accent -ml-1 min-h-11 px-2 text-[15px]"
         >
           Cancel
         </button>
-        <h2 className="text-lg font-semibold">Add Exercise</h2>
+        <h2 className="text-strong text-[17px] font-semibold tracking-tight">
+          Add Exercise
+        </h2>
         <span className="min-w-11" />
       </header>
 
-      <div className="border-b border-gray-200 p-3">
+      <div className="px-4 pt-4">
         <input
           type="text"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           placeholder="Search lifts"
           autoFocus
-          className="min-h-11 w-full rounded-md border border-gray-300 px-3 text-base focus:border-blue-500 focus:outline-none"
+          className="glass-input min-h-12 w-full rounded-xl px-3.5 text-[15px]"
         />
       </div>
 
-      <div className="min-h-0 flex-1 overflow-y-auto">
+      <div className="min-h-0 flex-1 overflow-y-auto px-4 pt-3 pb-3">
         {filtered.length === 0 ? (
-          <p className="px-4 py-6 text-center text-sm text-gray-500">
-            {state.lifts.length === 0 ? 'No lifts yet.' : 'No matches.'}
-          </p>
+          <div className="glass-quiet rounded-2xl px-4 py-8 text-center">
+            <p className="text-muted text-[13px]">
+              {state.lifts.length === 0 ? 'No lifts yet.' : 'No matches.'}
+            </p>
+          </div>
         ) : (
-          <ul className="divide-y divide-gray-200">
+          <ul className="glass divide-y divide-[var(--hairline-soft)] overflow-hidden rounded-2xl">
             {filtered.map((lift) => (
               <li key={lift.id}>
                 <button
                   type="button"
                   onClick={() => onSelect(lift.id)}
-                  className="flex w-full items-center justify-between gap-2 px-4 py-3 text-left hover:bg-gray-50"
+                  className="flex w-full items-center justify-between gap-2 px-4 py-3 text-left transition-colors active:bg-white/40 dark:active:bg-white/5"
                 >
-                  <span className="truncate text-base">{lift.name}</span>
-                  <span className="text-xs uppercase tracking-wide text-gray-500">
+                  <span className="text-strong truncate text-[15px] font-medium tracking-tight">
+                    {lift.name}
+                  </span>
+                  <span className="text-faint shrink-0 text-[10px] font-semibold uppercase tracking-[0.12em]">
                     {lift.category}
                   </span>
                 </button>
@@ -91,22 +105,22 @@ export default function AddExerciseModal({ onCancel, onSelect }: Props) {
         )}
       </div>
 
-      <div className="border-t border-gray-200 bg-gray-50 p-3">
+      <div className="px-4 pb-[max(env(safe-area-inset-bottom),1rem)] pt-3">
         {creating ? (
-          <div className="flex flex-col gap-2">
+          <div className="glass flex flex-col gap-2 rounded-2xl p-3">
             <input
               type="text"
               value={newName}
               onChange={(e) => setNewName(e.target.value)}
               placeholder="New lift name"
               autoFocus
-              className="min-h-11 rounded-md border border-gray-300 bg-white px-3 text-base focus:border-blue-500 focus:outline-none"
+              className="glass-input min-h-11 rounded-xl px-3 text-[15px]"
             />
             <div className="flex gap-2">
               <select
                 value={newCategory}
                 onChange={(e) => setNewCategory(e.target.value as LiftCategory)}
-                className="min-h-11 flex-1 rounded-md border border-gray-300 bg-white px-3 text-base capitalize focus:border-blue-500 focus:outline-none"
+                className="glass-input min-h-11 flex-1 rounded-xl px-3 text-[15px] capitalize"
               >
                 {LIFT_CATEGORIES.map((c) => (
                   <option key={c} value={c} className="capitalize">
@@ -120,7 +134,7 @@ export default function AddExerciseModal({ onCancel, onSelect }: Props) {
                   setCreating(false);
                   setNewName('');
                 }}
-                className="min-h-11 px-3 text-base text-gray-600"
+                className="text-muted min-h-11 px-3 text-[15px] active:opacity-70"
               >
                 Cancel
               </button>
@@ -128,7 +142,7 @@ export default function AddExerciseModal({ onCancel, onSelect }: Props) {
                 type="button"
                 onClick={handleCreate}
                 disabled={!newName.trim()}
-                className="min-h-11 rounded-md bg-blue-600 px-4 text-base font-semibold text-white disabled:bg-gray-300"
+                className="btn-accent min-h-11 rounded-xl px-4 text-[15px] font-semibold tracking-tight"
               >
                 Create
               </button>
@@ -138,7 +152,7 @@ export default function AddExerciseModal({ onCancel, onSelect }: Props) {
           <button
             type="button"
             onClick={() => setCreating(true)}
-            className="min-h-11 w-full text-base font-semibold text-blue-600"
+            className="btn-glass min-h-12 w-full rounded-2xl text-[15px] font-semibold tracking-tight text-[var(--color-accent-600)] dark:text-[var(--color-accent-300)]"
           >
             + Create new lift
           </button>

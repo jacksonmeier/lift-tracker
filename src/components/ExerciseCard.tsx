@@ -34,14 +34,21 @@ export default function ExerciseCard({ workoutId, exercise, readOnly = false }: 
   }
 
   return (
-    <section className="rounded-lg border border-gray-200 bg-white">
-      <header className="flex items-center justify-between gap-2 border-b border-gray-200 px-3 py-2">
-        <h3 className="truncate text-base font-semibold">{liftName}</h3>
+    <section className="glass overflow-hidden rounded-2xl">
+      <header className="flex items-center justify-between gap-2 border-b border-[var(--hairline-soft)] px-4 py-2.5">
+        <h3 className="text-strong truncate text-[16px] font-semibold tracking-tight">
+          {liftName}
+        </h3>
+        {lift?.category && (
+          <span className="text-faint hidden shrink-0 text-[10px] font-semibold uppercase tracking-[0.12em] sm:inline">
+            {lift.category}
+          </span>
+        )}
         {!readOnly && (
           <button
             type="button"
             onClick={handleRemoveExercise}
-            className="min-h-11 px-2 -mr-2 text-sm text-red-600"
+            className="btn-ghost-accent -mr-2 min-h-11 px-2 text-[13px] text-red-500/90 hover:text-red-500"
             aria-label={`Remove ${liftName}`}
           >
             Remove
@@ -49,9 +56,9 @@ export default function ExerciseCard({ workoutId, exercise, readOnly = false }: 
         )}
       </header>
 
-      <div className="px-2 py-2">
+      <div className="px-2.5 pb-2.5 pt-2">
         <div
-          className="grid items-center gap-1 px-1 pb-1 text-xs font-semibold uppercase tracking-wide text-gray-500"
+          className="text-faint grid items-center gap-1 px-1 pb-1 text-[10px] font-semibold uppercase tracking-[0.12em]"
           style={{ gridTemplateColumns: gridCols }}
         >
           <span>#</span>
@@ -63,25 +70,29 @@ export default function ExerciseCard({ workoutId, exercise, readOnly = false }: 
         </div>
 
         {exercise.sets.length === 0 && (
-          <p className="px-1 py-2 text-sm text-gray-500">No sets yet.</p>
+          <p className="text-muted px-1 py-2 text-sm">No sets yet.</p>
         )}
 
         {exercise.sets.map((set, i) => (
           <div
             key={set.id}
-            className={`grid items-center gap-1 rounded px-1 py-1 ${
-              set.isWarmup ? 'bg-gray-50 text-gray-500' : ''
-            } ${set.completed ? 'bg-green-50' : ''}`}
+            className={`grid items-center gap-1 rounded-xl px-1.5 py-1 transition-colors ${
+              set.isWarmup ? 'opacity-60' : ''
+            } ${
+              set.completed
+                ? 'bg-emerald-400/12 ring-1 ring-inset ring-emerald-400/25'
+                : ''
+            }`}
             style={{ gridTemplateColumns: gridCols }}
           >
-            <span className="text-sm tabular-nums">{i + 1}</span>
+            <span className="text-muted text-[13px] tabular-nums">{i + 1}</span>
             <NumericField
               value={set.weight}
               onChange={(weight) => update({ ...set, weight })}
               inputMode="decimal"
               ariaLabel={`Set ${i + 1} weight`}
               disabled={readOnly}
-              className="min-h-11 w-full rounded border border-gray-300 bg-white px-2 text-base tabular-nums focus:border-blue-500 focus:outline-none disabled:bg-gray-100"
+              className="glass-input min-h-11 w-full rounded-lg px-2 text-[15px] tabular-nums"
             />
             <NumericField
               value={set.reps}
@@ -89,7 +100,7 @@ export default function ExerciseCard({ workoutId, exercise, readOnly = false }: 
               inputMode="numeric"
               ariaLabel={`Set ${i + 1} reps`}
               disabled={readOnly}
-              className="min-h-11 w-full rounded border border-gray-300 bg-white px-2 text-base tabular-nums focus:border-blue-500 focus:outline-none disabled:bg-gray-100"
+              className="glass-input min-h-11 w-full rounded-lg px-2 text-[15px] tabular-nums"
             />
             <label className="flex h-11 items-center justify-center">
               <span className="sr-only">Warmup</span>
@@ -117,7 +128,7 @@ export default function ExerciseCard({ workoutId, exercise, readOnly = false }: 
               <button
                 type="button"
                 onClick={() => handleDeleteSet(set, i)}
-                className="flex h-11 items-center justify-center text-lg leading-none text-gray-400 hover:text-red-600"
+                className="text-faint flex h-11 items-center justify-center text-lg leading-none transition-colors hover:text-red-500"
                 aria-label={`Delete set ${i + 1}`}
               >
                 ×
@@ -130,7 +141,7 @@ export default function ExerciseCard({ workoutId, exercise, readOnly = false }: 
           <button
             type="button"
             onClick={() => actions.addSet(workoutId, exercise.id)}
-            className="mt-2 min-h-11 w-full rounded border border-dashed border-gray-300 text-base text-blue-600 hover:bg-gray-50"
+            className="mt-2 min-h-11 w-full rounded-xl border border-dashed border-[var(--hairline)] text-[14px] font-medium text-[var(--color-accent-600)] transition-colors hover:bg-white/40 active:bg-white/55 dark:text-[var(--color-accent-300)] dark:hover:bg-white/5"
           >
             + Add Set
           </button>

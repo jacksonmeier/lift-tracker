@@ -49,8 +49,10 @@ function formatLongDate(iso: string): string {
 
 function ChartCard({ title, children }: { title: string; children: ReactNode }) {
   return (
-    <section className="rounded-lg border border-gray-200 bg-white p-3">
-      <h3 className="mb-2 text-sm font-semibold text-gray-700">{title}</h3>
+    <section className="glass overflow-hidden rounded-2xl px-4 py-3.5">
+      <h3 className="text-faint mb-2.5 text-[11px] font-semibold uppercase tracking-[0.12em]">
+        {title}
+      </h3>
       {children}
     </section>
   );
@@ -68,12 +70,14 @@ function makeSessionTooltip(valueLabel: string, formatValue: (v: number) => stri
     const data = payload[0]?.payload as SessionTooltipPayload | undefined;
     if (!data) return null;
     return (
-      <div className="rounded border border-gray-200 bg-white px-2 py-1 text-xs shadow-sm">
-        <div className="font-medium">{formatLongDate(data.date)}</div>
-        <div className="tabular-nums">
+      <div className="glass-strong rounded-xl px-3 py-2 text-[12px]">
+        <div className="text-strong font-semibold tracking-tight">
+          {formatLongDate(data.date)}
+        </div>
+        <div className="text-default tabular-nums">
           {valueLabel}: {formatValue(data.value)}
         </div>
-        <div className="tabular-nums text-gray-500">
+        <div className="text-faint tabular-nums">
           {data.setCount} {data.setCount === 1 ? 'set' : 'sets'}
         </div>
       </div>
@@ -83,6 +87,9 @@ function makeSessionTooltip(valueLabel: string, formatValue: (v: number) => stri
 
 const WeightTooltip = makeSessionTooltip('Top weight', (v) => String(v));
 const E1RMTooltip = makeSessionTooltip('e1RM', (v) => v.toFixed(1));
+
+const ACCENT = 'var(--color-accent-500)';
+const ACCENT_SOFT = 'var(--color-accent-300)';
 
 export default function Progress() {
   const { state } = useApp();
@@ -116,32 +123,42 @@ export default function Progress() {
 
   const hasData = liftId ? hasAnyData(state, liftId, since) : false;
 
+  const gridStroke = 'rgba(127,127,135,0.18)';
+  const axisTick = { fontSize: 11, fill: 'var(--text-faint)' } as const;
+
   return (
     <div className="mx-auto max-w-md pb-12">
-      <header className="sticky top-0 z-10 flex items-center justify-between border-b border-gray-200 bg-white/95 px-4 py-3 backdrop-blur">
-        <Link to="/" className="min-h-11 px-2 -ml-2 text-base text-blue-600 flex items-center">
+      <header className="glass-bar sticky top-0 z-20 flex items-center justify-between gap-2 px-3 py-2.5">
+        <Link
+          to="/"
+          className="btn-ghost-accent -ml-1 flex min-h-11 items-center px-2 text-[15px]"
+        >
           ← Home
         </Link>
-        <h1 className="text-lg font-semibold">Progress</h1>
+        <h1 className="text-strong text-[17px] font-semibold tracking-tight">Progress</h1>
         <span className="min-w-11" />
       </header>
 
-      <div className="px-4 py-3">
+      <div className="px-4 pt-4">
         {sortedLifts.length === 0 ? (
-          <p className="text-sm text-gray-500">
-            No lifts yet.{' '}
-            <Link to="/lifts" className="text-blue-600 underline">
-              Add one
-            </Link>{' '}
-            to get started.
-          </p>
+          <div className="glass rounded-2xl px-5 py-8 text-center">
+            <p className="text-strong text-[15px] font-medium">No lifts yet.</p>
+            <p className="text-muted mt-1 text-[13px]">
+              <Link to="/lifts" className="btn-ghost-accent">
+                Add a lift
+              </Link>{' '}
+              to start tracking progress.
+            </p>
+          </div>
         ) : (
-          <label className="flex flex-col gap-1">
-            <span className="text-sm font-medium text-gray-700">Lift</span>
+          <label className="flex flex-col gap-1.5">
+            <span className="text-faint px-1 text-[11px] font-semibold uppercase tracking-[0.12em]">
+              Lift
+            </span>
             <select
               value={liftId}
               onChange={(e) => setLiftId(e.target.value)}
-              className="min-h-11 rounded-md border border-gray-300 bg-white px-3 text-base focus:border-blue-500 focus:outline-none"
+              className="glass-input min-h-12 w-full rounded-xl px-3 text-[15px] font-medium tracking-tight"
             >
               <option value="">Select a lift…</option>
               {sortedLifts.map((l) => (
@@ -155,15 +172,17 @@ export default function Progress() {
       </div>
 
       {liftId && (
-        <div className="px-4 pb-3">
-          <div className="inline-flex rounded-lg border border-gray-200 bg-gray-50 p-1">
+        <div className="px-4 pt-3">
+          <div className="pill-segment inline-flex w-full justify-between gap-1 rounded-full p-1">
             {(['4w', '12w', 'all'] as Range[]).map((r) => (
               <button
                 key={r}
                 type="button"
                 onClick={() => setRange(r)}
-                className={`min-h-11 rounded-md px-3 text-sm font-medium ${
-                  range === r ? 'bg-white text-gray-900 shadow-sm' : 'text-gray-600'
+                className={`min-h-10 flex-1 rounded-full px-3 text-[13px] font-semibold tracking-tight transition-colors ${
+                  range === r
+                    ? 'pill-segment-active'
+                    : 'text-muted hover:text-strong'
                 }`}
               >
                 {RANGE_LABELS[r]}
@@ -174,32 +193,73 @@ export default function Progress() {
       )}
 
       {liftId && !hasData && (
-        <p className="px-4 py-6 text-center text-sm text-gray-500">
-          No data for this lift in the selected range.
-        </p>
+        <div className="px-4 pt-4">
+          <div className="glass-quiet rounded-2xl px-4 py-8 text-center">
+            <p className="text-muted text-[13px]">
+              No data for this lift in the selected range.
+            </p>
+          </div>
+        </div>
       )}
 
       {liftId && hasData && (
-        <div className="flex flex-col gap-3 px-4">
+        <div className="flex flex-col gap-3 px-4 pt-4">
+          {bestPr && (
+            <section className="glass overflow-hidden rounded-2xl px-4 py-3.5">
+              <div className="flex items-center justify-between gap-3">
+                <div>
+                  <div className="text-faint text-[11px] font-semibold uppercase tracking-[0.12em]">
+                    Best e1RM
+                  </div>
+                  <div className="text-strong mt-1 text-[28px] font-semibold tabular-nums tracking-tight">
+                    {bestPr.e1RM.toFixed(1)}
+                  </div>
+                </div>
+                <div className="text-right">
+                  <div className="text-faint text-[11px] font-semibold uppercase tracking-[0.12em]">
+                    Set
+                  </div>
+                  <div className="text-strong mt-1 text-[15px] font-medium tabular-nums tracking-tight">
+                    {bestPr.weight} × {bestPr.reps}
+                  </div>
+                  <div className="text-faint mt-0.5 text-[12px]">
+                    {formatLongDate(bestPr.date)}
+                  </div>
+                </div>
+              </div>
+            </section>
+          )}
+
           <ChartCard title="Top working-set weight per session">
             <div className="h-56 w-full">
               <ResponsiveContainer width="100%" height="100%">
                 <LineChart data={weightSeries} margin={{ top: 8, right: 8, left: 0, bottom: 0 }}>
-                  <CartesianGrid strokeDasharray="3 3" stroke="#eee" />
+                  <CartesianGrid strokeDasharray="3 3" stroke={gridStroke} />
                   <XAxis
                     dataKey="date"
                     tickFormatter={formatShortDate}
-                    tick={{ fontSize: 11 }}
+                    tick={axisTick}
+                    tickLine={false}
+                    axisLine={{ stroke: gridStroke }}
                     minTickGap={20}
                   />
-                  <YAxis tick={{ fontSize: 11 }} width={36} />
-                  <Tooltip content={<WeightTooltip />} />
+                  <YAxis
+                    tick={axisTick}
+                    tickLine={false}
+                    axisLine={{ stroke: gridStroke }}
+                    width={36}
+                  />
+                  <Tooltip
+                    content={<WeightTooltip />}
+                    cursor={{ stroke: gridStroke, strokeWidth: 1 }}
+                  />
                   <Line
                     type="monotone"
                     dataKey="value"
-                    stroke="#2563eb"
-                    strokeWidth={2}
-                    dot={{ r: 3 }}
+                    stroke={ACCENT}
+                    strokeWidth={2.5}
+                    dot={{ r: 3, fill: ACCENT, stroke: ACCENT }}
+                    activeDot={{ r: 5, fill: ACCENT, stroke: 'white', strokeWidth: 2 }}
                     isAnimationActive={false}
                   />
                 </LineChart>
@@ -211,25 +271,33 @@ export default function Progress() {
             <div className="h-56 w-full">
               <ResponsiveContainer width="100%" height="100%">
                 <LineChart data={e1rmSeries} margin={{ top: 8, right: 8, left: 0, bottom: 0 }}>
-                  <CartesianGrid strokeDasharray="3 3" stroke="#eee" />
+                  <CartesianGrid strokeDasharray="3 3" stroke={gridStroke} />
                   <XAxis
                     dataKey="date"
                     tickFormatter={formatShortDate}
-                    tick={{ fontSize: 11 }}
+                    tick={axisTick}
+                    tickLine={false}
+                    axisLine={{ stroke: gridStroke }}
                     minTickGap={20}
                   />
                   <YAxis
-                    tick={{ fontSize: 11 }}
+                    tick={axisTick}
+                    tickLine={false}
+                    axisLine={{ stroke: gridStroke }}
                     width={36}
                     tickFormatter={(v: number) => v.toFixed(0)}
                   />
-                  <Tooltip content={<E1RMTooltip />} />
+                  <Tooltip
+                    content={<E1RMTooltip />}
+                    cursor={{ stroke: gridStroke, strokeWidth: 1 }}
+                  />
                   <Line
                     type="monotone"
                     dataKey="value"
-                    stroke="#9333ea"
-                    strokeWidth={2}
-                    dot={{ r: 3 }}
+                    stroke={ACCENT}
+                    strokeWidth={2.5}
+                    dot={{ r: 3, fill: ACCENT, stroke: ACCENT }}
+                    activeDot={{ r: 5, fill: ACCENT, stroke: 'white', strokeWidth: 2 }}
                     isAnimationActive={false}
                   />
                 </LineChart>
@@ -241,63 +309,83 @@ export default function Progress() {
             <div className="h-56 w-full">
               <ResponsiveContainer width="100%" height="100%">
                 <BarChart data={volume} margin={{ top: 8, right: 8, left: 0, bottom: 0 }}>
-                  <CartesianGrid strokeDasharray="3 3" stroke="#eee" />
+                  <defs>
+                    <linearGradient id="volume-fill" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0%" stopColor={ACCENT} stopOpacity={0.95} />
+                      <stop offset="100%" stopColor={ACCENT_SOFT} stopOpacity={0.55} />
+                    </linearGradient>
+                  </defs>
+                  <CartesianGrid strokeDasharray="3 3" stroke={gridStroke} />
                   <XAxis
                     dataKey="week"
-                    tick={{ fontSize: 11 }}
+                    tick={axisTick}
+                    tickLine={false}
+                    axisLine={{ stroke: gridStroke }}
                     tickFormatter={(w: string) => w.replace(/^\d+-/, '')}
                     minTickGap={10}
                   />
                   <YAxis
-                    tick={{ fontSize: 11 }}
+                    tick={axisTick}
+                    tickLine={false}
+                    axisLine={{ stroke: gridStroke }}
                     width={44}
                     tickFormatter={(v: number) =>
                       v >= 1000 ? `${(v / 1000).toFixed(1)}k` : String(v)
                     }
                   />
-                  <Tooltip formatter={(v: number) => [v.toLocaleString(), 'Volume']} />
-                  <Bar dataKey="volume" fill="#16a34a" isAnimationActive={false} />
+                  <Tooltip
+                    formatter={(v: number) => [v.toLocaleString(), 'Volume']}
+                    contentStyle={{
+                      background: 'var(--glass-surface-strong)',
+                      border: '1px solid var(--hairline)',
+                      borderRadius: 12,
+                      backdropFilter: 'saturate(180%) blur(20px)',
+                      WebkitBackdropFilter: 'saturate(180%) blur(20px)',
+                      fontSize: 12,
+                      color: 'var(--text-default)',
+                    }}
+                    cursor={{ fill: 'rgba(255,149,0,0.08)' }}
+                  />
+                  <Bar
+                    dataKey="volume"
+                    fill="url(#volume-fill)"
+                    radius={[6, 6, 2, 2]}
+                    isAnimationActive={false}
+                  />
                 </BarChart>
               </ResponsiveContainer>
             </div>
           </ChartCard>
 
           <ChartCard title="PR history">
-            {bestPr && (
-              <div className="mb-2 flex items-center justify-between rounded-md bg-amber-50 px-3 py-2">
-                <span className="text-xs font-semibold uppercase tracking-wide text-amber-800">
-                  Best e1RM
-                </span>
-                <span className="text-base font-semibold tabular-nums text-amber-900">
-                  {bestPr.e1RM.toFixed(1)}{' '}
-                  <span className="text-xs font-normal text-amber-700">
-                    ({bestPr.weight} × {bestPr.reps})
-                  </span>
-                </span>
-              </div>
-            )}
             {prs.length === 0 ? (
-              <p className="px-1 py-2 text-sm text-gray-500">No PRs in this range.</p>
+              <p className="text-muted px-1 py-2 text-[13px]">No PRs in this range.</p>
             ) : (
-              <table className="w-full text-sm">
+              <table className="w-full text-[13px]">
                 <thead>
-                  <tr className="text-left text-xs uppercase tracking-wide text-gray-500">
-                    <th className="py-1 pr-2 font-semibold">Date</th>
-                    <th className="py-1 pr-2 font-semibold">Weight</th>
-                    <th className="py-1 pr-2 font-semibold">Reps</th>
-                    <th className="py-1 font-semibold">e1RM</th>
+                  <tr className="text-faint text-left text-[10px] font-semibold uppercase tracking-[0.12em]">
+                    <th className="py-1.5 pr-2">Date</th>
+                    <th className="py-1.5 pr-2">Weight</th>
+                    <th className="py-1.5 pr-2">Reps</th>
+                    <th className="py-1.5">e1RM</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-gray-100">
+                <tbody className="divide-y divide-[var(--hairline-soft)]">
                   {prs
                     .slice()
                     .reverse()
                     .map((pr, i) => (
                       <tr key={`${pr.date}-${i}`}>
-                        <td className="py-1.5 pr-2">{formatLongDate(pr.date)}</td>
-                        <td className="py-1.5 pr-2 tabular-nums">{pr.weight}</td>
-                        <td className="py-1.5 pr-2 tabular-nums">{pr.reps}</td>
-                        <td className="py-1.5 tabular-nums">{pr.e1RM.toFixed(1)}</td>
+                        <td className="text-default py-2 pr-2">{formatLongDate(pr.date)}</td>
+                        <td className="text-strong py-2 pr-2 font-medium tabular-nums">
+                          {pr.weight}
+                        </td>
+                        <td className="text-strong py-2 pr-2 font-medium tabular-nums">
+                          {pr.reps}
+                        </td>
+                        <td className="py-2 font-semibold tabular-nums text-[var(--color-accent-700)] dark:text-[var(--color-accent-300)]">
+                          {pr.e1RM.toFixed(1)}
+                        </td>
                       </tr>
                     ))}
                 </tbody>

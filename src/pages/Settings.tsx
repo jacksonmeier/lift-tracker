@@ -46,64 +46,82 @@ export default function Settings() {
 
   return (
     <div className="mx-auto max-w-md pb-12">
-      <header className="sticky top-0 z-10 flex items-center justify-between border-b border-gray-200 bg-white/95 px-4 py-3 backdrop-blur">
-        <Link to="/" className="min-h-11 px-2 -ml-2 text-base text-blue-600 flex items-center">
+      <header className="glass-bar sticky top-0 z-20 flex items-center justify-between gap-2 px-3 py-2.5">
+        <Link
+          to="/"
+          className="btn-ghost-accent -ml-1 flex min-h-11 items-center px-2 text-[15px]"
+        >
           ← Home
         </Link>
-        <h1 className="text-lg font-semibold">Settings</h1>
+        <h1 className="text-strong text-[17px] font-semibold tracking-tight">Settings</h1>
         <span className="min-w-11" />
       </header>
 
-      <div className="flex flex-col gap-6 px-4 py-4">
-        <section className="flex flex-col gap-2">
-          <h2 className="text-xs font-semibold uppercase tracking-wide text-gray-500">
+      <div className="flex flex-col gap-6 px-4 py-5">
+        <section className="flex flex-col gap-3">
+          <h2 className="text-faint px-1 text-[11px] font-semibold uppercase tracking-[0.12em]">
             Backup
           </h2>
-          <p className="text-sm text-gray-600">
-            All workout data is stored on this device only. Use export to back up or move
-            to another device.
-          </p>
-          <button
-            type="button"
-            onClick={handleExport}
-            className="min-h-12 w-full rounded-lg bg-blue-600 text-base font-semibold text-white active:bg-blue-700"
-          >
-            Export workouts.json
-          </button>
-          <button
-            type="button"
-            onClick={() => fileRef.current?.click()}
-            className="min-h-12 w-full rounded-lg border border-gray-300 bg-white text-base font-semibold text-gray-800 active:bg-gray-50"
-          >
-            Import workouts.json
-          </button>
-          <input
-            ref={fileRef}
-            type="file"
-            accept="application/json,.json"
-            onChange={handleFile}
-            className="hidden"
-            aria-hidden="true"
-          />
+          <div className="glass rounded-2xl px-4 py-4">
+            <p className="text-muted text-[13px] leading-relaxed">
+              All workout data is stored on this device only. Use export to back up or
+              move to another device.
+            </p>
+            <div className="mt-4 flex flex-col gap-2">
+              <button
+                type="button"
+                onClick={handleExport}
+                className="btn-accent min-h-12 w-full rounded-xl text-[15px] font-semibold tracking-tight"
+              >
+                Export workouts.json
+              </button>
+              <button
+                type="button"
+                onClick={() => fileRef.current?.click()}
+                className="btn-glass min-h-12 w-full rounded-xl text-[15px] font-semibold tracking-tight"
+              >
+                Import workouts.json
+              </button>
+            </div>
+            <input
+              ref={fileRef}
+              type="file"
+              accept="application/json,.json"
+              onChange={handleFile}
+              className="hidden"
+              aria-hidden="true"
+            />
+          </div>
         </section>
 
         {status.kind === 'success' && (
-          <p className="rounded-md bg-green-50 px-3 py-2 text-sm text-green-800">
+          <p className="rounded-xl border border-emerald-500/25 bg-emerald-500/10 px-3 py-2.5 text-[13px] text-emerald-700 dark:text-emerald-300">
             {status.message}
           </p>
         )}
         {status.kind === 'error' && (
-          <p className="rounded-md bg-red-50 px-3 py-2 text-sm text-red-800">
+          <p className="rounded-xl border border-red-500/25 bg-red-500/10 px-3 py-2.5 text-[13px] text-red-700 dark:text-red-300">
             {status.message}
           </p>
         )}
 
-        <section className="text-xs text-gray-500">
-          <div>
-            Lifts: <span className="tabular-nums">{state.lifts.length}</span>
-          </div>
-          <div>
-            Workouts: <span className="tabular-nums">{state.workouts.length}</span>
+        <section>
+          <h2 className="text-faint mb-2 px-1 text-[11px] font-semibold uppercase tracking-[0.12em]">
+            Stats
+          </h2>
+          <div className="glass-quiet rounded-2xl px-4 py-3">
+            <div className="flex items-center justify-between py-1 text-[13px]">
+              <span className="text-muted">Lifts</span>
+              <span className="text-strong font-medium tabular-nums">
+                {state.lifts.length}
+              </span>
+            </div>
+            <div className="flex items-center justify-between py-1 text-[13px]">
+              <span className="text-muted">Workouts</span>
+              <span className="text-strong font-medium tabular-nums">
+                {state.workouts.length}
+              </span>
+            </div>
           </div>
         </section>
       </div>

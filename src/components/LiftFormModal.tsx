@@ -38,45 +38,63 @@ export default function LiftFormModal({ initial, onCancel, onSubmit }: Props) {
   const isEdit = Boolean(initial);
 
   return (
-    <div className="fixed inset-0 z-50 flex flex-col bg-white">
-      <header className="flex items-center justify-between border-b border-gray-200 px-4 py-3">
+    <div
+      className="fixed inset-0 z-50 flex flex-col"
+      style={{
+        background:
+          'radial-gradient(120% 80% at 0% 0%, var(--bg-grad-1) 0%, transparent 55%),' +
+          'radial-gradient(120% 80% at 100% 0%, var(--bg-grad-2) 0%, transparent 55%),' +
+          'linear-gradient(180deg, var(--bg-grad-3) 0%, var(--bg-grad-4) 100%)',
+      }}
+    >
+      <header className="glass-bar flex items-center justify-between gap-2 px-3 py-2.5">
         <button
           type="button"
           onClick={onCancel}
-          className="min-h-11 px-2 text-base text-blue-600"
+          className="btn-ghost-accent -ml-1 min-h-11 px-2 text-[15px]"
         >
           Cancel
         </button>
-        <h2 className="text-lg font-semibold">{isEdit ? 'Edit Lift' : 'New Lift'}</h2>
+        <h2 className="text-strong text-[17px] font-semibold tracking-tight">
+          {isEdit ? 'Edit Lift' : 'New Lift'}
+        </h2>
         <button
           type="submit"
           form="lift-form"
           disabled={!name.trim()}
-          className="min-h-11 px-2 text-base font-semibold text-blue-600 disabled:text-gray-300"
+          className="btn-ghost-accent -mr-1 min-h-11 px-2 text-[15px] font-semibold disabled:text-[var(--text-faint)] disabled:opacity-60"
         >
           Save
         </button>
       </header>
 
-      <form id="lift-form" onSubmit={handleSubmit} className="flex flex-col gap-4 p-4">
-        <label className="flex flex-col gap-1">
-          <span className="text-sm font-medium text-gray-700">Name</span>
+      <form
+        id="lift-form"
+        onSubmit={handleSubmit}
+        className="flex flex-col gap-4 px-4 pt-5"
+      >
+        <label className="flex flex-col gap-1.5">
+          <span className="text-faint px-1 text-[11px] font-semibold uppercase tracking-[0.12em]">
+            Name
+          </span>
           <input
             type="text"
             value={name}
             onChange={(e) => setName(e.target.value)}
             autoFocus
             placeholder="e.g. Bench Press"
-            className="min-h-11 rounded-md border border-gray-300 px-3 text-base focus:border-blue-500 focus:outline-none"
+            className="glass-input min-h-12 rounded-xl px-3.5 text-[15px]"
           />
         </label>
 
-        <label className="flex flex-col gap-1">
-          <span className="text-sm font-medium text-gray-700">Category</span>
+        <label className="flex flex-col gap-1.5">
+          <span className="text-faint px-1 text-[11px] font-semibold uppercase tracking-[0.12em]">
+            Category
+          </span>
           <select
             value={category}
             onChange={(e) => setCategory(e.target.value as LiftCategory)}
-            className="min-h-11 rounded-md border border-gray-300 bg-white px-3 text-base capitalize focus:border-blue-500 focus:outline-none"
+            className="glass-input min-h-12 rounded-xl px-3.5 text-[15px] capitalize"
           >
             {LIFT_CATEGORIES.map((c) => (
               <option key={c} value={c} className="capitalize">
@@ -86,14 +104,16 @@ export default function LiftFormModal({ initial, onCancel, onSubmit }: Props) {
           </select>
         </label>
 
-        <label className="flex flex-col gap-1">
-          <span className="text-sm font-medium text-gray-700">Notes (optional)</span>
+        <label className="flex flex-col gap-1.5">
+          <span className="text-faint px-1 text-[11px] font-semibold uppercase tracking-[0.12em]">
+            Notes (optional)
+          </span>
           <textarea
             value={notes}
             onChange={(e) => setNotes(e.target.value)}
             rows={3}
             placeholder="Cue, grip width, etc."
-            className="rounded-md border border-gray-300 px-3 py-2 text-base focus:border-blue-500 focus:outline-none"
+            className="glass-input rounded-xl px-3.5 py-2.5 text-[15px]"
           />
         </label>
       </form>

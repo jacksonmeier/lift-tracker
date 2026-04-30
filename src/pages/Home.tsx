@@ -50,55 +50,69 @@ export default function Home() {
   }
 
   return (
-    <div className="mx-auto max-w-md pb-12">
-      <header className="flex items-center justify-between border-b border-gray-200 bg-white px-4 py-3">
-        <h1 className="text-lg font-semibold">Lift Tracker</h1>
-        <nav className="flex items-center gap-1 text-sm">
-          <Link to="/lifts" className="min-h-11 px-2 text-blue-600 flex items-center">
+    <div className="mx-auto max-w-md pb-16">
+      <header className="glass-bar sticky top-0 z-20 flex items-center justify-between gap-2 px-4 py-3">
+        <h1 className="text-strong text-[17px] font-semibold tracking-tight">Lift Tracker</h1>
+        <nav className="flex items-center gap-0.5 text-[15px]">
+          <Link
+            to="/lifts"
+            className="btn-ghost-accent flex min-h-11 items-center px-2.5"
+          >
             Lifts
           </Link>
-          <Link to="/progress" className="min-h-11 px-2 text-blue-600 flex items-center">
+          <Link
+            to="/progress"
+            className="btn-ghost-accent flex min-h-11 items-center px-2.5"
+          >
             Progress
           </Link>
-          <Link to="/settings" className="min-h-11 px-2 text-blue-600 flex items-center">
+          <Link
+            to="/settings"
+            className="btn-ghost-accent flex min-h-11 items-center px-2.5"
+          >
             Settings
           </Link>
         </nav>
       </header>
 
-      <div className="px-4 pt-6">
+      <div className="px-4 pt-7">
         <button
           type="button"
           onClick={handleStart}
-          className="w-full rounded-xl bg-blue-600 py-5 text-lg font-semibold text-white shadow-sm active:bg-blue-700"
+          className="btn-accent min-h-14 w-full rounded-2xl py-4 text-[17px] font-semibold tracking-tight"
         >
           Start New Workout
         </button>
       </div>
 
       <section className="mt-8 px-4">
-        <h2 className="text-xs font-semibold uppercase tracking-wide text-gray-500">
+        <h2 className="text-faint mb-2 px-1 text-[11px] font-semibold uppercase tracking-[0.12em]">
           Recent
         </h2>
         {sorted.length === 0 ? (
-          <p className="mt-2 text-sm text-gray-500">No workouts yet.</p>
+          <div className="glass rounded-2xl px-4 py-8 text-center">
+            <p className="text-muted text-sm">No workouts yet.</p>
+            <p className="text-faint mt-1 text-xs">Tap the orange button to begin.</p>
+          </div>
         ) : (
-          <ul className="mt-2 divide-y divide-gray-200 rounded-lg border border-gray-200 bg-white">
+          <ul className="glass divide-y divide-[var(--hairline-soft)] overflow-hidden rounded-2xl">
             {sorted.map((w) => (
               <li key={w.id} className="flex items-stretch">
                 <Link
                   to={`/workout/${w.id}`}
-                  className="flex min-w-0 flex-1 items-center gap-3 px-3 py-3 hover:bg-gray-50"
+                  className="flex min-w-0 flex-1 items-center gap-3 px-4 py-3 transition-colors active:bg-white/40 dark:active:bg-white/5"
                 >
                   <div className="min-w-0 flex-1">
-                    <div className="font-medium">{formatRowDate(w.date)}</div>
-                    <div className="text-sm text-gray-500">{summarize(w)}</div>
+                    <div className="text-strong text-[15px] font-medium tracking-tight">
+                      {formatRowDate(w.date)}
+                    </div>
+                    <div className="text-muted text-[13px]">{summarize(w)}</div>
                   </div>
                   <span
-                    className={`shrink-0 rounded-full px-2 py-0.5 text-xs font-medium ${
+                    className={`shrink-0 rounded-full border px-2.5 py-0.5 text-[11px] font-medium ${
                       w.status === 'complete'
-                        ? 'bg-green-100 text-green-800'
-                        : 'bg-amber-100 text-amber-800'
+                        ? 'border-emerald-500/25 bg-emerald-500/15 text-emerald-700 dark:text-emerald-300'
+                        : 'border-[var(--color-accent-500)]/30 bg-[var(--color-accent-500)]/15 text-[var(--color-accent-700)] dark:text-[var(--color-accent-300)]'
                     }`}
                   >
                     {w.status === 'complete' ? 'Complete' : 'In progress'}
@@ -107,7 +121,7 @@ export default function Home() {
                 <button
                   type="button"
                   onClick={() => handleDelete(w)}
-                  className="flex min-h-11 min-w-11 items-center justify-center px-2 text-xl leading-none text-gray-400 hover:text-red-600"
+                  className="text-faint flex min-h-11 min-w-11 items-center justify-center px-2 text-xl leading-none transition-colors hover:text-red-500"
                   aria-label={`Delete workout from ${formatRowDate(w.date)}`}
                 >
                   ×

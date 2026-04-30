@@ -43,48 +43,57 @@ export default function Lifts() {
 
   return (
     <div className="mx-auto max-w-md pb-24">
-      <header className="sticky top-0 z-10 flex items-center justify-between border-b border-gray-200 bg-white/95 px-4 py-3 backdrop-blur">
-        <Link to="/" className="min-h-11 px-2 -ml-2 text-base text-blue-600 flex items-center">
+      <header className="glass-bar sticky top-0 z-20 flex items-center justify-between gap-2 px-3 py-2.5">
+        <Link
+          to="/"
+          className="btn-ghost-accent -ml-1 flex min-h-11 items-center px-2 text-[15px]"
+        >
           ← Home
         </Link>
-        <h1 className="text-lg font-semibold">Lifts</h1>
+        <h1 className="text-strong text-[17px] font-semibold tracking-tight">Lifts</h1>
         <button
           type="button"
           onClick={() => setEditing({ kind: 'new' })}
-          className="min-h-11 px-2 -mr-2 text-base font-semibold text-blue-600"
+          className="btn-ghost-accent -mr-1 min-h-11 px-2 text-[15px] font-semibold"
         >
           + Add
         </button>
       </header>
 
       {state.lifts.length === 0 ? (
-        <div className="px-4 py-12 text-center text-gray-500">
-          <p>No lifts yet.</p>
-          <p className="mt-2 text-sm">Tap + Add to create your first one.</p>
+        <div className="px-4 pt-8">
+          <div className="glass rounded-2xl px-6 py-12 text-center">
+            <p className="text-strong text-[15px] font-medium">No lifts yet.</p>
+            <p className="text-muted mt-1 text-[13px]">
+              Tap + Add to create your first one.
+            </p>
+          </div>
         </div>
       ) : (
-        <div className="px-4">
+        <div className="px-4 pt-2">
           {LIFT_CATEGORIES.map((category) => {
             const lifts = grouped[category];
             if (lifts.length === 0) return null;
             return (
               <section key={category} className="mt-6 first:mt-4">
-                <h2 className="text-xs font-semibold uppercase tracking-wide text-gray-500">
+                <h2 className="text-faint mb-2 px-1 text-[11px] font-semibold uppercase tracking-[0.12em]">
                   {category}
                 </h2>
-                <ul className="mt-2 divide-y divide-gray-200 rounded-lg border border-gray-200 bg-white">
+                <ul className="glass divide-y divide-[var(--hairline-soft)] overflow-hidden rounded-2xl">
                   {lifts.map((lift) => (
-                    <li key={lift.id} className="flex items-start gap-2 px-3 py-2">
+                    <li key={lift.id} className="flex items-start gap-2 px-4 py-2.5">
                       <div className="min-w-0 flex-1 py-1">
-                        <div className="font-medium">{lift.name}</div>
+                        <div className="text-strong text-[15px] font-medium tracking-tight">
+                          {lift.name}
+                        </div>
                         {lift.notes && (
-                          <div className="mt-0.5 text-sm text-gray-500">{lift.notes}</div>
+                          <div className="text-muted mt-0.5 text-[13px]">{lift.notes}</div>
                         )}
                       </div>
                       <button
                         type="button"
                         onClick={() => setEditing({ kind: 'edit', lift })}
-                        className="min-h-11 min-w-11 px-2 text-sm text-blue-600"
+                        className="btn-ghost-accent min-h-11 min-w-11 px-2 text-[14px]"
                         aria-label={`Edit ${lift.name}`}
                       >
                         Edit
@@ -92,7 +101,7 @@ export default function Lifts() {
                       <button
                         type="button"
                         onClick={() => handleDelete(lift)}
-                        className="min-h-11 min-w-11 px-2 text-sm text-red-600"
+                        className="min-h-11 min-w-11 px-2 text-[14px] text-red-500/90 transition-colors hover:text-red-500 active:opacity-70"
                         aria-label={`Delete ${lift.name}`}
                       >
                         Delete

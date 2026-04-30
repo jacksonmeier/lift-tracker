@@ -45,8 +45,10 @@ export default function Workout() {
   if (!workout) {
     return (
       <div className="mx-auto max-w-md p-4">
-        <h1 className="text-xl font-bold">Workout not found</h1>
-        <Link to="/" className="mt-4 inline-block text-blue-600 underline">
+        <h1 className="text-strong text-xl font-semibold tracking-tight">
+          Workout not found
+        </h1>
+        <Link to="/" className="btn-ghost-accent mt-4 inline-block text-[15px]">
           ← Home
         </Link>
       </div>
@@ -69,10 +71,10 @@ export default function Workout() {
 
   return (
     <div className="mx-auto max-w-md pb-32">
-      <header className="sticky top-0 z-10 flex items-center justify-between gap-2 border-b border-gray-200 bg-white/95 px-4 py-3 backdrop-blur">
+      <header className="glass-bar sticky top-0 z-20 flex items-center justify-between gap-2 px-3 py-2.5">
         <Link
           to="/"
-          className="min-h-11 px-2 -ml-2 text-base text-blue-600 flex items-center"
+          className="btn-ghost-accent -ml-1 flex min-h-11 items-center px-2 text-[15px]"
         >
           ← Home
         </Link>
@@ -84,10 +86,12 @@ export default function Workout() {
               actions.updateWorkoutDate(workout.id, dateInputToIso(e.target.value, workout.date))
             }
             aria-label="Workout date"
-            className="mx-auto block min-h-11 rounded border border-transparent bg-transparent px-2 text-center text-sm font-medium tabular-nums hover:border-gray-200 focus:border-blue-500 focus:outline-none"
+            className="text-strong mx-auto block min-h-11 rounded-lg border border-transparent bg-transparent px-2 text-center text-[14px] font-medium tabular-nums tracking-tight transition-colors hover:border-[var(--hairline)] focus:border-[var(--color-accent-500)] focus:outline-none"
           />
           {isComplete && (
-            <div className="text-xs uppercase tracking-wide text-green-700">Complete</div>
+            <div className="text-[10px] font-semibold uppercase tracking-[0.14em] text-emerald-600 dark:text-emerald-400">
+              Complete
+            </div>
           )}
         </div>
         {isComplete ? (
@@ -97,18 +101,21 @@ export default function Workout() {
             type="button"
             onClick={handleFinish}
             disabled={!canFinish}
-            className="min-h-11 rounded-md bg-green-600 px-3 text-sm font-semibold text-white disabled:bg-gray-300"
+            className="btn-accent min-h-11 rounded-full px-4 text-[14px] font-semibold tracking-tight"
           >
             Finish
           </button>
         )}
       </header>
 
-      <div className="flex flex-col gap-3 px-3 py-3">
+      <div className="flex flex-col gap-3 px-3 py-4">
         {workout.exercises.length === 0 && (
-          <p className="px-1 py-6 text-center text-sm text-gray-500">
-            No exercises yet. Tap + Add Exercise to start.
-          </p>
+          <div className="glass-quiet rounded-2xl px-4 py-10 text-center">
+            <p className="text-muted text-sm">No exercises yet.</p>
+            <p className="text-faint mt-1 text-xs">
+              Tap + Add Exercise to start.
+            </p>
+          </div>
         )}
 
         {workout.exercises.map((exercise) => (
@@ -124,7 +131,7 @@ export default function Workout() {
           <button
             type="button"
             onClick={() => setAdding(true)}
-            className="min-h-12 w-full rounded-lg border border-dashed border-gray-300 bg-white text-base font-medium text-blue-600"
+            className="btn-glass min-h-12 w-full rounded-2xl text-[15px] font-semibold tracking-tight text-[var(--color-accent-600)] dark:text-[var(--color-accent-300)]"
           >
             + Add Exercise
           </button>
