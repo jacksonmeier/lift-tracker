@@ -71,7 +71,7 @@ export default function Biometrics() {
 
   return (
     <div className="route mx-auto max-w-md pb-24">
-      <header className="glass-bar sticky top-0 z-20 flex items-center justify-between gap-2 px-3 py-2.5">
+      <header className="glass-bar sticky top-3 z-20 mx-3 mt-3 flex items-center justify-between gap-2 rounded-2xl px-3 py-2.5">
         <Link
           to="/"
           className="btn-ghost-accent -ml-1 flex min-h-11 items-center px-2 text-[14px] font-medium"

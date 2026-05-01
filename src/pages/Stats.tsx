@@ -363,7 +363,6 @@ export default function Stats() {
   const navigate = useNavigate();
   const [tab, setTab] = useState<Tab>('lift');
   const [range, setRange] = useState<Range>({ unit: 'weeks', amount: 12 });
-  const [ignoreRestDays, setIgnoreRestDays] = useState(false);
   const [valueMode, setValueMode] = useState<'total' | 'avg'>('total');
 
   const since = useMemo(() => rangeSince(range), [range]);
@@ -453,31 +452,15 @@ export default function Stats() {
 
   // Body stats memos
   const hasAnyBiometric = state.biometrics.length > 0;
-  const workoutDayKeys = useMemo(() => {
-    const set = new Set<string>();
-    for (const w of state.workouts) {
-      if (w.status !== 'complete') continue;
-      set.add(new Date(w.date).toLocaleDateString('en-CA'));
-    }
-    return set;
-  }, [state.workouts]);
-
-  const filterByWorkoutDay = (entries: BiometricEntry[]) =>
-    ignoreRestDays
-      ? entries.filter((e) =>
-          workoutDayKeys.has(new Date(e.date).toLocaleDateString('en-CA')),
-        )
-      : entries;
 
   const bioEntries = useMemo(
-    () => filterByWorkoutDay(entriesInRange(state, since)),
-    [state, since, ignoreRestDays, workoutDayKeys],
+    () => entriesInRange(state, since),
+    [state, since],
   );
   const bioSummary = useMemo(() => biometricSummary(bioEntries), [bioEntries]);
   const priorBioEntries = useMemo(
-    () =>
-      prior ? filterByWorkoutDay(entriesInRange(state, prior.since, prior.until)) : [],
-    [state, prior, ignoreRestDays, workoutDayKeys],
+    () => (prior ? entriesInRange(state, prior.since, prior.until) : []),
+    [state, prior],
   );
   const priorBioSummary = useMemo(
     () => (prior ? biometricSummary(priorBioEntries) : null),
@@ -563,7 +546,7 @@ export default function Stats() {
 
   return (
     <div className="route mx-auto max-w-md pb-12">
-      <header className="glass-bar sticky top-0 z-20 flex items-center justify-between gap-2 px-3 py-2.5">
+      <header className="glass-bar sticky top-3 z-20 mx-3 mt-3 flex items-center justify-between gap-2 rounded-2xl px-3 py-2.5">
         <Link
           to="/"
           className="btn-ghost-accent -ml-1 flex min-h-11 items-center px-2 text-[14px] font-medium"
@@ -635,39 +618,6 @@ export default function Stats() {
               </button>
             ))}
           </div>
-
-          <button
-            type="button"
-            role="switch"
-            aria-checked={ignoreRestDays}
-            onClick={() => setIgnoreRestDays((v) => !v)}
-            className="glass-quiet flex items-center justify-between gap-3 rounded-full px-4 py-2 text-left active:opacity-80"
-          >
-            <span className="flex flex-col">
-              <span className="text-strong text-[13px] font-semibold tracking-tight">
-                Ignore rest days
-              </span>
-              <span className="text-muted text-[11px]">
-                {tab === 'body'
-                  ? 'Hide weigh-ins on days with no completed workout'
-                  : 'Dim heatmap cells for days with no completed workout'}
-              </span>
-            </span>
-            <span
-              aria-hidden="true"
-              className={`relative inline-flex h-6 w-10 shrink-0 items-center rounded-full transition-colors ${
-                ignoreRestDays
-                  ? 'bg-[var(--color-accent-500)]'
-                  : 'bg-[var(--hairline-strong)]/40'
-              }`}
-            >
-              <span
-                className={`absolute top-0.5 h-5 w-5 rounded-full bg-white shadow-sm transition-transform ${
-                  ignoreRestDays ? 'translate-x-[18px]' : 'translate-x-0.5'
-                }`}
-              />
-            </span>
-          </button>
 
           {prior && (
             <div className="text-faint -mt-1 px-1 text-[11px]">
@@ -749,7 +699,6 @@ export default function Stats() {
                     counts={heatmapCounts}
                     weeks={12}
                     onCellTap={handleHeatmapTap}
-                    ignoreRestDays={ignoreRestDays}
                   />
                   <div className="text-faint mt-3 flex items-center justify-end gap-1.5 text-[10px]">
                     <span>Less</span>

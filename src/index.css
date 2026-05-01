@@ -286,6 +286,14 @@ body {
     backdrop-filter: saturate(200%) blur(30px);
   }
 
+  .glass-solid {
+    background-color: rgb(255 255 255 / 0.92);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow-strong);
+    -webkit-backdrop-filter: saturate(200%) blur(30px);
+    backdrop-filter: saturate(200%) blur(30px);
+  }
+
   .glass-quiet {
     background-color: var(--glass-surface-quiet);
     border: 1px solid var(--glass-border-quiet);
@@ -295,7 +303,8 @@ body {
 
   .glass-bar {
     background-color: var(--glass-surface-strong);
-    border-bottom: 1px solid var(--hairline);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow);
     -webkit-backdrop-filter: saturate(200%) blur(28px);
     backdrop-filter: saturate(200%) blur(28px);
   }
@@ -403,6 +412,10 @@ body {
       0 1px 0 rgba(255, 255, 255, 0.6) inset,
       0 4px 10px -4px rgba(15, 17, 22, 0.18);
   }
+}
+
+:root[data-mode="dark"] .glass-solid {
+  background-color: rgb(22 24 28 / 0.92);
 }
 
 :root[data-mode="dark"] .btn-accent {

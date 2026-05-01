@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useApp } from '../context/AppContext';
 import type { Workout } from '../types';
@@ -36,9 +36,37 @@ function summaryText({ exCount, setCount }: { exCount: number; setCount: number 
   return `${exLabel} · ${setLabel}`;
 }
 
+const NAV_ITEMS: { to: string; label: string }[] = [
+  { to: '/lifts', label: 'Lifts' },
+  { to: '/stats', label: 'Stats' },
+  { to: '/progress', label: 'Progress' },
+  { to: '/biometrics', label: 'Body' },
+  { to: '/settings', label: 'Settings' },
+];
+
 export default function Home() {
   const { state, actions } = useApp();
   const navigate = useNavigate();
+  const [menuOpen, setMenuOpen] = useState(false);
+  const menuRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    if (!menuOpen) return;
+    function onKey(e: KeyboardEvent) {
+      if (e.key === 'Escape') setMenuOpen(false);
+    }
+    function onClick(e: MouseEvent) {
+      if (menuRef.current && !menuRef.current.contains(e.target as Node)) {
+        setMenuOpen(false);
+      }
+    }
+    document.addEventListener('keydown', onKey);
+    document.addEventListener('mousedown', onClick);
+    return () => {
+      document.removeEventListener('keydown', onKey);
+      document.removeEventListener('mousedown', onClick);
+    };
+  }, [menuOpen]);
 
   const sorted = useMemo(
     () =>
@@ -78,45 +106,46 @@ export default function Home() {
 
   return (
     <div className="route mx-auto max-w-md pb-16">
-      <header className="glass-bar sticky top-0 z-20 flex items-center justify-between gap-2 px-4 py-3">
+      <header className="glass-bar sticky top-3 z-20 mx-3 mt-3 flex items-center justify-between gap-2 rounded-2xl px-4 py-3">
         <h1 className="text-strong flex items-center gap-2 text-[15px] font-semibold tracking-tight">
           <BrandMark />
           <span>Lift</span>
           <span className="text-muted font-medium">Tracker</span>
         </h1>
-        <nav className="flex items-center gap-0.5 text-[13px]">
-          <Link
-            to="/lifts"
-            className="btn-ghost-accent flex min-h-9 items-center px-2 font-medium"
+        <div ref={menuRef} className="relative">
+          <button
+            type="button"
+            onClick={() => setMenuOpen((o) => !o)}
+            aria-label="Open menu"
+            aria-expanded={menuOpen}
+            aria-haspopup="menu"
+            className="btn-ghost-accent flex min-h-11 min-w-11 items-center justify-center rounded-xl px-2"
           >
-            Lifts
-          </Link>
-          <Link
-            to="/stats"
-            className="btn-ghost-accent flex min-h-9 items-center px-2 font-medium"
-          >
-            Stats
-          </Link>
-          <Link
-            to="/progress"
-            className="btn-ghost-accent flex min-h-9 items-center px-2 font-medium"
-          >
-            Progress
-          </Link>
-          <Link
-            to="/biometrics"
-            className="btn-ghost-accent flex min-h-9 items-center px-2 font-medium"
-          >
-            Body
-          </Link>
-          <Link
-            to="/settings"
-            className="btn-ghost-accent flex min-h-9 items-center px-2 font-medium"
-            aria-label="Settings"
-          >
-            •••
-          </Link>
-        </nav>
+            <span aria-hidden="true" className="flex flex-col gap-[5px]">
+              <span className="block h-[2px] w-[18px] rounded-full bg-current" />
+              <span className="block h-[2px] w-[18px] rounded-full bg-current" />
+              <span className="block h-[2px] w-[18px] rounded-full bg-current" />
+            </span>
+          </button>
+          {menuOpen && (
+            <div
+              role="menu"
+              className="glass-solid anim-slide absolute right-0 top-[calc(100%+8px)] z-30 w-44 overflow-hidden rounded-2xl py-1"
+            >
+              {NAV_ITEMS.map((item) => (
+                <Link
+                  key={item.to}
+                  to={item.to}
+                  role="menuitem"
+                  onClick={() => setMenuOpen(false)}
+                  className="text-strong flex min-h-11 items-center px-4 text-[14px] font-medium tracking-tight transition-colors active:bg-white/40 dark:active:bg-white/5"
+                >
+                  {item.label}
+                </Link>
+              ))}
+            </div>
+          )}
+        </div>
       </header>
 
       <div className="px-4 pt-6">
