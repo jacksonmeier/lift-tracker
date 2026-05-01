@@ -35,9 +35,19 @@ export interface Workout {
   exercises: Exercise[];
 }
 
+export interface BiometricEntry {
+  id: string;
+  date: string;
+  weight?: number;
+  heartRate?: number;
+  caloriesBurned?: number;
+  workoutLengthMin?: number;
+}
+
 export interface AppState {
   lifts: Lift[];
   workouts: Workout[];
+  biometrics: BiometricEntry[];
   schemaVersion: 1;
 }
 

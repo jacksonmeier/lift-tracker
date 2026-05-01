@@ -5,6 +5,7 @@ import Home from './pages/Home';
 import Workout from './pages/Workout';
 import Lifts from './pages/Lifts';
 import Settings from './pages/Settings';
+import Biometrics from './pages/Biometrics';
 
 const Progress = lazy(() => import('./pages/Progress'));
 const Stats = lazy(() => import('./pages/Stats'));
@@ -42,6 +43,7 @@ export default function App() {
           }
         />
         <Route path="lifts" element={<Lifts />} />
+        <Route path="biometrics" element={<Biometrics />} />
         <Route path="settings" element={<Settings />} />
       </Route>
     </Routes>

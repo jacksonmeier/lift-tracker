@@ -104,6 +104,12 @@ export default function Home() {
             Progress
           </Link>
           <Link
+            to="/biometrics"
+            className="btn-ghost-accent flex min-h-9 items-center px-2 font-medium"
+          >
+            Body
+          </Link>
+          <Link
             to="/settings"
             className="btn-ghost-accent flex min-h-9 items-center px-2 font-medium"
             aria-label="Settings"

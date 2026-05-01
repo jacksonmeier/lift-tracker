@@ -6,7 +6,15 @@ import {
   useReducer,
   type ReactNode,
 } from 'react';
-import type { AppState, Exercise, Lift, Workout, WorkoutSet, WorkoutType } from '../types';
+import type {
+  AppState,
+  BiometricEntry,
+  Exercise,
+  Lift,
+  Workout,
+  WorkoutSet,
+  WorkoutType,
+} from '../types';
 import { load, save } from '../storage';
 import { uuid } from '../lib/uuid';
 
@@ -24,7 +32,10 @@ type Action =
   | { type: 'ADD_SET'; workoutId: string; exerciseId: string; id: string; timestamp: string }
   | { type: 'UPDATE_SET'; workoutId: string; exerciseId: string; set: WorkoutSet }
   | { type: 'DELETE_SET'; workoutId: string; exerciseId: string; setId: string }
-  | { type: 'DELETE_WORKOUT'; id: string };
+  | { type: 'DELETE_WORKOUT'; id: string }
+  | { type: 'ADD_BIOMETRIC'; entry: BiometricEntry }
+  | { type: 'UPDATE_BIOMETRIC'; entry: BiometricEntry }
+  | { type: 'DELETE_BIOMETRIC'; id: string };
 
 function mapWorkout(state: AppState, id: string, fn: (w: Workout) => Workout): AppState {
   return { ...state, workouts: state.workouts.map((w) => (w.id === id ? fn(w) : w)) };
@@ -117,6 +128,18 @@ function reducer(state: AppState, action: Action): AppState {
 
     case 'DELETE_WORKOUT':
       return { ...state, workouts: state.workouts.filter((w) => w.id !== action.id) };
+
+    case 'ADD_BIOMETRIC':
+      return { ...state, biometrics: [...state.biometrics, action.entry] };
+    case 'UPDATE_BIOMETRIC':
+      return {
+        ...state,
+        biometrics: state.biometrics.map((b) =>
+          b.id === action.entry.id ? action.entry : b,
+        ),
+      };
+    case 'DELETE_BIOMETRIC':
+      return { ...state, biometrics: state.biometrics.filter((b) => b.id !== action.id) };
   }
 }
 
@@ -136,6 +159,10 @@ interface Actions {
   addSet: (workoutId: string, exerciseId: string) => void;
   updateSet: (workoutId: string, exerciseId: string, set: WorkoutSet) => void;
   deleteSet: (workoutId: string, exerciseId: string, setId: string) => void;
+
+  addBiometric: (entry: Omit<BiometricEntry, 'id'>) => BiometricEntry;
+  updateBiometric: (entry: BiometricEntry) => void;
+  deleteBiometric: (id: string) => void;
 }
 
 interface AppContextValue {
@@ -198,6 +225,14 @@ export function AppProvider({ children }: { children: ReactNode }) {
         dispatch({ type: 'UPDATE_SET', workoutId, exerciseId, set }),
       deleteSet: (workoutId, exerciseId, setId) =>
         dispatch({ type: 'DELETE_SET', workoutId, exerciseId, setId }),
+
+      addBiometric: (entry) => {
+        const next: BiometricEntry = { ...entry, id: uuid() };
+        dispatch({ type: 'ADD_BIOMETRIC', entry: next });
+        return next;
+      },
+      updateBiometric: (entry) => dispatch({ type: 'UPDATE_BIOMETRIC', entry }),
+      deleteBiometric: (id) => dispatch({ type: 'DELETE_BIOMETRIC', id }),
     }),
     [],
   );

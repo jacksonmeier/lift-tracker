@@ -3,7 +3,18 @@ import type { AppState } from './types';
 const STORAGE_KEY = 'lift-tracker-data';
 
 export function emptyState(): AppState {
-  return { lifts: [], workouts: [], schemaVersion: 1 };
+  return { lifts: [], workouts: [], biometrics: [], schemaVersion: 1 };
+}
+
+// Pre-biometrics saves don't have the field — fill it in before validation so
+// existing data loads cleanly. New writes always include the field.
+function patchLegacy(value: unknown): unknown {
+  if (!value || typeof value !== 'object') return value;
+  const v = value as Record<string, unknown>;
+  if (v.biometrics === undefined) {
+    return { ...v, biometrics: [] };
+  }
+  return v;
 }
 
 function isAppState(value: unknown): value is AppState {
@@ -12,6 +23,7 @@ function isAppState(value: unknown): value is AppState {
   return (
     Array.isArray(v.lifts) &&
     Array.isArray(v.workouts) &&
+    Array.isArray(v.biometrics) &&
     v.schemaVersion === 1
   );
 }
@@ -20,7 +32,7 @@ export function load(): AppState {
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
     if (!raw) return emptyState();
-    const parsed: unknown = JSON.parse(raw);
+    const parsed = patchLegacy(JSON.parse(raw));
     if (!isAppState(parsed)) {
       console.warn('lift-tracker: stored data failed validation, starting fresh');
       return emptyState();
@@ -52,7 +64,7 @@ export function exportJSON(state: AppState): void {
 
 export async function importJSON(file: File): Promise<AppState> {
   const text = await file.text();
-  const parsed: unknown = JSON.parse(text);
+  const parsed = patchLegacy(JSON.parse(text));
   if (!isAppState(parsed)) {
     throw new Error('Invalid file: not a lift-tracker export');
   }
