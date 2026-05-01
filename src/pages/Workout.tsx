@@ -3,6 +3,7 @@ import { Link, useNavigate, useParams } from 'react-router-dom';
 import { useApp } from '../context/AppContext';
 import ExerciseCard from '../components/ExerciseCard';
 import AddExerciseModal from '../components/AddExerciseModal';
+import LastWorkoutModal from '../components/LastWorkoutModal';
 import { WORKOUT_TYPES, type WorkoutType } from '../types';
 import { workoutTypeLabel, workoutTypePillClasses } from '../lib/workoutType';
 import { dateInputToIso, isoToLocalDateInput } from '../lib/dates';
@@ -19,11 +20,20 @@ export default function Workout() {
   const { state, actions } = useApp();
   const navigate = useNavigate();
   const [adding, setAdding] = useState(false);
+  const [showingLast, setShowingLast] = useState(false);
 
   const workout = useMemo(
     () => state.workouts.find((w) => w.id === id),
     [state.workouts, id],
   );
+
+  const hasPreviousMatching = useMemo(() => {
+    if (!workout?.type) return false;
+    return state.workouts.some(
+      (w) =>
+        w.id !== workout.id && w.status === 'complete' && w.type === workout.type,
+    );
+  }, [state.workouts, workout]);
 
   if (!workout) {
     return (
@@ -158,6 +168,19 @@ export default function Workout() {
         </div>
       )}
 
+      {workout.type && hasPreviousMatching && (
+        <div className="px-3.5 pt-2">
+          <button
+            type="button"
+            onClick={() => setShowingLast(true)}
+            className="btn-glass flex min-h-10 w-full items-center justify-center gap-1.5 rounded-full px-3 text-[12px] font-semibold tracking-tight text-[var(--color-accent-600)] dark:text-[var(--color-accent-300)]"
+          >
+            <span aria-hidden="true">↺</span>
+            View last {workoutTypeLabel(workout.type)} day
+          </button>
+        </div>
+      )}
+
       <div className="flex flex-col gap-3 px-3 py-4">
         {workout.exercises.length === 0 && (
           <div className="glass-quiet rounded-2xl px-4 py-10 text-center">
@@ -194,11 +217,20 @@ export default function Workout() {
 
       {adding && (
         <AddExerciseModal
+          workoutType={workout.type}
           onCancel={() => setAdding(false)}
           onSelect={(liftId) => {
             actions.addExercise(workout.id, liftId);
             setAdding(false);
           }}
+        />
+      )}
+
+      {showingLast && workout.type && (
+        <LastWorkoutModal
+          workoutType={workout.type}
+          excludeWorkoutId={workout.id}
+          onClose={() => setShowingLast(false)}
         />
       )}
     </div>

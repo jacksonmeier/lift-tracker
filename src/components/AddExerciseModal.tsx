@@ -1,18 +1,20 @@
 import { useEffect, useMemo, useState } from 'react';
 import { useApp } from '../context/AppContext';
-import { LIFT_CATEGORIES, type LiftCategory } from '../types';
+import { LIFT_CATEGORIES, type Lift, type LiftCategory, type WorkoutType } from '../types';
+import { workoutTypeLabel } from '../lib/workoutType';
 
 interface Props {
   onCancel: () => void;
   onSelect: (liftId: string) => void;
+  workoutType?: WorkoutType;
 }
 
-export default function AddExerciseModal({ onCancel, onSelect }: Props) {
+export default function AddExerciseModal({ onCancel, onSelect, workoutType }: Props) {
   const { state, actions } = useApp();
   const [query, setQuery] = useState('');
   const [creating, setCreating] = useState(false);
   const [newName, setNewName] = useState('');
-  const [newCategory, setNewCategory] = useState<LiftCategory>('push');
+  const [newCategory, setNewCategory] = useState<LiftCategory>(workoutType ?? 'push');
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
@@ -26,14 +28,34 @@ export default function AddExerciseModal({ onCancel, onSelect }: Props) {
     };
   }, [onCancel]);
 
-  const filtered = useMemo(() => {
+  const sections = useMemo<{ title: string | null; lifts: Lift[] }[]>(() => {
     const q = query.trim().toLowerCase();
     const active = state.lifts.filter((l) => !l.archived);
     const list = q
       ? active.filter((l) => l.name.toLowerCase().includes(q))
       : active;
-    return list.slice().sort((a, b) => a.name.localeCompare(b.name));
-  }, [state.lifts, query]);
+    const sorted = list.slice().sort((a, b) => a.name.localeCompare(b.name));
+
+    if (!workoutType) {
+      return [{ title: null, lifts: sorted }];
+    }
+
+    const matching = sorted.filter((l) => l.category === workoutType);
+    const rest = sorted.filter((l) => l.category !== workoutType);
+    const result: { title: string | null; lifts: Lift[] }[] = [];
+    if (matching.length > 0) {
+      result.push({ title: `${workoutTypeLabel(workoutType)} lifts`, lifts: matching });
+    }
+    if (rest.length > 0) {
+      result.push({
+        title: matching.length > 0 ? 'Other lifts' : null,
+        lifts: rest,
+      });
+    }
+    return result;
+  }, [state.lifts, query, workoutType]);
+
+  const totalCount = sections.reduce((n, s) => n + s.lifts.length, 0);
 
   function handleCreate() {
     const trimmed = newName.trim();
@@ -78,7 +100,7 @@ export default function AddExerciseModal({ onCancel, onSelect }: Props) {
       </div>
 
       <div className="min-h-0 flex-1 overflow-y-auto px-4 pt-3 pb-3">
-        {filtered.length === 0 ? (
+        {totalCount === 0 ? (
           <div className="glass-quiet rounded-2xl px-4 py-8 text-center">
             <p className="text-muted text-[13px]">
               {state.lifts.length === 0
@@ -89,24 +111,33 @@ export default function AddExerciseModal({ onCancel, onSelect }: Props) {
             </p>
           </div>
         ) : (
-          <ul className="glass divide-y divide-[var(--hairline-soft)] overflow-hidden rounded-2xl">
-            {filtered.map((lift) => (
-              <li key={lift.id}>
-                <button
-                  type="button"
-                  onClick={() => onSelect(lift.id)}
-                  className="flex w-full items-center justify-between gap-2 px-4 py-3 text-left transition-colors active:bg-white/40 dark:active:bg-white/5"
-                >
-                  <span className="text-strong truncate text-[15px] font-medium tracking-tight">
-                    {lift.name}
-                  </span>
-                  <span className="text-faint shrink-0 text-[10px] font-semibold uppercase tracking-[0.12em]">
-                    {lift.category}
-                  </span>
-                </button>
-              </li>
+          <div className="flex flex-col gap-4">
+            {sections.map((section, idx) => (
+              <section key={section.title ?? `section-${idx}`}>
+                {section.title && (
+                  <h3 className="section-label mb-2 px-1">{section.title}</h3>
+                )}
+                <ul className="glass divide-y divide-[var(--hairline-soft)] overflow-hidden rounded-2xl">
+                  {section.lifts.map((lift) => (
+                    <li key={lift.id}>
+                      <button
+                        type="button"
+                        onClick={() => onSelect(lift.id)}
+                        className="flex w-full items-center justify-between gap-2 px-4 py-3 text-left transition-colors active:bg-white/40 dark:active:bg-white/5"
+                      >
+                        <span className="text-strong truncate text-[15px] font-medium tracking-tight">
+                          {lift.name}
+                        </span>
+                        <span className="text-faint shrink-0 text-[10px] font-semibold uppercase tracking-[0.12em]">
+                          {lift.category}
+                        </span>
+                      </button>
+                    </li>
+                  ))}
+                </ul>
+              </section>
             ))}
-          </ul>
+          </div>
         )}
       </div>
 
