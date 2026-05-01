@@ -2,15 +2,20 @@ interface CalendarHeatmapProps {
   counts: Map<string, number>;
   weeks?: number;
   onCellTap?: (dateKey: string) => void;
+  ignoreRestDays?: boolean;
 }
 
 const DAY_LABELS = ['Mon', '', 'Wed', '', 'Fri', '', ''] as const;
 
-function bucketClass(count: number, isFuture: boolean): string {
+function bucketClass(count: number, isFuture: boolean, ignoreRestDays: boolean): string {
   if (isFuture) {
     return 'bg-transparent border border-dashed border-[var(--hairline-soft)]';
   }
-  if (count <= 0) return 'bg-[rgba(120,120,135,0.10)] dark:bg-[rgba(255,255,255,0.05)]';
+  if (count <= 0) {
+    return ignoreRestDays
+      ? 'bg-transparent'
+      : 'bg-[rgba(120,120,135,0.10)] dark:bg-[rgba(255,255,255,0.05)]';
+  }
   if (count <= 5) return 'bg-[rgb(var(--accent-rgb)/0.25)]';
   if (count <= 15) return 'bg-[rgb(var(--accent-rgb)/0.55)]';
   return 'bg-[rgb(var(--accent-rgb)/0.92)]';
@@ -31,6 +36,7 @@ export default function CalendarHeatmap({
   counts,
   weeks = 12,
   onCellTap,
+  ignoreRestDays = false,
 }: CalendarHeatmapProps) {
   const today = new Date();
   today.setHours(0, 0, 0, 0);
@@ -91,6 +97,7 @@ export default function CalendarHeatmap({
             className={`aspect-square rounded-[4px] transition-opacity ${bucketClass(
               cell.count,
               cell.isFuture,
+              ignoreRestDays,
             )} ${tappable ? 'cursor-pointer active:opacity-70' : 'cursor-default'}`}
             style={{ gridColumn: col, gridRow: row }}
           />

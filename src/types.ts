@@ -9,6 +9,7 @@ export interface Lift {
   name: string;
   category: LiftCategory;
   notes?: string;
+  archived?: boolean;
 }
 
 export interface WorkoutSet {

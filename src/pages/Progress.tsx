@@ -20,29 +20,9 @@ import {
   topWeightPerSession,
   weeklyVolume,
 } from '../lib/stats';
+import { rangeSince, type Range } from '../lib/range';
+import RangePicker from '../components/RangePicker';
 import HeroNumber from '../components/HeroNumber';
-
-type Range = '1w' | '4w' | '12w' | 'all';
-
-const RANGE_LABELS: Record<Range, string> = {
-  '1w': '1 week',
-  '4w': '4 weeks',
-  '12w': '12 weeks',
-  all: 'All time',
-};
-
-const RANGE_WEEKS: Record<Exclude<Range, 'all'>, number> = {
-  '1w': 1,
-  '4w': 4,
-  '12w': 12,
-};
-
-function rangeSince(range: Range): string | undefined {
-  if (range === 'all') return undefined;
-  const d = new Date();
-  d.setDate(d.getDate() - RANGE_WEEKS[range] * 7);
-  return d.toISOString();
-}
 
 function formatShortDate(iso: string): string {
   const d = new Date(iso);
@@ -101,7 +81,7 @@ const ACCENT_SOFT = 'var(--color-accent-300)';
 export default function Progress() {
   const { state } = useApp();
   const [liftId, setLiftId] = useState<string>('');
-  const [range, setRange] = useState<Range>('all');
+  const [range, setRange] = useState<Range>({ unit: 'all', amount: 0 });
 
   const since = useMemo(() => rangeSince(range), [range]);
 
@@ -183,22 +163,7 @@ export default function Progress() {
 
       {liftId && (
         <div className="px-4 pt-3">
-          <div className="pill-segment inline-flex w-full justify-between gap-1 rounded-full p-1">
-            {(['1w', '4w', '12w', 'all'] as Range[]).map((r) => (
-              <button
-                key={r}
-                type="button"
-                onClick={() => setRange(r)}
-                className={`min-h-10 flex-1 rounded-full px-2 text-[13px] font-semibold tracking-tight transition-colors ${
-                  range === r
-                    ? 'pill-segment-active'
-                    : 'text-muted hover:text-strong'
-                }`}
-              >
-                {RANGE_LABELS[r]}
-              </button>
-            ))}
-          </div>
+          <RangePicker value={range} onChange={setRange} />
         </div>
       )}
 

@@ -41841,5 +41841,2768 @@
       ]
     }
   ],
-  "schemaVersion": 1
+  "schemaVersion": 1,
+  "biometrics": [
+    {
+      "id": "eb3ffa5f-d6d2-4900-b270-40f7397ce585",
+      "date": "2025-05-01T13:30:00.000Z",
+      "weight": 192
+    },
+    {
+      "id": "a5f7cdc8-3bef-4436-96c8-beff1772a1bd",
+      "date": "2025-05-02T13:30:00.000Z",
+      "weight": 192.4,
+      "heartRate": 136,
+      "caloriesBurned": 558,
+      "workoutLengthMin": 59
+    },
+    {
+      "id": "6fd95659-3d03-49d5-8f65-9f85782f03c9",
+      "date": "2025-05-03T13:30:00.000Z",
+      "weight": 191.9,
+      "heartRate": 145,
+      "caloriesBurned": 431,
+      "workoutLengthMin": 49
+    },
+    {
+      "id": "dc0696f1-e10e-4dce-afd0-39c6727a4ec9",
+      "date": "2025-05-04T13:30:00.000Z",
+      "weight": 192.3,
+      "heartRate": 136,
+      "caloriesBurned": 429,
+      "workoutLengthMin": 45
+    },
+    {
+      "id": "c6b6e8aa-b05f-4183-88f2-f66b9ee69574",
+      "date": "2025-05-05T13:30:00.000Z",
+      "weight": 191.5
+    },
+    {
+      "id": "57208897-5df4-4258-b29c-3f0f764b196c",
+      "date": "2025-05-06T13:30:00.000Z",
+      "weight": 191.6,
+      "heartRate": 134,
+      "caloriesBurned": 485,
+      "workoutLengthMin": 49
+    },
+    {
+      "id": "6c092974-2fef-4844-90ba-bc2bea6738a3",
+      "date": "2025-05-07T13:30:00.000Z",
+      "weight": 191.2,
+      "heartRate": 141,
+      "caloriesBurned": 419,
+      "workoutLengthMin": 40
+    },
+    {
+      "id": "5c3081c5-3b12-4d06-9d50-8b4b11fa3757",
+      "date": "2025-05-08T13:30:00.000Z",
+      "weight": 191.5,
+      "heartRate": 130,
+      "caloriesBurned": 391,
+      "workoutLengthMin": 45
+    },
+    {
+      "id": "22ebe9bd-0c56-4f02-85e6-a54c44226bfc",
+      "date": "2025-05-09T13:30:00.000Z",
+      "weight": 192.3,
+      "heartRate": 146,
+      "caloriesBurned": 533,
+      "workoutLengthMin": 51
+    },
+    {
+      "id": "50ccb88b-1561-4e23-9a3d-b3deef7e02c9",
+      "date": "2025-05-10T13:30:00.000Z",
+      "weight": 191.7,
+      "heartRate": 145,
+      "caloriesBurned": 530,
+      "workoutLengthMin": 54
+    },
+    {
+      "id": "c0ec5f0e-7e1e-4687-8187-c60d1f1370e0",
+      "date": "2025-05-11T13:30:00.000Z",
+      "weight": 191.7,
+      "heartRate": 135,
+      "caloriesBurned": 305,
+      "workoutLengthMin": 35
+    },
+    {
+      "id": "e9eca795-6a53-4de8-8034-9d4045ae1053",
+      "date": "2025-05-12T13:30:00.000Z",
+      "weight": 191.8
+    },
+    {
+      "id": "00e46b95-7640-4d4d-98eb-97ea1f3ef4b3",
+      "date": "2025-05-13T13:30:00.000Z",
+      "weight": 191,
+      "heartRate": 143,
+      "caloriesBurned": 338,
+      "workoutLengthMin": 37
+    },
+    {
+      "id": "086d9018-7e40-4fe6-9739-9df9e48c1db5",
+      "date": "2025-05-14T13:30:00.000Z",
+      "weight": 190.9,
+      "heartRate": 138,
+      "caloriesBurned": 299,
+      "workoutLengthMin": 36
+    },
+    {
+      "id": "38a429e6-cb7a-43a7-b39f-1f887f7f85fe",
+      "date": "2025-05-15T13:30:00.000Z",
+      "weight": 191.4,
+      "heartRate": 139,
+      "caloriesBurned": 390,
+      "workoutLengthMin": 38
+    },
+    {
+      "id": "75cba432-01c7-43a2-9cb8-894d8403e11f",
+      "date": "2025-05-16T13:30:00.000Z",
+      "weight": 191.9,
+      "heartRate": 144,
+      "caloriesBurned": 460,
+      "workoutLengthMin": 53
+    },
+    {
+      "id": "54cf49ca-c9cb-43cf-bd66-89d77eca9b52",
+      "date": "2025-05-17T13:30:00.000Z",
+      "weight": 191.9,
+      "heartRate": 147,
+      "caloriesBurned": 568,
+      "workoutLengthMin": 61
+    },
+    {
+      "id": "3dbd6935-7244-4f96-8b8f-a1889d860357",
+      "date": "2025-05-18T13:30:00.000Z",
+      "weight": 191.9,
+      "heartRate": 147,
+      "caloriesBurned": 541,
+      "workoutLengthMin": 57
+    },
+    {
+      "id": "c3965b9a-a850-4d09-be1d-357b7ff5f1b9",
+      "date": "2025-05-19T13:30:00.000Z",
+      "weight": 190.8
+    },
+    {
+      "id": "718975ea-0f2f-4d06-809d-51623060eb7f",
+      "date": "2025-05-20T13:30:00.000Z",
+      "weight": 190.8,
+      "heartRate": 147,
+      "caloriesBurned": 362,
+      "workoutLengthMin": 39
+    },
+    {
+      "id": "7be8692b-ef52-46c0-b59d-c09242e3a651",
+      "date": "2025-05-21T13:30:00.000Z",
+      "weight": 190.9,
+      "heartRate": 146,
+      "caloriesBurned": 524,
+      "workoutLengthMin": 59
+    },
+    {
+      "id": "f8db12aa-3821-448a-abde-25a8e40ec189",
+      "date": "2025-05-22T13:30:00.000Z",
+      "weight": 191.5,
+      "heartRate": 147,
+      "caloriesBurned": 511,
+      "workoutLengthMin": 51
+    },
+    {
+      "id": "5d3bde5f-defd-4b1a-80f4-0631cb2f6727",
+      "date": "2025-05-23T13:30:00.000Z",
+      "weight": 191.6,
+      "heartRate": 146,
+      "caloriesBurned": 393,
+      "workoutLengthMin": 42
+    },
+    {
+      "id": "c42f9fa3-8b68-40b3-a978-3d1b6d3b4d72",
+      "date": "2025-05-24T13:30:00.000Z",
+      "weight": 191.7,
+      "heartRate": 139,
+      "caloriesBurned": 547,
+      "workoutLengthMin": 53
+    },
+    {
+      "id": "980ae67b-337d-4775-a4b9-a86b79c86ea2",
+      "date": "2025-05-25T13:30:00.000Z",
+      "weight": 191.4,
+      "heartRate": 135,
+      "caloriesBurned": 421,
+      "workoutLengthMin": 41
+    },
+    {
+      "id": "63019f11-bdc0-4528-88ff-a9cb7758b650",
+      "date": "2025-05-26T13:30:00.000Z",
+      "weight": 190.5
+    },
+    {
+      "id": "df112207-5a59-47cc-a09b-3fa840aa789b",
+      "date": "2025-05-27T13:30:00.000Z",
+      "weight": 190.2,
+      "heartRate": 137,
+      "caloriesBurned": 371,
+      "workoutLengthMin": 41
+    },
+    {
+      "id": "862402b7-4794-4545-865b-8701ea776338",
+      "date": "2025-05-28T13:30:00.000Z",
+      "weight": 190.6,
+      "heartRate": 132,
+      "caloriesBurned": 538,
+      "workoutLengthMin": 64
+    },
+    {
+      "id": "8868d101-66c4-4e16-a414-097f4795cf0d",
+      "date": "2025-05-29T13:30:00.000Z",
+      "weight": 191,
+      "heartRate": 136,
+      "caloriesBurned": 443,
+      "workoutLengthMin": 55
+    },
+    {
+      "id": "ce04243a-6c16-4e98-8257-b87834c03af0",
+      "date": "2025-05-30T13:30:00.000Z",
+      "weight": 191.5,
+      "heartRate": 130,
+      "caloriesBurned": 480,
+      "workoutLengthMin": 46
+    },
+    {
+      "id": "f9cced9e-5c64-48f7-8477-93f913a9c4c7",
+      "date": "2025-05-31T13:30:00.000Z",
+      "weight": 191.4,
+      "heartRate": 144,
+      "caloriesBurned": 566,
+      "workoutLengthMin": 60
+    },
+    {
+      "id": "015293d2-6fea-44b0-add3-76344149c777",
+      "date": "2025-06-01T13:30:00.000Z",
+      "weight": 191.2,
+      "heartRate": 139,
+      "caloriesBurned": 390,
+      "workoutLengthMin": 45
+    },
+    {
+      "id": "19f36dee-ef0f-4c37-925b-eca2f1d8b699",
+      "date": "2025-06-02T13:30:00.000Z",
+      "weight": 190.6
+    },
+    {
+      "id": "7e3290d8-405b-4e9f-a1e1-030a55c33740",
+      "date": "2025-06-03T13:30:00.000Z",
+      "weight": 190.7,
+      "heartRate": 139,
+      "caloriesBurned": 383,
+      "workoutLengthMin": 46
+    },
+    {
+      "id": "5c1400f8-e88e-4552-9c3b-af2131feefba",
+      "date": "2025-06-04T13:30:00.000Z",
+      "weight": 190,
+      "heartRate": 137,
+      "caloriesBurned": 327,
+      "workoutLengthMin": 36
+    },
+    {
+      "id": "b2177270-ba35-4f5e-91e2-6da9dbe6abe5",
+      "date": "2025-06-05T13:30:00.000Z",
+      "weight": 190.7,
+      "heartRate": 131,
+      "caloriesBurned": 454,
+      "workoutLengthMin": 45
+    },
+    {
+      "id": "72254cbd-d0ce-43a0-9e88-8626a5d6782b",
+      "date": "2025-06-06T13:30:00.000Z",
+      "weight": 190.6,
+      "heartRate": 135,
+      "caloriesBurned": 497,
+      "workoutLengthMin": 53
+    },
+    {
+      "id": "5c03bfe2-5caa-472f-8829-9ac8bfd1fb5e",
+      "date": "2025-06-07T13:30:00.000Z",
+      "weight": 191,
+      "heartRate": 128,
+      "caloriesBurned": 534,
+      "workoutLengthMin": 62
+    },
+    {
+      "id": "8d57d886-bd9e-4622-9b24-5e6b472e18cf",
+      "date": "2025-06-08T13:30:00.000Z",
+      "weight": 191.1,
+      "heartRate": 132,
+      "caloriesBurned": 508,
+      "workoutLengthMin": 50
+    },
+    {
+      "id": "0ec97652-6d62-4c43-af4a-6e534a41f06b",
+      "date": "2025-06-09T13:30:00.000Z",
+      "weight": 190.6
+    },
+    {
+      "id": "69be2f6b-6378-421e-ad9d-5cf5ab4e814f",
+      "date": "2025-06-10T13:30:00.000Z",
+      "weight": 190.1,
+      "heartRate": 134,
+      "caloriesBurned": 642,
+      "workoutLengthMin": 64
+    },
+    {
+      "id": "54818cb7-45e0-4125-8c7a-2572135f80b6",
+      "date": "2025-06-11T13:30:00.000Z",
+      "weight": 189.7,
+      "heartRate": 131,
+      "caloriesBurned": 621,
+      "workoutLengthMin": 65
+    },
+    {
+      "id": "dd72ee70-026a-401a-bb85-846c93489791",
+      "date": "2025-06-12T13:30:00.000Z",
+      "weight": 190.4,
+      "heartRate": 140,
+      "caloriesBurned": 499,
+      "workoutLengthMin": 62
+    },
+    {
+      "id": "31c239d0-ac99-445a-8b16-8f18957ae1b7",
+      "date": "2025-06-13T13:30:00.000Z",
+      "weight": 190.7,
+      "heartRate": 146,
+      "caloriesBurned": 492,
+      "workoutLengthMin": 49
+    },
+    {
+      "id": "44e8d6f5-dc51-4cd4-9333-063dae67c069",
+      "date": "2025-06-14T13:30:00.000Z",
+      "weight": 191.1,
+      "heartRate": 133,
+      "caloriesBurned": 519,
+      "workoutLengthMin": 57
+    },
+    {
+      "id": "f224d47e-5314-4b3b-9beb-9e497e5140d6",
+      "date": "2025-06-15T13:30:00.000Z",
+      "weight": 190.9,
+      "heartRate": 145,
+      "caloriesBurned": 375,
+      "workoutLengthMin": 40
+    },
+    {
+      "id": "8845759f-6476-4fc7-bcec-926dd760a84a",
+      "date": "2025-06-16T13:30:00.000Z",
+      "weight": 189.7
+    },
+    {
+      "id": "6d87636b-9e50-4e12-9419-9821f98ed8e5",
+      "date": "2025-06-17T13:30:00.000Z",
+      "weight": 190.1,
+      "heartRate": 144,
+      "caloriesBurned": 532,
+      "workoutLengthMin": 52
+    },
+    {
+      "id": "a299576a-63da-48c8-92ea-14dcca1cfde3",
+      "date": "2025-06-18T13:30:00.000Z",
+      "weight": 189.5,
+      "heartRate": 132,
+      "caloriesBurned": 335,
+      "workoutLengthMin": 40
+    },
+    {
+      "id": "579936d0-8c62-424a-96f5-51d667c57c3f",
+      "date": "2025-06-19T13:30:00.000Z",
+      "weight": 190.5,
+      "heartRate": 139,
+      "caloriesBurned": 361,
+      "workoutLengthMin": 39
+    },
+    {
+      "id": "0af20433-ba03-452a-8fbe-f2b915879b55",
+      "date": "2025-06-20T13:30:00.000Z",
+      "weight": 190.2,
+      "heartRate": 137,
+      "caloriesBurned": 402,
+      "workoutLengthMin": 40
+    },
+    {
+      "id": "0437585f-050f-485d-b0d5-59b1281457dd",
+      "date": "2025-06-21T13:30:00.000Z",
+      "weight": 190.3,
+      "heartRate": 133,
+      "caloriesBurned": 413,
+      "workoutLengthMin": 45
+    },
+    {
+      "id": "1fbd97cb-b742-4865-b01d-8c242d8c4700",
+      "date": "2025-06-22T13:30:00.000Z",
+      "weight": 190.4,
+      "heartRate": 141,
+      "caloriesBurned": 358,
+      "workoutLengthMin": 41
+    },
+    {
+      "id": "032014fa-87df-4b85-8bd5-67de0c3a51b3",
+      "date": "2025-06-23T13:30:00.000Z",
+      "weight": 190
+    },
+    {
+      "id": "eb202103-5262-4021-b329-82e382411ee1",
+      "date": "2025-06-24T13:30:00.000Z",
+      "weight": 189.8,
+      "heartRate": 147,
+      "caloriesBurned": 422,
+      "workoutLengthMin": 41
+    },
+    {
+      "id": "cf95ff5c-140f-48e1-9f02-354cd518bb60",
+      "date": "2025-06-25T13:30:00.000Z",
+      "weight": 189.2,
+      "heartRate": 142,
+      "caloriesBurned": 405,
+      "workoutLengthMin": 48
+    },
+    {
+      "id": "f59c2ade-c5b3-4447-beac-fd2d41a8bda0",
+      "date": "2025-06-26T13:30:00.000Z",
+      "weight": 189.9,
+      "heartRate": 139,
+      "caloriesBurned": 577,
+      "workoutLengthMin": 56
+    },
+    {
+      "id": "91f16a6b-e593-4347-93fc-b5b13ff29c53",
+      "date": "2025-06-27T13:30:00.000Z",
+      "weight": 190.2,
+      "heartRate": 140,
+      "caloriesBurned": 462,
+      "workoutLengthMin": 44
+    },
+    {
+      "id": "132607b4-223a-490a-b0f3-94b51a22dfc6",
+      "date": "2025-06-28T13:30:00.000Z",
+      "weight": 189.9,
+      "heartRate": 139,
+      "caloriesBurned": 385,
+      "workoutLengthMin": 46
+    },
+    {
+      "id": "5ef194da-9859-4244-a67c-e7a6f063670b",
+      "date": "2025-06-29T13:30:00.000Z",
+      "weight": 189.6,
+      "heartRate": 136,
+      "caloriesBurned": 394,
+      "workoutLengthMin": 39
+    },
+    {
+      "id": "d1fc6c01-f093-4416-9063-a813431c80fc",
+      "date": "2025-06-30T13:30:00.000Z",
+      "weight": 189.8
+    },
+    {
+      "id": "9ab0f561-ccc5-40c4-a3fb-c1dd822416ed",
+      "date": "2025-07-01T13:30:00.000Z",
+      "weight": 189.2,
+      "heartRate": 129,
+      "caloriesBurned": 660,
+      "workoutLengthMin": 66
+    },
+    {
+      "id": "f6fbef9b-6969-44eb-b57e-95152cdea9d8",
+      "date": "2025-07-02T13:30:00.000Z",
+      "weight": 189.2,
+      "heartRate": 140,
+      "caloriesBurned": 423,
+      "workoutLengthMin": 52
+    },
+    {
+      "id": "0b3f38d1-0769-4520-8666-818f4fd48cde",
+      "date": "2025-07-03T13:30:00.000Z",
+      "weight": 189.8,
+      "heartRate": 135,
+      "caloriesBurned": 633,
+      "workoutLengthMin": 68
+    },
+    {
+      "id": "38b113a2-fed7-43d3-8203-b4570a548b4d",
+      "date": "2025-07-04T13:30:00.000Z",
+      "weight": 189.2,
+      "heartRate": 140,
+      "caloriesBurned": 475,
+      "workoutLengthMin": 50
+    },
+    {
+      "id": "a1ac74a7-f991-4227-9681-33cc40d5edeb",
+      "date": "2025-07-05T13:30:00.000Z",
+      "weight": 189.3,
+      "heartRate": 141,
+      "caloriesBurned": 661,
+      "workoutLengthMin": 68
+    },
+    {
+      "id": "787dfcbc-4629-41de-bd8b-66e537e46cd1",
+      "date": "2025-07-06T13:30:00.000Z",
+      "weight": 189.1,
+      "heartRate": 137,
+      "caloriesBurned": 442,
+      "workoutLengthMin": 53
+    },
+    {
+      "id": "a0a756b7-856a-41eb-b3c0-7fd62a5655ee",
+      "date": "2025-07-07T13:30:00.000Z",
+      "weight": 188.6
+    },
+    {
+      "id": "69d56f9b-6d49-4265-bc2f-57622817b8a4",
+      "date": "2025-07-08T13:30:00.000Z",
+      "weight": 189,
+      "heartRate": 145,
+      "caloriesBurned": 548,
+      "workoutLengthMin": 64
+    },
+    {
+      "id": "b446e17b-8c8d-4166-a039-ea9b5de578ef",
+      "date": "2025-07-09T13:30:00.000Z",
+      "weight": 188.3,
+      "heartRate": 133,
+      "caloriesBurned": 389,
+      "workoutLengthMin": 47
+    },
+    {
+      "id": "bcc1df64-3134-4869-8972-218c174ccf3e",
+      "date": "2025-07-10T13:30:00.000Z",
+      "weight": 188.8,
+      "heartRate": 146,
+      "caloriesBurned": 376,
+      "workoutLengthMin": 46
+    },
+    {
+      "id": "072023a2-f775-4792-aebc-96cada5bca2c",
+      "date": "2025-07-11T13:30:00.000Z",
+      "weight": 188.7,
+      "heartRate": 139,
+      "caloriesBurned": 494,
+      "workoutLengthMin": 53
+    },
+    {
+      "id": "297a2fbc-9a89-44a3-a320-0c8466633f8e",
+      "date": "2025-07-12T13:30:00.000Z",
+      "weight": 189.5,
+      "heartRate": 140,
+      "caloriesBurned": 637,
+      "workoutLengthMin": 69
+    },
+    {
+      "id": "9b7b7163-e025-4976-ac5e-37b7fcbbd127",
+      "date": "2025-07-13T13:30:00.000Z",
+      "weight": 188.8,
+      "heartRate": 128,
+      "caloriesBurned": 404,
+      "workoutLengthMin": 48
+    },
+    {
+      "id": "9760aa48-699c-468e-8c5b-0e9ef8f1ac51",
+      "date": "2025-07-14T13:30:00.000Z",
+      "weight": 188.5
+    },
+    {
+      "id": "6e3b11ac-69d1-4543-ae03-c451b04bdfc3",
+      "date": "2025-07-15T13:30:00.000Z",
+      "weight": 187.7,
+      "heartRate": 131,
+      "caloriesBurned": 615,
+      "workoutLengthMin": 65
+    },
+    {
+      "id": "3dbd5583-2e0e-4e90-b486-5df2efded4e3",
+      "date": "2025-07-16T13:30:00.000Z",
+      "weight": 188,
+      "heartRate": 134,
+      "caloriesBurned": 413,
+      "workoutLengthMin": 43
+    },
+    {
+      "id": "b216190e-314a-414e-82f2-b58ac628889d",
+      "date": "2025-07-17T13:30:00.000Z",
+      "weight": 188.3,
+      "heartRate": 130,
+      "caloriesBurned": 539,
+      "workoutLengthMin": 58
+    },
+    {
+      "id": "2a662e28-c691-4931-9a9a-352c3ed0714e",
+      "date": "2025-07-18T13:30:00.000Z",
+      "weight": 188.8,
+      "heartRate": 133,
+      "caloriesBurned": 365,
+      "workoutLengthMin": 40
+    },
+    {
+      "id": "3f70ce74-a87c-4e19-8ff1-d43872692083",
+      "date": "2025-07-19T13:30:00.000Z",
+      "weight": 189,
+      "heartRate": 131,
+      "caloriesBurned": 593,
+      "workoutLengthMin": 66
+    },
+    {
+      "id": "f90c9bd2-eff7-44bb-a850-e8886427830d",
+      "date": "2025-07-20T13:30:00.000Z",
+      "weight": 187.9,
+      "heartRate": 146,
+      "caloriesBurned": 407,
+      "workoutLengthMin": 41
+    },
+    {
+      "id": "b2a1be57-8f68-4977-8731-49ac2bf49635",
+      "date": "2025-07-21T13:30:00.000Z",
+      "weight": 187.7
+    },
+    {
+      "id": "a6492797-390f-4233-99ce-e81a3b160bdf",
+      "date": "2025-07-22T13:30:00.000Z",
+      "weight": 187.4,
+      "heartRate": 136,
+      "caloriesBurned": 432,
+      "workoutLengthMin": 51
+    },
+    {
+      "id": "f106d401-345a-4b2b-ba02-8f1500a78c6d",
+      "date": "2025-07-23T13:30:00.000Z",
+      "weight": 187.3,
+      "heartRate": 128,
+      "caloriesBurned": 626,
+      "workoutLengthMin": 63
+    },
+    {
+      "id": "af61ccaf-cfb0-41b5-b6ec-1843fb8dc0ea",
+      "date": "2025-07-24T13:30:00.000Z",
+      "weight": 188.2,
+      "heartRate": 128,
+      "caloriesBurned": 560,
+      "workoutLengthMin": 56
+    },
+    {
+      "id": "4c99697e-005f-4204-9cdc-8103f0e22392",
+      "date": "2025-07-25T13:30:00.000Z",
+      "weight": 188.2,
+      "heartRate": 127,
+      "caloriesBurned": 374,
+      "workoutLengthMin": 42
+    },
+    {
+      "id": "c3dddceb-1a6e-448c-821c-f8c11f0e89e8",
+      "date": "2025-07-26T13:30:00.000Z",
+      "weight": 188.4,
+      "heartRate": 136,
+      "caloriesBurned": 505,
+      "workoutLengthMin": 55
+    },
+    {
+      "id": "a8b3c5ee-8719-49cc-bcba-cd0203e03b9a",
+      "date": "2025-07-27T13:30:00.000Z",
+      "weight": 188.2,
+      "heartRate": 130,
+      "caloriesBurned": 642,
+      "workoutLengthMin": 64
+    },
+    {
+      "id": "3b24b535-157e-432c-9dcc-5cda17245f92",
+      "date": "2025-07-28T13:30:00.000Z",
+      "weight": 187.6
+    },
+    {
+      "id": "6bdc041e-f838-46df-9ec7-22bebe56c1b0",
+      "date": "2025-07-29T13:30:00.000Z",
+      "weight": 187,
+      "heartRate": 133,
+      "caloriesBurned": 589,
+      "workoutLengthMin": 57
+    },
+    {
+      "id": "e6735a63-fd03-4cae-aced-2401b4a63c61",
+      "date": "2025-07-30T13:30:00.000Z",
+      "weight": 187.2,
+      "heartRate": 137,
+      "caloriesBurned": 450,
+      "workoutLengthMin": 53
+    },
+    {
+      "id": "2e79c731-c466-4f2f-9703-dbe69bcd2fb0",
+      "date": "2025-07-31T13:30:00.000Z",
+      "weight": 187.3,
+      "heartRate": 135,
+      "caloriesBurned": 428,
+      "workoutLengthMin": 47
+    },
+    {
+      "id": "43eb777a-afd6-436c-8e11-4753bb65de12",
+      "date": "2025-08-01T13:30:00.000Z",
+      "weight": 187.3,
+      "heartRate": 136,
+      "caloriesBurned": 517,
+      "workoutLengthMin": 50
+    },
+    {
+      "id": "3a519d1d-7ffb-49d9-8137-f52fc8fb414a",
+      "date": "2025-08-02T13:30:00.000Z",
+      "weight": 187.9,
+      "heartRate": 134,
+      "caloriesBurned": 721,
+      "workoutLengthMin": 70
+    },
+    {
+      "id": "b8e50a81-4f28-45fc-9ddb-fb0cac99bc81",
+      "date": "2025-08-03T13:30:00.000Z",
+      "weight": 187.7,
+      "heartRate": 143,
+      "caloriesBurned": 408,
+      "workoutLengthMin": 44
+    },
+    {
+      "id": "f012d15b-7cf2-483f-a943-c0ce35f95f21",
+      "date": "2025-08-04T13:30:00.000Z",
+      "weight": 186.9
+    },
+    {
+      "id": "8fb8f2e6-35d2-4d4a-aa15-c3a59683e2dc",
+      "date": "2025-08-05T13:30:00.000Z",
+      "weight": 186.4,
+      "heartRate": 133,
+      "caloriesBurned": 477,
+      "workoutLengthMin": 59
+    },
+    {
+      "id": "669e4e2e-622e-4e64-b6e3-55a59a48acfe",
+      "date": "2025-08-06T13:30:00.000Z",
+      "weight": 186.7,
+      "heartRate": 131,
+      "caloriesBurned": 529,
+      "workoutLengthMin": 55
+    },
+    {
+      "id": "9e102b6a-9d59-4716-9ef1-c419b0678f61",
+      "date": "2025-08-07T13:30:00.000Z",
+      "weight": 186.8,
+      "heartRate": 139,
+      "caloriesBurned": 721,
+      "workoutLengthMin": 70
+    },
+    {
+      "id": "d743b767-64fd-4932-974d-32302f9fa610",
+      "date": "2025-08-08T13:30:00.000Z",
+      "weight": 186.8,
+      "heartRate": 137,
+      "caloriesBurned": 577,
+      "workoutLengthMin": 70
+    },
+    {
+      "id": "83a8f656-f051-42b4-8ecf-1677947642cd",
+      "date": "2025-08-09T13:30:00.000Z",
+      "weight": 187.7,
+      "heartRate": 140,
+      "caloriesBurned": 331,
+      "workoutLengthMin": 41
+    },
+    {
+      "id": "baafeea1-feae-4a3a-a55e-710db45b4a08",
+      "date": "2025-08-10T13:30:00.000Z",
+      "weight": 187.3,
+      "heartRate": 137,
+      "caloriesBurned": 434,
+      "workoutLengthMin": 53
+    },
+    {
+      "id": "b48d604d-c522-4fca-913e-48c88109a8c0",
+      "date": "2025-08-11T13:30:00.000Z",
+      "weight": 186.9
+    },
+    {
+      "id": "e75fc3e7-cbc0-43f0-88c7-6b8da8b4039a",
+      "date": "2025-08-12T13:30:00.000Z",
+      "weight": 185.9,
+      "heartRate": 144,
+      "caloriesBurned": 388,
+      "workoutLengthMin": 45
+    },
+    {
+      "id": "9d116143-7b61-44a0-807d-4f9613bb60db",
+      "date": "2025-08-13T13:30:00.000Z",
+      "weight": 186.4,
+      "heartRate": 142,
+      "caloriesBurned": 532,
+      "workoutLengthMin": 57
+    },
+    {
+      "id": "888080a1-4f2b-44a0-b867-d2383824be5c",
+      "date": "2025-08-14T13:30:00.000Z",
+      "weight": 186.3,
+      "heartRate": 132,
+      "caloriesBurned": 373,
+      "workoutLengthMin": 42
+    },
+    {
+      "id": "44eb590a-857f-4304-90f4-a69b87a0d9a1",
+      "date": "2025-08-15T13:30:00.000Z",
+      "weight": 186.4,
+      "heartRate": 138,
+      "caloriesBurned": 513,
+      "workoutLengthMin": 49
+    },
+    {
+      "id": "53b18683-9ae8-4d87-a751-a8119fdccd1d",
+      "date": "2025-08-16T13:30:00.000Z",
+      "weight": 186.9,
+      "heartRate": 143,
+      "caloriesBurned": 570,
+      "workoutLengthMin": 57
+    },
+    {
+      "id": "1b7c304a-9bbc-4b1b-9d38-35cf55dee7f9",
+      "date": "2025-08-17T13:30:00.000Z",
+      "weight": 186.8,
+      "heartRate": 139,
+      "caloriesBurned": 692,
+      "workoutLengthMin": 68
+    },
+    {
+      "id": "2e56172c-b163-4802-93dc-f6288c45dcf0",
+      "date": "2025-08-18T13:30:00.000Z",
+      "weight": 186.4
+    },
+    {
+      "id": "be44f396-8dc8-4426-b059-c4adef8f2d9e",
+      "date": "2025-08-19T13:30:00.000Z",
+      "weight": 186.1,
+      "heartRate": 134,
+      "caloriesBurned": 415,
+      "workoutLengthMin": 46
+    },
+    {
+      "id": "943a7ba9-1302-4de7-bcd2-3124bc8350fc",
+      "date": "2025-08-20T13:30:00.000Z",
+      "weight": 185.8,
+      "heartRate": 140,
+      "caloriesBurned": 437,
+      "workoutLengthMin": 48
+    },
+    {
+      "id": "d9687fdf-d958-423e-ab75-1b3781ede0ae",
+      "date": "2025-08-21T13:30:00.000Z",
+      "weight": 185.8,
+      "heartRate": 141,
+      "caloriesBurned": 442,
+      "workoutLengthMin": 45
+    },
+    {
+      "id": "9772472d-b618-4ae1-a77f-876f01eae6f3",
+      "date": "2025-08-22T13:30:00.000Z",
+      "weight": 186.6,
+      "heartRate": 134,
+      "caloriesBurned": 551,
+      "workoutLengthMin": 61
+    },
+    {
+      "id": "e06cf19f-34d3-4e87-a41d-01475a5b2b23",
+      "date": "2025-08-23T13:30:00.000Z",
+      "weight": 186.2,
+      "heartRate": 142,
+      "caloriesBurned": 616,
+      "workoutLengthMin": 63
+    },
+    {
+      "id": "c2df390f-d188-4539-a822-e365595b0122",
+      "date": "2025-08-24T13:30:00.000Z",
+      "weight": 185.8,
+      "heartRate": 136,
+      "caloriesBurned": 497,
+      "workoutLengthMin": 49
+    },
+    {
+      "id": "103a106b-c4b7-4e30-b7c4-58fc87cc48b5",
+      "date": "2025-08-25T13:30:00.000Z",
+      "weight": 186
+    },
+    {
+      "id": "de143f0a-2ac6-4974-a18d-48e5a647c5a0",
+      "date": "2025-08-26T13:30:00.000Z",
+      "weight": 185.2,
+      "heartRate": 130,
+      "caloriesBurned": 528,
+      "workoutLengthMin": 54
+    },
+    {
+      "id": "21098886-0355-43de-9594-8d58150c53a1",
+      "date": "2025-08-27T13:30:00.000Z",
+      "weight": 185.5,
+      "heartRate": 138,
+      "caloriesBurned": 562,
+      "workoutLengthMin": 60
+    },
+    {
+      "id": "047b6130-5e67-4659-806d-a252093404ce",
+      "date": "2025-08-28T13:30:00.000Z",
+      "weight": 185.3,
+      "heartRate": 137,
+      "caloriesBurned": 412,
+      "workoutLengthMin": 42
+    },
+    {
+      "id": "ce25fe9f-2d5a-4e17-9bfa-3c25a4608399",
+      "date": "2025-08-29T13:30:00.000Z",
+      "weight": 186,
+      "heartRate": 138,
+      "caloriesBurned": 518,
+      "workoutLengthMin": 51
+    },
+    {
+      "id": "3fbc9c8e-6241-46ad-b0a0-1ae8318fa458",
+      "date": "2025-08-30T13:30:00.000Z",
+      "weight": 186.1,
+      "heartRate": 145,
+      "caloriesBurned": 396,
+      "workoutLengthMin": 44
+    },
+    {
+      "id": "a477edf5-3d68-4755-876e-3da37f1696de",
+      "date": "2025-08-31T13:30:00.000Z",
+      "weight": 185.7,
+      "heartRate": 136,
+      "caloriesBurned": 615,
+      "workoutLengthMin": 64
+    },
+    {
+      "id": "3d7afd09-cf79-4f23-9048-6f977bb93e6c",
+      "date": "2025-09-01T13:30:00.000Z",
+      "weight": 185
+    },
+    {
+      "id": "d9f7772d-a229-4a8a-b902-10906f262dfd",
+      "date": "2025-09-02T13:30:00.000Z",
+      "weight": 185,
+      "heartRate": 129,
+      "caloriesBurned": 442,
+      "workoutLengthMin": 43
+    },
+    {
+      "id": "216d79c7-f0ff-4c51-b7b3-1cc99289e6bd",
+      "date": "2025-09-03T13:30:00.000Z",
+      "weight": 185,
+      "heartRate": 137,
+      "caloriesBurned": 444,
+      "workoutLengthMin": 53
+    },
+    {
+      "id": "ba5ef96f-aab1-4d15-a2c1-ca16d91f8cd5",
+      "date": "2025-09-04T13:30:00.000Z",
+      "weight": 184.9,
+      "heartRate": 128,
+      "caloriesBurned": 621,
+      "workoutLengthMin": 61
+    },
+    {
+      "id": "12aa7e87-a51c-4a72-9a71-e25fbb943a41",
+      "date": "2025-09-05T13:30:00.000Z",
+      "weight": 185.2,
+      "heartRate": 131,
+      "caloriesBurned": 404,
+      "workoutLengthMin": 46
+    },
+    {
+      "id": "089272ff-8f89-40ca-a6f1-50d0f2a4c13f",
+      "date": "2025-09-06T13:30:00.000Z",
+      "weight": 185.1,
+      "heartRate": 131,
+      "caloriesBurned": 399,
+      "workoutLengthMin": 46
+    },
+    {
+      "id": "5c5bde4b-6542-422e-9f9f-44a5cd8a8438",
+      "date": "2025-09-07T13:30:00.000Z",
+      "weight": 185.3,
+      "heartRate": 138,
+      "caloriesBurned": 500,
+      "workoutLengthMin": 61
+    },
+    {
+      "id": "dcecbd2b-1cde-48b4-855e-a771b4673fe3",
+      "date": "2025-09-08T13:30:00.000Z",
+      "weight": 185.2
+    },
+    {
+      "id": "52bb58f3-a03e-489e-8125-65cb8ab98789",
+      "date": "2025-09-09T13:30:00.000Z",
+      "weight": 184.5,
+      "heartRate": 134,
+      "caloriesBurned": 659,
+      "workoutLengthMin": 65
+    },
+    {
+      "id": "0ad083cd-ee1d-4b36-9019-5cdf6f5f3df6",
+      "date": "2025-09-10T13:30:00.000Z",
+      "weight": 184.7,
+      "heartRate": 143,
+      "caloriesBurned": 548,
+      "workoutLengthMin": 57
+    },
+    {
+      "id": "e12f3a17-c16f-4b3f-96e1-86c0f17711e5",
+      "date": "2025-09-11T13:30:00.000Z",
+      "weight": 184.4,
+      "heartRate": 133,
+      "caloriesBurned": 452,
+      "workoutLengthMin": 56
+    },
+    {
+      "id": "dcfb887a-4951-4429-b448-cf8a9c7102a2",
+      "date": "2025-09-12T13:30:00.000Z",
+      "weight": 184.7,
+      "heartRate": 135,
+      "caloriesBurned": 463,
+      "workoutLengthMin": 52
+    },
+    {
+      "id": "39f30a71-0664-4c85-9561-1c6f20a5721a",
+      "date": "2025-09-13T13:30:00.000Z",
+      "weight": 185.2,
+      "heartRate": 143,
+      "caloriesBurned": 423,
+      "workoutLengthMin": 42
+    },
+    {
+      "id": "047e6885-c437-457a-b3f3-5995179220fd",
+      "date": "2025-09-14T13:30:00.000Z",
+      "weight": 185.2,
+      "heartRate": 132,
+      "caloriesBurned": 410,
+      "workoutLengthMin": 43
+    },
+    {
+      "id": "11a88db5-1813-46c6-9e56-e8b23b0576ef",
+      "date": "2025-09-15T13:30:00.000Z",
+      "weight": 184.2
+    },
+    {
+      "id": "4250c78c-ff8f-4474-b3bf-04c9232fe941",
+      "date": "2025-09-16T13:30:00.000Z",
+      "weight": 184.4,
+      "heartRate": 133,
+      "caloriesBurned": 480,
+      "workoutLengthMin": 54
+    },
+    {
+      "id": "82f80804-c82e-42a5-8aa3-1c3d1bf8ed74",
+      "date": "2025-09-17T13:30:00.000Z",
+      "weight": 184.2,
+      "heartRate": 142,
+      "caloriesBurned": 479,
+      "workoutLengthMin": 59
+    },
+    {
+      "id": "8e80e000-8a2d-4b09-a4b8-5ee08e28c18a",
+      "date": "2025-09-18T13:30:00.000Z",
+      "weight": 184.2,
+      "heartRate": 142,
+      "caloriesBurned": 357,
+      "workoutLengthMin": 39
+    },
+    {
+      "id": "28ec7c26-9c32-4844-a137-9ee7c471e791",
+      "date": "2025-09-19T13:30:00.000Z",
+      "weight": 185.1,
+      "heartRate": 143,
+      "caloriesBurned": 424,
+      "workoutLengthMin": 43
+    },
+    {
+      "id": "9136b5fa-4d98-47e8-b533-c34a5266954d",
+      "date": "2025-09-20T13:30:00.000Z",
+      "weight": 184.5,
+      "heartRate": 146,
+      "caloriesBurned": 429,
+      "workoutLengthMin": 43
+    },
+    {
+      "id": "39db6bab-d01f-4b90-ad6f-a4433b90e19e",
+      "date": "2025-09-21T13:30:00.000Z",
+      "weight": 184.4,
+      "heartRate": 143,
+      "caloriesBurned": 520,
+      "workoutLengthMin": 61
+    },
+    {
+      "id": "ad31ab6e-3ba7-4b97-a43e-21bce1240ce7",
+      "date": "2025-09-22T13:30:00.000Z",
+      "weight": 184
+    },
+    {
+      "id": "26b15c1a-df38-4bdc-9fdd-ac081ddd748f",
+      "date": "2025-09-23T13:30:00.000Z",
+      "weight": 183.8,
+      "heartRate": 143,
+      "caloriesBurned": 311,
+      "workoutLengthMin": 37
+    },
+    {
+      "id": "e7bbd21a-bb2d-4579-807e-2f7e6f03d9ea",
+      "date": "2025-09-24T13:30:00.000Z",
+      "weight": 183.9,
+      "heartRate": 129,
+      "caloriesBurned": 515,
+      "workoutLengthMin": 61
+    },
+    {
+      "id": "22afae11-869a-46ae-b15e-77372d882ed3",
+      "date": "2025-09-25T13:30:00.000Z",
+      "weight": 184.4,
+      "heartRate": 145,
+      "caloriesBurned": 544,
+      "workoutLengthMin": 56
+    },
+    {
+      "id": "4b75fd06-6cbd-41a6-b34b-ab11f3ca0ab0",
+      "date": "2025-09-26T13:30:00.000Z",
+      "weight": 184.4,
+      "heartRate": 135,
+      "caloriesBurned": 548,
+      "workoutLengthMin": 63
+    },
+    {
+      "id": "345a13cf-b04d-41c6-8bd5-4d3f8941c786",
+      "date": "2025-09-27T13:30:00.000Z",
+      "weight": 184.7,
+      "heartRate": 146,
+      "caloriesBurned": 428,
+      "workoutLengthMin": 52
+    },
+    {
+      "id": "085826a6-3d22-4a29-bac0-79e91f815e5e",
+      "date": "2025-09-28T13:30:00.000Z",
+      "weight": 184.1,
+      "heartRate": 134,
+      "caloriesBurned": 561,
+      "workoutLengthMin": 57
+    },
+    {
+      "id": "a3c7679e-9ced-4904-b2b2-00ef8f261380",
+      "date": "2025-09-29T13:30:00.000Z",
+      "weight": 183.8
+    },
+    {
+      "id": "a7bdf1de-53f9-4386-81f4-1346c3fb9efb",
+      "date": "2025-09-30T13:30:00.000Z",
+      "weight": 183.7,
+      "heartRate": 142,
+      "caloriesBurned": 448,
+      "workoutLengthMin": 44
+    },
+    {
+      "id": "49f49a48-6e6d-42de-a1c7-6534720434e6",
+      "date": "2025-10-01T13:30:00.000Z",
+      "weight": 183.7,
+      "heartRate": 140,
+      "caloriesBurned": 542,
+      "workoutLengthMin": 62
+    },
+    {
+      "id": "319e5227-b836-44e4-93cc-fea3ef105a1d",
+      "date": "2025-10-02T13:30:00.000Z",
+      "weight": 183.5,
+      "heartRate": 132,
+      "caloriesBurned": 543,
+      "workoutLengthMin": 60
+    },
+    {
+      "id": "901d105a-ca0a-4aaf-accf-c255b046ae43",
+      "date": "2025-10-03T13:30:00.000Z",
+      "weight": 183.7,
+      "heartRate": 131,
+      "caloriesBurned": 555,
+      "workoutLengthMin": 56
+    },
+    {
+      "id": "795d5c67-515b-4ead-9928-fce51f537da9",
+      "date": "2025-10-04T13:30:00.000Z",
+      "weight": 183.7,
+      "heartRate": 142,
+      "caloriesBurned": 622,
+      "workoutLengthMin": 63
+    },
+    {
+      "id": "a0d9a885-ee91-4f80-92e5-fa940802f886",
+      "date": "2025-10-05T13:30:00.000Z",
+      "weight": 183.9,
+      "heartRate": 146,
+      "caloriesBurned": 582,
+      "workoutLengthMin": 62
+    },
+    {
+      "id": "8e4c2608-b982-4b14-996f-8ffd1cb91a70",
+      "date": "2025-10-06T13:30:00.000Z",
+      "weight": 183.2
+    },
+    {
+      "id": "a59b4ceb-9e7a-450f-8d33-bfc016558c04",
+      "date": "2025-10-07T13:30:00.000Z",
+      "weight": 183.2,
+      "heartRate": 131,
+      "caloriesBurned": 618,
+      "workoutLengthMin": 64
+    },
+    {
+      "id": "0469a837-bbe3-4737-879d-6cab200ec4e8",
+      "date": "2025-10-08T13:30:00.000Z",
+      "weight": 182.9,
+      "heartRate": 144,
+      "caloriesBurned": 473,
+      "workoutLengthMin": 54
+    },
+    {
+      "id": "05da2156-acd8-41f3-be72-9d25f8103f54",
+      "date": "2025-10-09T13:30:00.000Z",
+      "weight": 183.1,
+      "heartRate": 129,
+      "caloriesBurned": 516,
+      "workoutLengthMin": 63
+    },
+    {
+      "id": "d73a041c-1e30-496d-b918-3824f23975cb",
+      "date": "2025-10-10T13:30:00.000Z",
+      "weight": 183.2,
+      "heartRate": 131,
+      "caloriesBurned": 518,
+      "workoutLengthMin": 61
+    },
+    {
+      "id": "f6e939fa-e802-4a17-bd82-bb94caf6f769",
+      "date": "2025-10-11T13:30:00.000Z",
+      "weight": 183.9,
+      "heartRate": 138,
+      "caloriesBurned": 363,
+      "workoutLengthMin": 35
+    },
+    {
+      "id": "0a5728e8-61fb-4e0c-9e7d-a70cd52566bf",
+      "date": "2025-10-12T13:30:00.000Z",
+      "weight": 183.2,
+      "heartRate": 132,
+      "caloriesBurned": 441,
+      "workoutLengthMin": 46
+    },
+    {
+      "id": "1cc3fd60-9c49-407b-8ac2-92b3aa00b8a5",
+      "date": "2025-10-13T13:30:00.000Z",
+      "weight": 182.9
+    },
+    {
+      "id": "44ca2083-1082-42f4-94d3-c0f3353d72f8",
+      "date": "2025-10-14T13:30:00.000Z",
+      "weight": 182.9,
+      "heartRate": 127,
+      "caloriesBurned": 504,
+      "workoutLengthMin": 62
+    },
+    {
+      "id": "39647d6c-28e4-4967-89a6-185f21157660",
+      "date": "2025-10-15T13:30:00.000Z",
+      "weight": 182.9,
+      "heartRate": 137,
+      "caloriesBurned": 579,
+      "workoutLengthMin": 56
+    },
+    {
+      "id": "7fa29c0e-8b43-4788-b97a-e314087be00d",
+      "date": "2025-10-16T13:30:00.000Z",
+      "weight": 182.7,
+      "heartRate": 138,
+      "caloriesBurned": 395,
+      "workoutLengthMin": 49
+    },
+    {
+      "id": "9657a273-b0ea-4871-9271-d1646bde9b1a",
+      "date": "2025-10-17T13:30:00.000Z",
+      "weight": 183.2,
+      "heartRate": 133,
+      "caloriesBurned": 599,
+      "workoutLengthMin": 61
+    },
+    {
+      "id": "b548c3ff-bfd1-4a91-bce7-f6353e1648b8",
+      "date": "2025-10-18T13:30:00.000Z",
+      "weight": 183.8,
+      "heartRate": 145,
+      "caloriesBurned": 429,
+      "workoutLengthMin": 41
+    },
+    {
+      "id": "aa8e0740-e594-44ce-937e-b62bd20d434c",
+      "date": "2025-10-19T13:30:00.000Z",
+      "weight": 182.8,
+      "heartRate": 142,
+      "caloriesBurned": 439,
+      "workoutLengthMin": 45
+    },
+    {
+      "id": "46c3c8ab-eca8-4177-9bbb-41ad15a173f9",
+      "date": "2025-10-20T13:30:00.000Z",
+      "weight": 182.9
+    },
+    {
+      "id": "784db988-3aab-4361-9cea-33452a662695",
+      "date": "2025-10-21T13:30:00.000Z",
+      "weight": 182.9,
+      "heartRate": 146,
+      "caloriesBurned": 478,
+      "workoutLengthMin": 54
+    },
+    {
+      "id": "a265139c-0f5c-425d-b16c-956f5fbbe815",
+      "date": "2025-10-22T13:30:00.000Z",
+      "weight": 182.5,
+      "heartRate": 129,
+      "caloriesBurned": 364,
+      "workoutLengthMin": 36
+    },
+    {
+      "id": "1292c36b-04fe-43aa-986b-04c39c50d399",
+      "date": "2025-10-23T13:30:00.000Z",
+      "weight": 182.7,
+      "heartRate": 128,
+      "caloriesBurned": 513,
+      "workoutLengthMin": 59
+    },
+    {
+      "id": "627ad528-be6c-4287-8e12-21b811675698",
+      "date": "2025-10-24T13:30:00.000Z",
+      "weight": 183.1,
+      "heartRate": 139,
+      "caloriesBurned": 395,
+      "workoutLengthMin": 46
+    },
+    {
+      "id": "b3a557b6-34d5-46b8-bf8e-4dc39cbbea4c",
+      "date": "2025-10-25T13:30:00.000Z",
+      "weight": 183,
+      "heartRate": 137,
+      "caloriesBurned": 406,
+      "workoutLengthMin": 47
+    },
+    {
+      "id": "0a96752e-397b-4bb4-8cd3-606f88f4a507",
+      "date": "2025-10-26T13:30:00.000Z",
+      "weight": 182.6,
+      "heartRate": 127,
+      "caloriesBurned": 316,
+      "workoutLengthMin": 38
+    },
+    {
+      "id": "9373dfc0-5742-4b3d-9165-6aa8d6f0b3be",
+      "date": "2025-10-27T13:30:00.000Z",
+      "weight": 182.8
+    },
+    {
+      "id": "1ba1c1ea-893e-4180-9977-3133d38cca99",
+      "date": "2025-10-28T13:30:00.000Z",
+      "weight": 181.9,
+      "heartRate": 130,
+      "caloriesBurned": 440,
+      "workoutLengthMin": 49
+    },
+    {
+      "id": "555dbe4e-fdbb-4e5d-9e96-3a7899290ce6",
+      "date": "2025-10-29T13:30:00.000Z",
+      "weight": 182.5,
+      "heartRate": 131,
+      "caloriesBurned": 431,
+      "workoutLengthMin": 45
+    },
+    {
+      "id": "4c7c605f-b0ba-4aa9-9835-d58fba86b0ff",
+      "date": "2025-10-30T13:30:00.000Z",
+      "weight": 182.1,
+      "heartRate": 127,
+      "caloriesBurned": 327,
+      "workoutLengthMin": 32
+    },
+    {
+      "id": "6191c7f7-11c0-4e97-a066-5911ee7e73f2",
+      "date": "2025-10-31T13:30:00.000Z",
+      "weight": 182.6,
+      "heartRate": 135,
+      "caloriesBurned": 317,
+      "workoutLengthMin": 34
+    },
+    {
+      "id": "778aa6be-438d-4710-b419-3a9a679cb261",
+      "date": "2025-11-01T13:30:00.000Z",
+      "weight": 182.7,
+      "heartRate": 133,
+      "caloriesBurned": 258,
+      "workoutLengthMin": 31
+    },
+    {
+      "id": "a3b8ec7e-e69d-483c-9783-24f92d7c6519",
+      "date": "2025-11-02T13:30:00.000Z",
+      "weight": 182.4,
+      "heartRate": 137,
+      "caloriesBurned": 346,
+      "workoutLengthMin": 34
+    },
+    {
+      "id": "d6c1c896-1f58-41e6-81fb-562fb2b3a099",
+      "date": "2025-11-03T13:30:00.000Z",
+      "weight": 181.7
+    },
+    {
+      "id": "6eeed900-7e71-4e83-a16b-dbad8e865f9f",
+      "date": "2025-11-04T13:30:00.000Z",
+      "weight": 182.4,
+      "heartRate": 129,
+      "caloriesBurned": 434,
+      "workoutLengthMin": 54
+    },
+    {
+      "id": "19336ce2-5652-447c-b305-40261343567c",
+      "date": "2025-11-05T13:30:00.000Z",
+      "weight": 182.1,
+      "heartRate": 146,
+      "caloriesBurned": 565,
+      "workoutLengthMin": 56
+    },
+    {
+      "id": "681b7e23-37fa-43a7-90b0-c865c7714635",
+      "date": "2025-11-06T13:30:00.000Z",
+      "weight": 181.9,
+      "heartRate": 131,
+      "caloriesBurned": 428,
+      "workoutLengthMin": 51
+    },
+    {
+      "id": "01f25f29-969b-4900-995e-60c6a68c51f9",
+      "date": "2025-11-07T13:30:00.000Z",
+      "weight": 182.7,
+      "heartRate": 143,
+      "caloriesBurned": 429,
+      "workoutLengthMin": 48
+    },
+    {
+      "id": "d6afa344-70a9-4523-a766-33ed460632a2",
+      "date": "2025-11-08T13:30:00.000Z",
+      "weight": 182.4,
+      "heartRate": 136,
+      "caloriesBurned": 345,
+      "workoutLengthMin": 37
+    },
+    {
+      "id": "0de3e48f-c56b-4649-84ec-925d6b16ea16",
+      "date": "2025-11-09T13:30:00.000Z",
+      "weight": 182.6,
+      "heartRate": 133,
+      "caloriesBurned": 442,
+      "workoutLengthMin": 53
+    },
+    {
+      "id": "1792cce1-5a2a-419a-8ab3-26684a73b29a",
+      "date": "2025-11-10T13:30:00.000Z",
+      "weight": 182.4
+    },
+    {
+      "id": "856f23df-1639-479c-9ab6-3c605cebcee8",
+      "date": "2025-11-11T13:30:00.000Z",
+      "weight": 181.4,
+      "heartRate": 145,
+      "caloriesBurned": 429,
+      "workoutLengthMin": 45
+    },
+    {
+      "id": "e45efd64-1c6e-4956-a58d-cca13899a7dc",
+      "date": "2025-11-12T13:30:00.000Z",
+      "weight": 181.6,
+      "heartRate": 128,
+      "caloriesBurned": 364,
+      "workoutLengthMin": 41
+    },
+    {
+      "id": "369b56c9-c65c-4b1b-8901-58e4b2bb4bb3",
+      "date": "2025-11-13T13:30:00.000Z",
+      "weight": 182.2,
+      "heartRate": 139,
+      "caloriesBurned": 318,
+      "workoutLengthMin": 32
+    },
+    {
+      "id": "84aa415d-c63c-4749-beda-e3601e13b29e",
+      "date": "2025-11-14T13:30:00.000Z",
+      "weight": 182.7,
+      "heartRate": 139,
+      "caloriesBurned": 525,
+      "workoutLengthMin": 56
+    },
+    {
+      "id": "2d5252bd-b0b4-437b-9d96-58adacacbf78",
+      "date": "2025-11-15T13:30:00.000Z",
+      "weight": 182.7,
+      "heartRate": 126,
+      "caloriesBurned": 281,
+      "workoutLengthMin": 34
+    },
+    {
+      "id": "6726c645-21ae-4e06-8520-1fa3f6c511a9",
+      "date": "2025-11-16T13:30:00.000Z",
+      "weight": 182.4,
+      "heartRate": 131,
+      "caloriesBurned": 321,
+      "workoutLengthMin": 36
+    },
+    {
+      "id": "641f0640-02c1-44c9-bb70-68c859476af4",
+      "date": "2025-11-17T13:30:00.000Z",
+      "weight": 181.3
+    },
+    {
+      "id": "bcd20ddb-c2db-4998-88a7-3d5080d780eb",
+      "date": "2025-11-18T13:30:00.000Z",
+      "weight": 181.2,
+      "heartRate": 127,
+      "caloriesBurned": 447,
+      "workoutLengthMin": 52
+    },
+    {
+      "id": "c22a5e28-88bd-4460-93bf-e5be866d9b31",
+      "date": "2025-11-19T13:30:00.000Z",
+      "weight": 181.2,
+      "heartRate": 135,
+      "caloriesBurned": 285,
+      "workoutLengthMin": 30
+    },
+    {
+      "id": "c901cc84-6528-4cb5-a500-60708e1b42d1",
+      "date": "2025-11-20T13:30:00.000Z",
+      "weight": 182.2,
+      "heartRate": 134,
+      "caloriesBurned": 455,
+      "workoutLengthMin": 45
+    },
+    {
+      "id": "9dcf4d44-5457-4393-9f51-7cac70874555",
+      "date": "2025-11-21T13:30:00.000Z",
+      "weight": 182.3,
+      "heartRate": 126,
+      "caloriesBurned": 509,
+      "workoutLengthMin": 56
+    },
+    {
+      "id": "02e2b3e7-49ee-4dbc-8ffa-cff995b04388",
+      "date": "2025-11-22T13:30:00.000Z",
+      "weight": 182.4,
+      "heartRate": 130,
+      "caloriesBurned": 335,
+      "workoutLengthMin": 37
+    },
+    {
+      "id": "abb12243-d297-42cf-adef-e5f9e10e8f84",
+      "date": "2025-11-23T13:30:00.000Z",
+      "weight": 181.8,
+      "heartRate": 137,
+      "caloriesBurned": 445,
+      "workoutLengthMin": 44
+    },
+    {
+      "id": "cdf5a31e-2d36-44a2-b017-44b21e73a183",
+      "date": "2025-11-24T13:30:00.000Z",
+      "weight": 181.7
+    },
+    {
+      "id": "4b9204cc-0a5f-4f17-b8f7-01d23cd17c5a",
+      "date": "2025-11-25T13:30:00.000Z",
+      "weight": 180.9,
+      "heartRate": 137,
+      "caloriesBurned": 402,
+      "workoutLengthMin": 39
+    },
+    {
+      "id": "680bca02-e8e9-4c83-89c0-c730f2d6637d",
+      "date": "2025-11-26T13:30:00.000Z",
+      "weight": 181.3,
+      "heartRate": 132,
+      "caloriesBurned": 249,
+      "workoutLengthMin": 28
+    },
+    {
+      "id": "d49377fe-4f2a-4af5-9019-8d40ba73e01d",
+      "date": "2025-11-27T13:30:00.000Z",
+      "weight": 181.8,
+      "heartRate": 126,
+      "caloriesBurned": 465,
+      "workoutLengthMin": 52
+    },
+    {
+      "id": "14da82e1-1f6a-4f27-8506-f55efb3fda3d",
+      "date": "2025-11-28T13:30:00.000Z",
+      "weight": 181.6,
+      "heartRate": 134,
+      "caloriesBurned": 453,
+      "workoutLengthMin": 47
+    },
+    {
+      "id": "3ec68fd4-4afb-4581-8b81-a8e2c76b4055",
+      "date": "2025-11-29T13:30:00.000Z",
+      "weight": 181.9,
+      "heartRate": 144,
+      "caloriesBurned": 398,
+      "workoutLengthMin": 47
+    },
+    {
+      "id": "f00591d1-d701-434d-9a1d-f500e28db8be",
+      "date": "2025-11-30T13:30:00.000Z",
+      "weight": 181.3,
+      "heartRate": 140,
+      "caloriesBurned": 318,
+      "workoutLengthMin": 31
+    },
+    {
+      "id": "511d4855-883c-41f9-b817-d99f0e0c235d",
+      "date": "2025-12-01T13:30:00.000Z",
+      "weight": 181.5
+    },
+    {
+      "id": "7f1c456d-fc66-4925-93d4-0a04256a4b94",
+      "date": "2025-12-02T13:30:00.000Z",
+      "weight": 180.7,
+      "heartRate": 136,
+      "caloriesBurned": 307,
+      "workoutLengthMin": 34
+    },
+    {
+      "id": "c233907c-198c-4760-8f1a-d337edf281e1",
+      "date": "2025-12-03T13:30:00.000Z",
+      "weight": 180.9,
+      "heartRate": 144,
+      "caloriesBurned": 341,
+      "workoutLengthMin": 41
+    },
+    {
+      "id": "bd38c818-cd03-4b70-816d-edc1bc7cc7d2",
+      "date": "2025-12-04T13:30:00.000Z",
+      "weight": 181,
+      "heartRate": 129,
+      "caloriesBurned": 301,
+      "workoutLengthMin": 29
+    },
+    {
+      "id": "772b133f-2ac9-452f-b112-342c710cf1cf",
+      "date": "2025-12-05T13:30:00.000Z",
+      "weight": 182,
+      "heartRate": 136,
+      "caloriesBurned": 332,
+      "workoutLengthMin": 33
+    },
+    {
+      "id": "14972384-835c-4dc4-ba12-9c18fd8dd033",
+      "date": "2025-12-06T13:30:00.000Z",
+      "weight": 181.7,
+      "heartRate": 134,
+      "caloriesBurned": 314,
+      "workoutLengthMin": 39
+    },
+    {
+      "id": "29492ec0-22a5-45b8-880f-73a4749d1687",
+      "date": "2025-12-07T13:30:00.000Z",
+      "weight": 181.3,
+      "heartRate": 134,
+      "caloriesBurned": 250,
+      "workoutLengthMin": 30
+    },
+    {
+      "id": "bbb26dae-6b47-4d6c-bf16-4f2dcee23c3e",
+      "date": "2025-12-08T13:30:00.000Z",
+      "weight": 180.9
+    },
+    {
+      "id": "7fcde76a-d2cb-47f2-9844-ea50ca4fdaaa",
+      "date": "2025-12-09T13:30:00.000Z",
+      "weight": 181,
+      "heartRate": 138,
+      "caloriesBurned": 399,
+      "workoutLengthMin": 39
+    },
+    {
+      "id": "d25453dc-8516-4abe-b70b-7447164b9ef0",
+      "date": "2025-12-10T13:30:00.000Z",
+      "weight": 181,
+      "heartRate": 130,
+      "caloriesBurned": 224,
+      "workoutLengthMin": 24
+    },
+    {
+      "id": "8a5bea7a-2bf3-46f7-8e98-deb6cc196a64",
+      "date": "2025-12-11T13:30:00.000Z",
+      "weight": 180.8,
+      "heartRate": 141,
+      "caloriesBurned": 450,
+      "workoutLengthMin": 53
+    },
+    {
+      "id": "c0e9c888-f7ab-46d6-94aa-20f652271c2f",
+      "date": "2025-12-12T13:30:00.000Z",
+      "weight": 181.1,
+      "heartRate": 132,
+      "caloriesBurned": 316,
+      "workoutLengthMin": 31
+    },
+    {
+      "id": "da8a3b30-a659-4a55-9717-7e3dcdc59aeb",
+      "date": "2025-12-13T13:30:00.000Z",
+      "weight": 181.6,
+      "heartRate": 127,
+      "caloriesBurned": 416,
+      "workoutLengthMin": 46
+    },
+    {
+      "id": "dd499f4f-cf7c-4eb9-a2be-dfa672e0769a",
+      "date": "2025-12-14T13:30:00.000Z",
+      "weight": 181.6,
+      "heartRate": 134,
+      "caloriesBurned": 473,
+      "workoutLengthMin": 51
+    },
+    {
+      "id": "3979ec53-efe6-4648-aadd-42cd9d3b8b15",
+      "date": "2025-12-15T13:30:00.000Z",
+      "weight": 180.8
+    },
+    {
+      "id": "cf71f2a9-eac1-4ac2-bf8a-b0653b4e1c42",
+      "date": "2025-12-16T13:30:00.000Z",
+      "weight": 180.8,
+      "heartRate": 128,
+      "caloriesBurned": 392,
+      "workoutLengthMin": 46
+    },
+    {
+      "id": "d6764228-aa0d-40ce-b0e1-216e804b7c65",
+      "date": "2025-12-17T13:30:00.000Z",
+      "weight": 180.9,
+      "heartRate": 128,
+      "caloriesBurned": 387,
+      "workoutLengthMin": 37
+    },
+    {
+      "id": "2eff62da-79c0-4848-8ca7-f75e689521da",
+      "date": "2025-12-18T13:30:00.000Z",
+      "weight": 180.8,
+      "heartRate": 130,
+      "caloriesBurned": 266,
+      "workoutLengthMin": 29
+    },
+    {
+      "id": "3053a0a4-14f7-4a3e-8b2d-70565e2025d7",
+      "date": "2025-12-19T13:30:00.000Z",
+      "weight": 181,
+      "heartRate": 136,
+      "caloriesBurned": 530,
+      "workoutLengthMin": 51
+    },
+    {
+      "id": "82f60d28-2661-4813-bebc-3150ce375689",
+      "date": "2025-12-20T13:30:00.000Z",
+      "weight": 181.4,
+      "heartRate": 142,
+      "caloriesBurned": 303,
+      "workoutLengthMin": 34
+    },
+    {
+      "id": "89da8174-a74a-46f8-8413-fb86989ab9b9",
+      "date": "2025-12-21T13:30:00.000Z",
+      "weight": 181.1,
+      "heartRate": 126,
+      "caloriesBurned": 381,
+      "workoutLengthMin": 45
+    },
+    {
+      "id": "84ffc845-10af-4106-b274-4c06068a87af",
+      "date": "2025-12-22T13:30:00.000Z",
+      "weight": 180.6
+    },
+    {
+      "id": "443f7140-b241-4c03-99a4-9826beb82307",
+      "date": "2025-12-23T13:30:00.000Z",
+      "weight": 180.6,
+      "heartRate": 131,
+      "caloriesBurned": 487,
+      "workoutLengthMin": 50
+    },
+    {
+      "id": "f98e8773-7212-4f29-8220-eeee27265ea1",
+      "date": "2025-12-24T13:30:00.000Z",
+      "weight": 180.7,
+      "heartRate": 136,
+      "caloriesBurned": 333,
+      "workoutLengthMin": 32
+    },
+    {
+      "id": "dcac2ae8-7ea1-4edf-86b4-e60c4f977920",
+      "date": "2025-12-25T13:30:00.000Z",
+      "weight": 180.8,
+      "heartRate": 135,
+      "caloriesBurned": 399,
+      "workoutLengthMin": 39
+    },
+    {
+      "id": "431c58f1-6ff8-4a43-b730-389df18eff32",
+      "date": "2025-12-26T13:30:00.000Z",
+      "weight": 181.4,
+      "heartRate": 144,
+      "caloriesBurned": 358,
+      "workoutLengthMin": 38
+    },
+    {
+      "id": "c1061780-c22a-4916-adb8-bf9d73afdf28",
+      "date": "2025-12-27T13:30:00.000Z",
+      "weight": 181.5,
+      "heartRate": 145,
+      "caloriesBurned": 217,
+      "workoutLengthMin": 27
+    },
+    {
+      "id": "a36ef4bd-e0a1-4ab7-b5c2-4ea6bd8c9826",
+      "date": "2025-12-28T13:30:00.000Z",
+      "weight": 181.2,
+      "heartRate": 140,
+      "caloriesBurned": 482,
+      "workoutLengthMin": 50
+    },
+    {
+      "id": "76755142-e80b-44b5-b075-bfb32ce9730c",
+      "date": "2025-12-29T13:30:00.000Z",
+      "weight": 181.1
+    },
+    {
+      "id": "e84cceac-103a-463a-a387-01e1b4223050",
+      "date": "2025-12-30T13:30:00.000Z",
+      "weight": 180.5,
+      "heartRate": 140,
+      "caloriesBurned": 356,
+      "workoutLengthMin": 34
+    },
+    {
+      "id": "76b4abc3-7206-45dc-bdad-a7e9871ebf4d",
+      "date": "2025-12-31T13:30:00.000Z",
+      "weight": 180.1,
+      "heartRate": 138,
+      "caloriesBurned": 336,
+      "workoutLengthMin": 35
+    },
+    {
+      "id": "b2ea8d98-50a8-4baa-812d-d77e5f4eaaa8",
+      "date": "2026-01-01T13:30:00.000Z",
+      "weight": 180.5,
+      "heartRate": 126,
+      "caloriesBurned": 466,
+      "workoutLengthMin": 47
+    },
+    {
+      "id": "9bb83c58-f6ed-4b62-8180-ee40dcc4f31c",
+      "date": "2026-01-02T13:30:00.000Z",
+      "weight": 180.6,
+      "heartRate": 132,
+      "caloriesBurned": 246,
+      "workoutLengthMin": 30
+    },
+    {
+      "id": "9049507c-d24a-47fd-a5a8-78a6cdc364a2",
+      "date": "2026-01-03T13:30:00.000Z",
+      "weight": 181.5,
+      "heartRate": 131,
+      "caloriesBurned": 345,
+      "workoutLengthMin": 33
+    },
+    {
+      "id": "9db58917-fd31-45ed-9b95-6e53b97fae6a",
+      "date": "2026-01-04T13:30:00.000Z",
+      "weight": 181.1,
+      "heartRate": 134,
+      "caloriesBurned": 318,
+      "workoutLengthMin": 38
+    },
+    {
+      "id": "2b3169e8-5d01-43f6-909e-562ee755b5af",
+      "date": "2026-01-05T13:30:00.000Z",
+      "weight": 180.6
+    },
+    {
+      "id": "05ca9500-c7ca-4c21-9af4-7c63c0e584d1",
+      "date": "2026-01-06T13:30:00.000Z",
+      "weight": 180.2,
+      "heartRate": 134,
+      "caloriesBurned": 230,
+      "workoutLengthMin": 22
+    },
+    {
+      "id": "bef11ff3-5776-43a0-81ae-7c27855048c0",
+      "date": "2026-01-07T13:30:00.000Z",
+      "weight": 180.1,
+      "heartRate": 134,
+      "caloriesBurned": 461,
+      "workoutLengthMin": 45
+    },
+    {
+      "id": "fef1aaa2-ec96-4867-b5de-9d8b21cbd9fa",
+      "date": "2026-01-08T13:30:00.000Z",
+      "weight": 181.1,
+      "heartRate": 136,
+      "caloriesBurned": 336,
+      "workoutLengthMin": 36
+    },
+    {
+      "id": "3088aa39-f901-4341-bc8c-fb7a222d4e3d",
+      "date": "2026-01-09T13:30:00.000Z",
+      "weight": 181,
+      "heartRate": 129,
+      "caloriesBurned": 202,
+      "workoutLengthMin": 23
+    },
+    {
+      "id": "681ddbc6-6ff1-4a61-810d-2f0c884bb769",
+      "date": "2026-01-10T13:30:00.000Z",
+      "weight": 181.4,
+      "heartRate": 132,
+      "caloriesBurned": 263,
+      "workoutLengthMin": 28
+    },
+    {
+      "id": "bc2bfc38-7d25-46c8-be70-227145c20f9a",
+      "date": "2026-01-11T13:30:00.000Z",
+      "weight": 181.1,
+      "heartRate": 138,
+      "caloriesBurned": 344,
+      "workoutLengthMin": 41
+    },
+    {
+      "id": "bb419b7b-4ad1-4f78-99bf-8fc40b7e76c9",
+      "date": "2026-01-12T13:30:00.000Z",
+      "weight": 180.8
+    },
+    {
+      "id": "bfeac677-546c-442f-89d3-30d6d6e63bce",
+      "date": "2026-01-13T13:30:00.000Z",
+      "weight": 179.8,
+      "heartRate": 143,
+      "caloriesBurned": 201,
+      "workoutLengthMin": 25
+    },
+    {
+      "id": "4d2dd6eb-3aa1-4060-8a78-da27f1ea9d53",
+      "date": "2026-01-14T13:30:00.000Z",
+      "weight": 180.6,
+      "heartRate": 140,
+      "caloriesBurned": 271,
+      "workoutLengthMin": 27
+    },
+    {
+      "id": "2da4e472-26e5-45a2-a57d-801c16c0dd39",
+      "date": "2026-01-15T13:30:00.000Z",
+      "weight": 181,
+      "heartRate": 142,
+      "caloriesBurned": 210,
+      "workoutLengthMin": 22
+    },
+    {
+      "id": "3805ef82-bf09-4986-9bd8-9459253e6100",
+      "date": "2026-01-16T13:30:00.000Z",
+      "weight": 180.6,
+      "heartRate": 135,
+      "caloriesBurned": 448,
+      "workoutLengthMin": 48
+    },
+    {
+      "id": "5ffbb2f9-f3b2-416e-9560-bb8ad29dc9f2",
+      "date": "2026-01-17T13:30:00.000Z",
+      "weight": 180.6,
+      "heartRate": 128,
+      "caloriesBurned": 181,
+      "workoutLengthMin": 22
+    },
+    {
+      "id": "43192c96-50c8-4ff7-a7fb-e1b71d2235a3",
+      "date": "2026-01-18T13:30:00.000Z",
+      "weight": 180.7,
+      "heartRate": 144,
+      "caloriesBurned": 398,
+      "workoutLengthMin": 45
+    },
+    {
+      "id": "0a052ddf-3a8d-4ab1-89c8-ca4fa5b243c4",
+      "date": "2026-01-19T13:30:00.000Z",
+      "weight": 180.3
+    },
+    {
+      "id": "d670f7a0-a7f1-4186-bee0-278543074e78",
+      "date": "2026-01-20T13:30:00.000Z",
+      "weight": 180.3,
+      "heartRate": 143,
+      "caloriesBurned": 357,
+      "workoutLengthMin": 44
+    },
+    {
+      "id": "515e39cb-932c-496b-b1d3-f222801595b2",
+      "date": "2026-01-21T13:30:00.000Z",
+      "weight": 179.9,
+      "heartRate": 140,
+      "caloriesBurned": 312,
+      "workoutLengthMin": 31
+    },
+    {
+      "id": "56774c9f-ddfd-4c50-a6b6-1d634b634b2a",
+      "date": "2026-01-22T13:30:00.000Z",
+      "weight": 180.3,
+      "heartRate": 142,
+      "caloriesBurned": 357,
+      "workoutLengthMin": 40
+    },
+    {
+      "id": "d51d9b02-b698-438e-a299-be59491d1be0",
+      "date": "2026-01-23T13:30:00.000Z",
+      "weight": 180.9,
+      "heartRate": 136,
+      "caloriesBurned": 440,
+      "workoutLengthMin": 47
+    },
+    {
+      "id": "3dfe885b-8ff1-405b-b0f1-38e9a7b60672",
+      "date": "2026-01-24T13:30:00.000Z",
+      "weight": 180.6,
+      "heartRate": 136,
+      "caloriesBurned": 352,
+      "workoutLengthMin": 41
+    },
+    {
+      "id": "5da07e6f-eb0a-4ca9-af86-067e8870243c",
+      "date": "2026-01-25T13:30:00.000Z",
+      "weight": 180.5,
+      "heartRate": 135,
+      "caloriesBurned": 274,
+      "workoutLengthMin": 31
+    },
+    {
+      "id": "5e7e9300-3d2b-4720-9ae6-6bb0d3f18dc2",
+      "date": "2026-01-26T13:30:00.000Z",
+      "weight": 180.3
+    },
+    {
+      "id": "4d3fba05-730f-4433-a946-479e04bf8cc9",
+      "date": "2026-01-27T13:30:00.000Z",
+      "weight": 179.8,
+      "heartRate": 139,
+      "caloriesBurned": 338,
+      "workoutLengthMin": 35
+    },
+    {
+      "id": "463dcba4-fd34-410b-8688-efaed1307acb",
+      "date": "2026-01-28T13:30:00.000Z",
+      "weight": 179.8,
+      "heartRate": 142,
+      "caloriesBurned": 286,
+      "workoutLengthMin": 28
+    },
+    {
+      "id": "e09960ea-02e7-49fd-8907-d43dd7c1a910",
+      "date": "2026-01-29T13:30:00.000Z",
+      "weight": 180.2,
+      "heartRate": 129,
+      "caloriesBurned": 402,
+      "workoutLengthMin": 40
+    },
+    {
+      "id": "f64142db-aec7-41ee-b998-587c0fdc0cc8",
+      "date": "2026-01-30T13:30:00.000Z",
+      "weight": 180.9,
+      "heartRate": 139,
+      "caloriesBurned": 321,
+      "workoutLengthMin": 39
+    },
+    {
+      "id": "7d8a4a56-a87c-4b37-8a12-76fb979f66ce",
+      "date": "2026-01-31T13:30:00.000Z",
+      "weight": 180.9,
+      "heartRate": 131,
+      "caloriesBurned": 416,
+      "workoutLengthMin": 40
+    },
+    {
+      "id": "c9d525cf-94bc-4245-8ced-c686b82c7729",
+      "date": "2026-02-01T13:30:00.000Z",
+      "weight": 180.5,
+      "heartRate": 134,
+      "caloriesBurned": 256,
+      "workoutLengthMin": 29
+    },
+    {
+      "id": "9edc98a7-b7ed-4a5b-afe0-77bb75c9c9ce",
+      "date": "2026-02-02T13:30:00.000Z",
+      "weight": 180.3
+    },
+    {
+      "id": "ddbc6f2d-8f48-4971-834d-bfbf1511009d",
+      "date": "2026-02-03T13:30:00.000Z",
+      "weight": 179.7,
+      "heartRate": 126,
+      "caloriesBurned": 196,
+      "workoutLengthMin": 24
+    },
+    {
+      "id": "9afc5d33-d219-4cfa-ae6b-ef5a219e0d9d",
+      "date": "2026-02-04T13:30:00.000Z",
+      "weight": 180.3,
+      "heartRate": 128,
+      "caloriesBurned": 407,
+      "workoutLengthMin": 42
+    },
+    {
+      "id": "518230df-ddac-4009-8cbd-4e08a3841160",
+      "date": "2026-02-05T13:30:00.000Z",
+      "weight": 180.7,
+      "heartRate": 140,
+      "caloriesBurned": 355,
+      "workoutLengthMin": 34
+    },
+    {
+      "id": "64165e56-58b0-4e41-9020-6d0a98fd0793",
+      "date": "2026-02-06T13:30:00.000Z",
+      "weight": 180.3,
+      "heartRate": 131,
+      "caloriesBurned": 375,
+      "workoutLengthMin": 36
+    },
+    {
+      "id": "1d6fd05f-cb37-4fe1-9a96-4c8da29e406e",
+      "date": "2026-02-07T13:30:00.000Z",
+      "weight": 181.1,
+      "heartRate": 127,
+      "caloriesBurned": 166,
+      "workoutLengthMin": 20
+    },
+    {
+      "id": "7fb3b083-e903-4c7d-9644-341a2b5f6aa3",
+      "date": "2026-02-08T13:30:00.000Z",
+      "weight": 180.6,
+      "heartRate": 131,
+      "caloriesBurned": 312,
+      "workoutLengthMin": 33
+    },
+    {
+      "id": "2eaabb7c-4d8e-4fa6-99eb-c8ddd6465e02",
+      "date": "2026-02-09T13:30:00.000Z",
+      "weight": 180
+    },
+    {
+      "id": "5ef9504f-1ff7-4505-926f-b987a7ff3d95",
+      "date": "2026-02-10T13:30:00.000Z",
+      "weight": 179.8,
+      "heartRate": 134,
+      "caloriesBurned": 405,
+      "workoutLengthMin": 42
+    },
+    {
+      "id": "8e7dfc50-778f-41d8-ad91-4ed26aba3dd8",
+      "date": "2026-02-11T13:30:00.000Z",
+      "weight": 179.6,
+      "heartRate": 131,
+      "caloriesBurned": 449,
+      "workoutLengthMin": 43
+    },
+    {
+      "id": "31d6da91-e7d0-4e26-ba46-b60237594a65",
+      "date": "2026-02-12T13:30:00.000Z",
+      "weight": 180.6,
+      "heartRate": 140,
+      "caloriesBurned": 433,
+      "workoutLengthMin": 44
+    },
+    {
+      "id": "8129bee3-efaf-46dc-8ad1-104eb4838ac0",
+      "date": "2026-02-13T13:30:00.000Z",
+      "weight": 180.5,
+      "heartRate": 133,
+      "caloriesBurned": 311,
+      "workoutLengthMin": 33
+    },
+    {
+      "id": "79df4a7c-a21c-4af2-98ba-29f41bf25139",
+      "date": "2026-02-14T13:30:00.000Z",
+      "weight": 180.8,
+      "heartRate": 136,
+      "caloriesBurned": 360,
+      "workoutLengthMin": 40
+    },
+    {
+      "id": "517dc60e-fe91-40fa-94ec-c1e14ae9f9bc",
+      "date": "2026-02-15T13:30:00.000Z",
+      "weight": 180.1,
+      "heartRate": 137,
+      "caloriesBurned": 426,
+      "workoutLengthMin": 43
+    },
+    {
+      "id": "de67cde9-8073-44ae-83bd-58af2e306aba",
+      "date": "2026-02-16T13:30:00.000Z",
+      "weight": 179.9
+    },
+    {
+      "id": "98c588fc-5c7b-4a97-8c9d-c5639d824fad",
+      "date": "2026-02-17T13:30:00.000Z",
+      "weight": 180.3,
+      "heartRate": 139,
+      "caloriesBurned": 290,
+      "workoutLengthMin": 31
+    },
+    {
+      "id": "318d16fe-9a18-4eb7-8691-086b42dd3971",
+      "date": "2026-02-18T13:30:00.000Z",
+      "weight": 179.9,
+      "heartRate": 134,
+      "caloriesBurned": 220,
+      "workoutLengthMin": 26
+    },
+    {
+      "id": "a5ebda4d-b2de-420e-a6f0-b9e8bfa80888",
+      "date": "2026-02-19T13:30:00.000Z",
+      "weight": 179.8,
+      "heartRate": 144,
+      "caloriesBurned": 275,
+      "workoutLengthMin": 34
+    },
+    {
+      "id": "dbdd2a28-a3ad-42ee-9b6b-d168a6f53004",
+      "date": "2026-02-20T13:30:00.000Z",
+      "weight": 181,
+      "heartRate": 140,
+      "caloriesBurned": 238,
+      "workoutLengthMin": 26
+    },
+    {
+      "id": "34162d85-9dac-49b5-a7a1-872c000141b1",
+      "date": "2026-02-21T13:30:00.000Z",
+      "weight": 180.5,
+      "heartRate": 131,
+      "caloriesBurned": 316,
+      "workoutLengthMin": 33
+    },
+    {
+      "id": "dbc65480-008e-416d-8f93-0f3f8677aa10",
+      "date": "2026-02-22T13:30:00.000Z",
+      "weight": 180.1,
+      "heartRate": 126,
+      "caloriesBurned": 265,
+      "workoutLengthMin": 26
+    },
+    {
+      "id": "91ad5e6a-5398-4d1a-bf75-2455413ff38a",
+      "date": "2026-02-23T13:30:00.000Z",
+      "weight": 180.2
+    },
+    {
+      "id": "f1dce9f0-3cb7-4b55-ac0f-4de1f1ebb741",
+      "date": "2026-02-24T13:30:00.000Z",
+      "weight": 179.5,
+      "heartRate": 127,
+      "caloriesBurned": 215,
+      "workoutLengthMin": 22
+    },
+    {
+      "id": "dc51cf2e-6a4e-44c3-927d-678701cf84b0",
+      "date": "2026-02-25T13:30:00.000Z",
+      "weight": 179.8,
+      "heartRate": 143,
+      "caloriesBurned": 351,
+      "workoutLengthMin": 38
+    },
+    {
+      "id": "0b8aa63c-2d3c-4f5b-9ad3-08dfa6531552",
+      "date": "2026-02-26T13:30:00.000Z",
+      "weight": 179.9,
+      "heartRate": 138,
+      "caloriesBurned": 222,
+      "workoutLengthMin": 27
+    },
+    {
+      "id": "9a79fd59-d802-4d9e-ab07-b77188b047f2",
+      "date": "2026-02-27T13:30:00.000Z",
+      "weight": 180.3,
+      "heartRate": 141,
+      "caloriesBurned": 361,
+      "workoutLengthMin": 41
+    },
+    {
+      "id": "d4dfd6ab-fe02-4ebd-a521-341174ad8f15",
+      "date": "2026-02-28T13:30:00.000Z",
+      "weight": 180.3,
+      "heartRate": 127,
+      "caloriesBurned": 458,
+      "workoutLengthMin": 44
+    },
+    {
+      "id": "91974be7-cc25-41ab-8c92-4300ffb85c3d",
+      "date": "2026-03-01T13:30:00.000Z",
+      "weight": 180.1,
+      "heartRate": 142,
+      "caloriesBurned": 460,
+      "workoutLengthMin": 47
+    },
+    {
+      "id": "19198c7c-6cca-4dbd-9f1f-af7740f41351",
+      "date": "2026-03-02T13:30:00.000Z",
+      "weight": 179.8
+    },
+    {
+      "id": "13b562bf-a421-49d7-9789-83010f85e6be",
+      "date": "2026-03-03T13:30:00.000Z",
+      "weight": 179.5,
+      "heartRate": 125,
+      "caloriesBurned": 236,
+      "workoutLengthMin": 28
+    },
+    {
+      "id": "e31a6864-30b2-4328-8d7c-b3ecfd253cbe",
+      "date": "2026-03-04T13:30:00.000Z",
+      "weight": 179.8,
+      "heartRate": 140,
+      "caloriesBurned": 502,
+      "workoutLengthMin": 49
+    },
+    {
+      "id": "a4a558f8-220d-4478-899e-7c7e7fa28b75",
+      "date": "2026-03-05T13:30:00.000Z",
+      "weight": 180.2,
+      "heartRate": 132,
+      "caloriesBurned": 275,
+      "workoutLengthMin": 31
+    },
+    {
+      "id": "6c2700ab-3873-4912-ae55-002f9a4d1404",
+      "date": "2026-03-06T13:30:00.000Z",
+      "weight": 180.3,
+      "heartRate": 139,
+      "caloriesBurned": 273,
+      "workoutLengthMin": 26
+    },
+    {
+      "id": "d6823ecf-34eb-406c-83dc-63434eb55c94",
+      "date": "2026-03-07T13:30:00.000Z",
+      "weight": 180.5,
+      "heartRate": 132,
+      "caloriesBurned": 422,
+      "workoutLengthMin": 42
+    },
+    {
+      "id": "b0a9503a-b097-449a-af09-4e2dad52940d",
+      "date": "2026-03-08T13:30:00.000Z",
+      "weight": 180.3,
+      "heartRate": 126,
+      "caloriesBurned": 472,
+      "workoutLengthMin": 48
+    },
+    {
+      "id": "843d4c8b-e4f8-4c0f-ac82-55fe55f30db0",
+      "date": "2026-03-09T13:30:00.000Z",
+      "weight": 179.4
+    },
+    {
+      "id": "f09d9365-1b3a-4551-b177-b51ccdd14d29",
+      "date": "2026-03-10T13:30:00.000Z",
+      "weight": 179.2,
+      "heartRate": 128,
+      "caloriesBurned": 285,
+      "workoutLengthMin": 32
+    },
+    {
+      "id": "8437a2f8-08bc-4228-abce-63c80fd27e7e",
+      "date": "2026-03-11T13:30:00.000Z",
+      "weight": 179.8,
+      "heartRate": 128,
+      "caloriesBurned": 322,
+      "workoutLengthMin": 31
+    },
+    {
+      "id": "3017abc3-16a9-4cfa-9fd8-04f56d0dff93",
+      "date": "2026-03-12T13:30:00.000Z",
+      "weight": 179.7,
+      "heartRate": 141,
+      "caloriesBurned": 244,
+      "workoutLengthMin": 25
+    },
+    {
+      "id": "919643cc-e1ae-4e82-9827-ab5e3ebcf9f3",
+      "date": "2026-03-13T13:30:00.000Z",
+      "weight": 180.5,
+      "heartRate": 144,
+      "caloriesBurned": 391,
+      "workoutLengthMin": 46
+    },
+    {
+      "id": "55d8b2cc-f1e8-43b4-a315-36bafc7f7d07",
+      "date": "2026-03-14T13:30:00.000Z",
+      "weight": 180,
+      "heartRate": 130,
+      "caloriesBurned": 510,
+      "workoutLengthMin": 50
+    },
+    {
+      "id": "95b739b9-393f-4b29-b073-6c5371015353",
+      "date": "2026-03-15T13:30:00.000Z",
+      "weight": 179.6,
+      "heartRate": 126,
+      "caloriesBurned": 204,
+      "workoutLengthMin": 25
+    },
+    {
+      "id": "4c0d1219-5524-47c7-8d33-3ca61f4723e9",
+      "date": "2026-03-16T13:30:00.000Z",
+      "weight": 179.3
+    },
+    {
+      "id": "e7910b6e-7d7e-4e15-9a62-53201d5fa62e",
+      "date": "2026-03-17T13:30:00.000Z",
+      "weight": 178.9,
+      "heartRate": 141,
+      "caloriesBurned": 232,
+      "workoutLengthMin": 26
+    },
+    {
+      "id": "dab0a8bd-f49b-43da-98df-1e13ed7a2ad9",
+      "date": "2026-03-18T13:30:00.000Z",
+      "weight": 179.2,
+      "heartRate": 132,
+      "caloriesBurned": 445,
+      "workoutLengthMin": 48
+    },
+    {
+      "id": "2246dad9-e6d2-4448-929c-38a6c6ba03af",
+      "date": "2026-03-19T13:30:00.000Z",
+      "weight": 180,
+      "heartRate": 133,
+      "caloriesBurned": 438,
+      "workoutLengthMin": 50
+    },
+    {
+      "id": "3802e083-742f-4ace-b4c7-a5f4c6e78d9b",
+      "date": "2026-03-20T13:30:00.000Z",
+      "weight": 180.1,
+      "heartRate": 135,
+      "caloriesBurned": 298,
+      "workoutLengthMin": 36
+    },
+    {
+      "id": "f33f8983-2c69-46e6-92c4-78f102f1d8b8",
+      "date": "2026-03-21T13:30:00.000Z",
+      "weight": 180.3,
+      "heartRate": 133,
+      "caloriesBurned": 340,
+      "workoutLengthMin": 34
+    },
+    {
+      "id": "b9880f77-661d-412d-bc2b-9e8a415c57dc",
+      "date": "2026-03-22T13:30:00.000Z",
+      "weight": 179.6,
+      "heartRate": 138,
+      "caloriesBurned": 284,
+      "workoutLengthMin": 33
+    },
+    {
+      "id": "72e42369-415e-411c-8ec5-f3dcfb2ee6e0",
+      "date": "2026-03-23T13:30:00.000Z",
+      "weight": 179
+    },
+    {
+      "id": "6b275225-4c6b-45be-8bbe-059bf3560990",
+      "date": "2026-03-24T13:30:00.000Z",
+      "weight": 179,
+      "heartRate": 139,
+      "caloriesBurned": 262,
+      "workoutLengthMin": 25
+    },
+    {
+      "id": "4097a84b-d007-48a8-a62e-c4a8d7dca41c",
+      "date": "2026-03-25T13:30:00.000Z",
+      "weight": 179.1,
+      "heartRate": 134,
+      "caloriesBurned": 320,
+      "workoutLengthMin": 38
+    },
+    {
+      "id": "e06ec27f-a0c2-4171-b962-e40f43729488",
+      "date": "2026-03-26T13:30:00.000Z",
+      "weight": 179,
+      "heartRate": 132,
+      "caloriesBurned": 465,
+      "workoutLengthMin": 52
+    },
+    {
+      "id": "abf0b558-e396-4d77-b170-3c01cc759dcc",
+      "date": "2026-03-27T13:30:00.000Z",
+      "weight": 179.3,
+      "heartRate": 138,
+      "caloriesBurned": 238,
+      "workoutLengthMin": 26
+    },
+    {
+      "id": "75379165-ce4a-4d74-a03a-53bc8744615b",
+      "date": "2026-03-28T13:30:00.000Z",
+      "weight": 179.6,
+      "heartRate": 134,
+      "caloriesBurned": 272,
+      "workoutLengthMin": 27
+    },
+    {
+      "id": "c431cb4d-54d1-4fee-aca6-9450478680fe",
+      "date": "2026-03-29T13:30:00.000Z",
+      "weight": 179.7,
+      "heartRate": 133,
+      "caloriesBurned": 369,
+      "workoutLengthMin": 38
+    },
+    {
+      "id": "ba604e6b-eee1-46c8-ae24-c0a079c40953",
+      "date": "2026-03-30T13:30:00.000Z",
+      "weight": 179
+    },
+    {
+      "id": "23791f40-6fbb-4f54-b179-79f5172abe3c",
+      "date": "2026-03-31T13:30:00.000Z",
+      "weight": 179.1,
+      "heartRate": 129,
+      "caloriesBurned": 274,
+      "workoutLengthMin": 30
+    },
+    {
+      "id": "ca630216-a612-4498-8224-22406fe121fd",
+      "date": "2026-04-01T13:30:00.000Z",
+      "weight": 178.7,
+      "heartRate": 143,
+      "caloriesBurned": 480,
+      "workoutLengthMin": 55
+    },
+    {
+      "id": "16262d4e-c4a4-44bf-b123-2e9a6b13f26c",
+      "date": "2026-04-02T13:30:00.000Z",
+      "weight": 179.1,
+      "heartRate": 144,
+      "caloriesBurned": 274,
+      "workoutLengthMin": 27
+    },
+    {
+      "id": "4a49e1e4-b8cb-4534-853a-c8b3c32548b3",
+      "date": "2026-04-03T13:30:00.000Z",
+      "weight": 179.1,
+      "heartRate": 128,
+      "caloriesBurned": 439,
+      "workoutLengthMin": 53
+    },
+    {
+      "id": "256d72bf-4095-4e59-a568-91e62fd300bf",
+      "date": "2026-04-04T13:30:00.000Z",
+      "weight": 179.6,
+      "heartRate": 140,
+      "caloriesBurned": 348,
+      "workoutLengthMin": 37
+    },
+    {
+      "id": "d42ed95d-55eb-4dbc-853b-d7c6ecc81371",
+      "date": "2026-04-05T13:30:00.000Z",
+      "weight": 179.5,
+      "heartRate": 128,
+      "caloriesBurned": 282,
+      "workoutLengthMin": 30
+    },
+    {
+      "id": "3c0ea5d2-c0db-4126-a666-5c16bb5cd9cb",
+      "date": "2026-04-06T13:30:00.000Z",
+      "weight": 178.3
+    },
+    {
+      "id": "4d48842f-cfe7-4f8e-841f-4316cd88117f",
+      "date": "2026-04-07T13:30:00.000Z",
+      "weight": 178.9,
+      "heartRate": 125,
+      "caloriesBurned": 288,
+      "workoutLengthMin": 32
+    },
+    {
+      "id": "d090892e-71f3-443a-8362-8a96bb14963b",
+      "date": "2026-04-08T13:30:00.000Z",
+      "weight": 178.5,
+      "heartRate": 131,
+      "caloriesBurned": 364,
+      "workoutLengthMin": 38
+    },
+    {
+      "id": "dd632067-880b-4477-a54c-44ef55597bf0",
+      "date": "2026-04-09T13:30:00.000Z",
+      "weight": 179,
+      "heartRate": 128,
+      "caloriesBurned": 307,
+      "workoutLengthMin": 33
+    },
+    {
+      "id": "f6270d52-5ced-4f05-b556-bc629542024e",
+      "date": "2026-04-10T13:30:00.000Z",
+      "weight": 179.4,
+      "heartRate": 127,
+      "caloriesBurned": 375,
+      "workoutLengthMin": 36
+    },
+    {
+      "id": "70fcd2b4-3039-4998-b966-192f73d58990",
+      "date": "2026-04-11T13:30:00.000Z",
+      "weight": 179,
+      "heartRate": 127,
+      "caloriesBurned": 225,
+      "workoutLengthMin": 28
+    },
+    {
+      "id": "f0132fda-e34e-43e3-a3a4-c42082929b71",
+      "date": "2026-04-12T13:30:00.000Z",
+      "weight": 179,
+      "heartRate": 141,
+      "caloriesBurned": 390,
+      "workoutLengthMin": 39
+    },
+    {
+      "id": "2e3c1b2c-0072-4025-8c32-e5ba4a2b4290",
+      "date": "2026-04-13T13:30:00.000Z",
+      "weight": 178.2
+    },
+    {
+      "id": "8065fb6e-3e05-4183-8044-5e3a1b686e57",
+      "date": "2026-04-14T13:30:00.000Z",
+      "weight": 178.4,
+      "heartRate": 137,
+      "caloriesBurned": 471,
+      "workoutLengthMin": 52
+    },
+    {
+      "id": "11080d59-5985-4e6b-b14d-084a217ce1d3",
+      "date": "2026-04-15T13:30:00.000Z",
+      "weight": 178.2,
+      "heartRate": 142,
+      "caloriesBurned": 264,
+      "workoutLengthMin": 28
+    },
+    {
+      "id": "e1467829-77ee-4f9a-bd17-978168edffa3",
+      "date": "2026-04-16T13:30:00.000Z",
+      "weight": 178.8,
+      "heartRate": 131,
+      "caloriesBurned": 362,
+      "workoutLengthMin": 37
+    },
+    {
+      "id": "3f84b782-337d-4974-819b-acca3a3ec71b",
+      "date": "2026-04-17T13:30:00.000Z",
+      "weight": 179,
+      "heartRate": 132,
+      "caloriesBurned": 323,
+      "workoutLengthMin": 34
+    },
+    {
+      "id": "f5ede40c-0d6f-41d9-83ae-db56c5c51e3e",
+      "date": "2026-04-18T13:30:00.000Z",
+      "weight": 178.8,
+      "heartRate": 132,
+      "caloriesBurned": 437,
+      "workoutLengthMin": 46
+    },
+    {
+      "id": "c913d6e7-8e86-4561-8cfe-08d440ff81d6",
+      "date": "2026-04-19T13:30:00.000Z",
+      "weight": 178.2,
+      "heartRate": 143,
+      "caloriesBurned": 341,
+      "workoutLengthMin": 40
+    },
+    {
+      "id": "17e571da-80a1-4e00-915b-a21479b7fba3",
+      "date": "2026-04-20T13:30:00.000Z",
+      "weight": 178.6
+    },
+    {
+      "id": "dac953be-c9e0-4ca3-aea8-1a7b493581db",
+      "date": "2026-04-21T13:30:00.000Z",
+      "weight": 177.8,
+      "heartRate": 144,
+      "caloriesBurned": 314,
+      "workoutLengthMin": 37
+    },
+    {
+      "id": "900e61dd-2a17-440b-9ddc-8136686966ed",
+      "date": "2026-04-22T13:30:00.000Z",
+      "weight": 178.3,
+      "heartRate": 128,
+      "caloriesBurned": 319,
+      "workoutLengthMin": 39
+    },
+    {
+      "id": "f732b00c-a424-4df6-923d-58a54bc3593e",
+      "date": "2026-04-23T13:30:00.000Z",
+      "weight": 178,
+      "heartRate": 127,
+      "caloriesBurned": 355,
+      "workoutLengthMin": 41
+    },
+    {
+      "id": "773c9c13-6fcc-46be-b0fe-1ccdf79391e6",
+      "date": "2026-04-24T13:30:00.000Z",
+      "weight": 178.3,
+      "heartRate": 127,
+      "caloriesBurned": 273,
+      "workoutLengthMin": 29
+    },
+    {
+      "id": "84f8b50d-9b42-40c8-ac32-2b5274e40925",
+      "date": "2026-04-25T13:30:00.000Z",
+      "weight": 178.3,
+      "heartRate": 133,
+      "caloriesBurned": 353,
+      "workoutLengthMin": 40
+    },
+    {
+      "id": "0cad34fd-8c86-490b-b168-517057465901",
+      "date": "2026-04-26T13:30:00.000Z",
+      "weight": 178,
+      "heartRate": 140,
+      "caloriesBurned": 488,
+      "workoutLengthMin": 53
+    },
+    {
+      "id": "63d5d44e-87a9-4013-a2b9-6ba7a6f4003a",
+      "date": "2026-04-27T13:30:00.000Z",
+      "weight": 178.3
+    },
+    {
+      "id": "0ec341b4-d937-42f3-a142-c4bc4185a3c0",
+      "date": "2026-04-28T13:30:00.000Z",
+      "weight": 177.4,
+      "heartRate": 137,
+      "caloriesBurned": 468,
+      "workoutLengthMin": 48
+    },
+    {
+      "id": "c244a319-9320-4f65-80e9-504f59489093",
+      "date": "2026-04-29T13:30:00.000Z",
+      "weight": 177.8,
+      "heartRate": 128,
+      "caloriesBurned": 386,
+      "workoutLengthMin": 44
+    },
+    {
+      "id": "dcc574c0-d488-4dbe-b43e-87aae8f842f2",
+      "date": "2026-04-30T13:30:00.000Z",
+      "weight": 178.3,
+      "heartRate": 138,
+      "caloriesBurned": 512,
+      "workoutLengthMin": 54
+    }
+  ]
 }

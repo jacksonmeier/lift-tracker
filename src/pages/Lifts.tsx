@@ -22,7 +22,7 @@ export default function Lifts() {
   const { state, actions } = useApp();
   const [editing, setEditing] = useState<Editing>(null);
 
-  const grouped = useMemo(() => {
+  const { activeByCategory, archivedLifts } = useMemo(() => {
     const byCategory: Record<LiftCategory, Lift[]> = {
       push: [],
       pull: [],
@@ -30,13 +30,19 @@ export default function Lifts() {
       core: [],
       other: [],
     };
+    const archived: Lift[] = [];
     for (const lift of state.lifts) {
-      byCategory[lift.category].push(lift);
+      if (lift.archived) {
+        archived.push(lift);
+      } else {
+        byCategory[lift.category].push(lift);
+      }
     }
     for (const c of LIFT_CATEGORIES) {
       byCategory[c].sort((a, b) => a.name.localeCompare(b.name));
     }
-    return byCategory;
+    archived.sort((a, b) => a.name.localeCompare(b.name));
+    return { activeByCategory: byCategory, archivedLifts: archived };
   }, [state.lifts]);
 
   function handleDelete(lift: Lift) {
@@ -83,7 +89,7 @@ export default function Lifts() {
       ) : (
         <div className="px-4 pt-2">
           {LIFT_CATEGORIES.map((category) => {
-            const lifts = grouped[category];
+            const lifts = activeByCategory[category];
             if (lifts.length === 0) return null;
             return (
               <section key={category} className="mt-6 first:mt-4">
@@ -99,8 +105,8 @@ export default function Lifts() {
                 </h2>
                 <ul className="glass divide-y divide-[var(--hairline-soft)] overflow-hidden rounded-2xl">
                   {lifts.map((lift) => (
-                    <li key={lift.id} className="flex items-start gap-2 px-4 py-2.5">
-                      <div className="min-w-0 flex-1 py-1">
+                    <li key={lift.id} className="flex items-start gap-1 px-3 py-2.5">
+                      <div className="min-w-0 flex-1 py-1 pl-1">
                         <div className="text-strong text-[15px] font-medium tracking-tight">
                           {lift.name}
                         </div>
@@ -111,15 +117,23 @@ export default function Lifts() {
                       <button
                         type="button"
                         onClick={() => setEditing({ kind: 'edit', lift })}
-                        className="btn-ghost-accent min-h-11 min-w-11 px-2 text-[14px]"
+                        className="btn-ghost-accent min-h-11 min-w-11 px-1.5 text-[13px]"
                         aria-label={`Edit ${lift.name}`}
                       >
                         Edit
                       </button>
                       <button
                         type="button"
+                        onClick={() => actions.setLiftArchived(lift.id, true)}
+                        className="text-muted hover:text-strong min-h-11 min-w-11 px-1.5 text-[13px] transition-colors active:opacity-70"
+                        aria-label={`Archive ${lift.name}`}
+                      >
+                        Archive
+                      </button>
+                      <button
+                        type="button"
                         onClick={() => handleDelete(lift)}
-                        className="min-h-11 min-w-11 px-2 text-[14px] text-red-500/90 transition-colors hover:text-red-500 active:opacity-70"
+                        className="min-h-11 min-w-11 px-1.5 text-[13px] text-red-500/90 transition-colors hover:text-red-500 active:opacity-70"
                         aria-label={`Delete ${lift.name}`}
                       >
                         Delete
@@ -130,6 +144,54 @@ export default function Lifts() {
               </section>
             );
           })}
+
+          {archivedLifts.length > 0 && (
+            <section className="mt-6">
+              <h2 className="section-label mb-2 flex items-center gap-2 px-1">
+                <span
+                  className="dot"
+                  style={{ background: 'var(--text-faint)' }}
+                />
+                <span>archived</span>
+                <span className="num-mono ml-auto text-[10px] tracking-[0.06em]">
+                  {String(archivedLifts.length).padStart(2, '0')}
+                </span>
+              </h2>
+              <p className="text-muted mb-2 px-1 text-[12px]">
+                Hidden from the workout picker. Past stats stay intact.
+              </p>
+              <ul className="glass divide-y divide-[var(--hairline-soft)] overflow-hidden rounded-2xl opacity-90">
+                {archivedLifts.map((lift) => (
+                  <li key={lift.id} className="flex items-start gap-1 px-3 py-2.5">
+                    <div className="min-w-0 flex-1 py-1 pl-1">
+                      <div className="text-default text-[15px] font-medium tracking-tight">
+                        {lift.name}
+                      </div>
+                      <div className="text-faint mt-0.5 text-[11px] font-semibold uppercase tracking-[0.1em]">
+                        {lift.category}
+                      </div>
+                    </div>
+                    <button
+                      type="button"
+                      onClick={() => actions.setLiftArchived(lift.id, false)}
+                      className="btn-ghost-accent min-h-11 min-w-11 px-1.5 text-[13px] font-semibold"
+                      aria-label={`Unarchive ${lift.name}`}
+                    >
+                      Unarchive
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => handleDelete(lift)}
+                      className="min-h-11 min-w-11 px-1.5 text-[13px] text-red-500/90 transition-colors hover:text-red-500 active:opacity-70"
+                      aria-label={`Delete ${lift.name}`}
+                    >
+                      Delete
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          )}
         </div>
       )}
 

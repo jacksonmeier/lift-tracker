@@ -23,6 +23,7 @@ type Action =
   | { type: 'ADD_LIFT'; lift: Lift }
   | { type: 'UPDATE_LIFT'; lift: Lift }
   | { type: 'DELETE_LIFT'; id: string }
+  | { type: 'SET_LIFT_ARCHIVED'; id: string; archived: boolean }
   | { type: 'START_WORKOUT'; workout: Workout }
   | { type: 'FINISH_WORKOUT'; id: string; completedAt: string }
   | { type: 'UPDATE_WORKOUT_DATE'; id: string; date: string }
@@ -59,6 +60,16 @@ function reducer(state: AppState, action: Action): AppState {
       };
     case 'DELETE_LIFT':
       return { ...state, lifts: state.lifts.filter((l) => l.id !== action.id) };
+    case 'SET_LIFT_ARCHIVED':
+      return {
+        ...state,
+        lifts: state.lifts.map((l) => {
+          if (l.id !== action.id) return l;
+          if (action.archived) return { ...l, archived: true };
+          const { archived: _omit, ...rest } = l;
+          return rest;
+        }),
+      };
 
     case 'START_WORKOUT':
       return { ...state, workouts: [...state.workouts, action.workout] };
@@ -147,6 +158,7 @@ interface Actions {
   addLift: (lift: Omit<Lift, 'id'>) => Lift;
   updateLift: (lift: Lift) => void;
   deleteLift: (id: string) => void;
+  setLiftArchived: (id: string, archived: boolean) => void;
   replaceState: (state: AppState) => void;
 
   startWorkout: () => Workout;
@@ -188,6 +200,8 @@ export function AppProvider({ children }: { children: ReactNode }) {
       },
       updateLift: (lift) => dispatch({ type: 'UPDATE_LIFT', lift }),
       deleteLift: (id) => dispatch({ type: 'DELETE_LIFT', id }),
+      setLiftArchived: (id, archived) =>
+        dispatch({ type: 'SET_LIFT_ARCHIVED', id, archived }),
       replaceState: (next) => dispatch({ type: 'REPLACE_STATE', state: next }),
 
       startWorkout: () => {

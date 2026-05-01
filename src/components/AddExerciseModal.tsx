@@ -28,10 +28,11 @@ export default function AddExerciseModal({ onCancel, onSelect }: Props) {
 
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
+    const active = state.lifts.filter((l) => !l.archived);
     const list = q
-      ? state.lifts.filter((l) => l.name.toLowerCase().includes(q))
-      : state.lifts.slice();
-    return list.sort((a, b) => a.name.localeCompare(b.name));
+      ? active.filter((l) => l.name.toLowerCase().includes(q))
+      : active;
+    return list.slice().sort((a, b) => a.name.localeCompare(b.name));
   }, [state.lifts, query]);
 
   function handleCreate() {
@@ -80,7 +81,11 @@ export default function AddExerciseModal({ onCancel, onSelect }: Props) {
         {filtered.length === 0 ? (
           <div className="glass-quiet rounded-2xl px-4 py-8 text-center">
             <p className="text-muted text-[13px]">
-              {state.lifts.length === 0 ? 'No lifts yet.' : 'No matches.'}
+              {state.lifts.length === 0
+                ? 'No lifts yet.'
+                : query.trim()
+                  ? 'No matches.'
+                  : 'No active lifts. Unarchive one from the Lifts page.'}
             </p>
           </div>
         ) : (

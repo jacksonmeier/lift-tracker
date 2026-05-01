@@ -32,42 +32,12 @@ import {
 import type { BiometricEntry, LiftCategory, WorkoutType } from '../types';
 import { LIFT_CATEGORIES } from '../types';
 import { workoutTypeLabel } from '../lib/workoutType';
+import { priorBounds, rangeShortLabel, rangeSince, type Range } from '../lib/range';
 import CalendarHeatmap from '../components/CalendarHeatmap';
 import HeroNumber from '../components/HeroNumber';
+import RangePicker from '../components/RangePicker';
 
-type Range = '1w' | '4w' | '12w' | 'all';
 type Tab = 'lift' | 'body';
-
-const RANGE_LABELS: Record<Range, string> = {
-  '1w': '1 week',
-  '4w': '4 weeks',
-  '12w': '12 weeks',
-  all: 'All time',
-};
-
-const RANGE_WEEKS: Record<Exclude<Range, 'all'>, number> = {
-  '1w': 1,
-  '4w': 4,
-  '12w': 12,
-};
-
-function rangeSince(range: Range): string | undefined {
-  if (range === 'all') return undefined;
-  const d = new Date();
-  d.setDate(d.getDate() - RANGE_WEEKS[range] * 7);
-  return d.toISOString();
-}
-
-function priorBounds(range: Range): { since: string; until: string } | null {
-  if (range === 'all') return null;
-  const weeks = RANGE_WEEKS[range];
-  const now = new Date();
-  const until = new Date(now);
-  until.setDate(now.getDate() - weeks * 7);
-  const since = new Date(until);
-  since.setDate(until.getDate() - weeks * 7);
-  return { since: since.toISOString(), until: until.toISOString() };
-}
 
 interface Delta {
   display: string;
@@ -392,7 +362,9 @@ export default function Stats() {
   const { state } = useApp();
   const navigate = useNavigate();
   const [tab, setTab] = useState<Tab>('lift');
-  const [range, setRange] = useState<Range>('12w');
+  const [range, setRange] = useState<Range>({ unit: 'weeks', amount: 12 });
+  const [ignoreRestDays, setIgnoreRestDays] = useState(false);
+  const [valueMode, setValueMode] = useState<'total' | 'avg'>('total');
 
   const since = useMemo(() => rangeSince(range), [range]);
   const prior = useMemo(() => priorBounds(range), [range]);
@@ -445,6 +417,15 @@ export default function Stats() {
     ).length;
   }, [allTimePRs, prior]);
 
+  const workingSetsValue =
+    valueMode === 'avg' && currentTotals.workouts > 0
+      ? currentTotals.workingSets / currentTotals.workouts
+      : currentTotals.workingSets;
+  const tonnageValue =
+    valueMode === 'avg' && currentTotals.workouts > 0
+      ? currentTotals.tonnage / currentTotals.workouts
+      : currentTotals.tonnage;
+
   const deltas = useMemo(() => {
     if (!priorTotals) {
       return {
@@ -454,21 +435,49 @@ export default function Stats() {
         prs: null,
       };
     }
+    const wsPrior =
+      valueMode === 'avg' && priorTotals.workouts > 0
+        ? priorTotals.workingSets / priorTotals.workouts
+        : priorTotals.workingSets;
+    const tnPrior =
+      valueMode === 'avg' && priorTotals.workouts > 0
+        ? priorTotals.tonnage / priorTotals.workouts
+        : priorTotals.tonnage;
     return {
       workouts: computeDelta(currentTotals.workouts, priorTotals.workouts),
-      workingSets: computeDelta(currentTotals.workingSets, priorTotals.workingSets),
-      tonnage: computeDelta(currentTotals.tonnage, priorTotals.tonnage),
+      workingSets: computeDelta(workingSetsValue, wsPrior),
+      tonnage: computeDelta(tonnageValue, tnPrior),
       prs: computeDelta(prs.length, priorPRCount),
     };
-  }, [currentTotals, priorTotals, prs.length, priorPRCount]);
+  }, [currentTotals, priorTotals, valueMode, workingSetsValue, tonnageValue, prs.length, priorPRCount]);
 
   // Body stats memos
   const hasAnyBiometric = state.biometrics.length > 0;
-  const bioEntries = useMemo(() => entriesInRange(state, since), [state, since]);
+  const workoutDayKeys = useMemo(() => {
+    const set = new Set<string>();
+    for (const w of state.workouts) {
+      if (w.status !== 'complete') continue;
+      set.add(new Date(w.date).toLocaleDateString('en-CA'));
+    }
+    return set;
+  }, [state.workouts]);
+
+  const filterByWorkoutDay = (entries: BiometricEntry[]) =>
+    ignoreRestDays
+      ? entries.filter((e) =>
+          workoutDayKeys.has(new Date(e.date).toLocaleDateString('en-CA')),
+        )
+      : entries;
+
+  const bioEntries = useMemo(
+    () => filterByWorkoutDay(entriesInRange(state, since)),
+    [state, since, ignoreRestDays, workoutDayKeys],
+  );
   const bioSummary = useMemo(() => biometricSummary(bioEntries), [bioEntries]);
   const priorBioEntries = useMemo(
-    () => (prior ? entriesInRange(state, prior.since, prior.until) : []),
-    [state, prior],
+    () =>
+      prior ? filterByWorkoutDay(entriesInRange(state, prior.since, prior.until)) : [],
+    [state, prior, ignoreRestDays, workoutDayKeys],
   );
   const priorBioSummary = useMemo(
     () => (prior ? biometricSummary(priorBioEntries) : null),
@@ -489,10 +498,27 @@ export default function Stats() {
     [bioEntries],
   );
 
+  const caloriesValue =
+    valueMode === 'avg' && bioSummary.caloriesSamples > 0
+      ? bioSummary.totalCalories / bioSummary.caloriesSamples
+      : bioSummary.totalCalories;
+  const lengthValue =
+    valueMode === 'avg' && bioSummary.lengthSamples > 0
+      ? bioSummary.totalLengthMin / bioSummary.lengthSamples
+      : bioSummary.totalLengthMin;
+
   const bioDeltas = useMemo(() => {
     if (!priorBioSummary) {
       return { weight: null, heartRate: null, calories: null, length: null };
     }
+    const calPrior =
+      valueMode === 'avg' && priorBioSummary.caloriesSamples > 0
+        ? priorBioSummary.totalCalories / priorBioSummary.caloriesSamples
+        : priorBioSummary.totalCalories;
+    const lenPrior =
+      valueMode === 'avg' && priorBioSummary.lengthSamples > 0
+        ? priorBioSummary.totalLengthMin / priorBioSummary.lengthSamples
+        : priorBioSummary.totalLengthMin;
     return {
       weight: weightDelta(bioSummary.latestWeight, priorBioSummary.latestWeight),
       heartRate:
@@ -501,14 +527,14 @@ export default function Stats() {
           : null,
       calories:
         priorBioSummary.caloriesSamples > 0
-          ? computeDelta(bioSummary.totalCalories, priorBioSummary.totalCalories)
+          ? computeDelta(caloriesValue, calPrior)
           : null,
       length:
         priorBioSummary.lengthSamples > 0
-          ? computeDelta(bioSummary.totalLengthMin, priorBioSummary.totalLengthMin)
+          ? computeDelta(lengthValue, lenPrior)
           : null,
     };
-  }, [bioSummary, priorBioSummary]);
+  }, [bioSummary, priorBioSummary, valueMode, caloriesValue, lengthValue]);
 
   const hasAnyCompleted = state.workouts.some((w) => w.status === 'complete');
 
@@ -583,24 +609,69 @@ export default function Stats() {
             ))}
           </div>
 
-          <div className="pill-segment inline-flex w-full justify-between gap-1 rounded-full p-1">
-            {(['1w', '4w', '12w', 'all'] as Range[]).map((r) => (
+          <RangePicker value={range} onChange={setRange} />
+
+          <div
+            role="tablist"
+            aria-label="Display mode"
+            className="pill-segment inline-flex w-full justify-between gap-1 rounded-full p-1"
+          >
+            {(['total', 'avg'] as const).map((m) => (
               <button
-                key={r}
+                key={m}
                 type="button"
-                onClick={() => setRange(r)}
-                className={`min-h-10 flex-1 rounded-full px-2 text-[13px] font-semibold tracking-tight transition-colors ${
-                  range === r ? 'pill-segment-active' : 'text-muted hover:text-strong'
+                role="tab"
+                aria-selected={valueMode === m}
+                onClick={() => setValueMode(m)}
+                className={`min-h-9 flex-1 rounded-full px-2 text-[12px] font-semibold tracking-tight transition-colors ${
+                  valueMode === m ? 'pill-segment-active' : 'text-muted hover:text-strong'
                 }`}
               >
-                {RANGE_LABELS[r]}
+                {m === 'total'
+                  ? 'Totals'
+                  : tab === 'body'
+                    ? 'Per session'
+                    : 'Per workout'}
               </button>
             ))}
           </div>
 
+          <button
+            type="button"
+            role="switch"
+            aria-checked={ignoreRestDays}
+            onClick={() => setIgnoreRestDays((v) => !v)}
+            className="glass-quiet flex items-center justify-between gap-3 rounded-full px-4 py-2 text-left active:opacity-80"
+          >
+            <span className="flex flex-col">
+              <span className="text-strong text-[13px] font-semibold tracking-tight">
+                Ignore rest days
+              </span>
+              <span className="text-muted text-[11px]">
+                {tab === 'body'
+                  ? 'Hide weigh-ins on days with no completed workout'
+                  : 'Dim heatmap cells for days with no completed workout'}
+              </span>
+            </span>
+            <span
+              aria-hidden="true"
+              className={`relative inline-flex h-6 w-10 shrink-0 items-center rounded-full transition-colors ${
+                ignoreRestDays
+                  ? 'bg-[var(--color-accent-500)]'
+                  : 'bg-[var(--hairline-strong)]/40'
+              }`}
+            >
+              <span
+                className={`absolute top-0.5 h-5 w-5 rounded-full bg-white shadow-sm transition-transform ${
+                  ignoreRestDays ? 'translate-x-[18px]' : 'translate-x-0.5'
+                }`}
+              />
+            </span>
+          </button>
+
           {prior && (
             <div className="text-faint -mt-1 px-1 text-[11px]">
-              Δ vs previous {RANGE_LABELS[range].toLowerCase()}
+              Δ vs previous {rangeShortLabel(range).toLowerCase()}
             </div>
           )}
 
@@ -624,15 +695,28 @@ export default function Stats() {
                     delta={deltas.workouts}
                   />
                   <KpiTile
-                    label="Working sets"
-                    value={currentTotals.workingSets.toLocaleString()}
-                    numeric={currentTotals.workingSets}
+                    label={valueMode === 'avg' ? 'Sets / workout' : 'Working sets'}
+                    value={
+                      valueMode === 'avg'
+                        ? currentTotals.workouts > 0
+                          ? workingSetsValue.toFixed(1)
+                          : '—'
+                        : currentTotals.workingSets.toLocaleString()
+                    }
+                    numeric={workingSetsValue}
+                    format={
+                      valueMode === 'avg' ? (n: number) => n.toFixed(1) : undefined
+                    }
                     delta={deltas.workingSets}
                   />
                   <KpiTile
-                    label="Tonnage"
-                    value={formatTonnage(currentTotals.tonnage)}
-                    numeric={currentTotals.tonnage}
+                    label={valueMode === 'avg' ? 'Tonnage / workout' : 'Tonnage'}
+                    value={
+                      valueMode === 'avg' && currentTotals.workouts === 0
+                        ? '—'
+                        : formatTonnage(tonnageValue)
+                    }
+                    numeric={tonnageValue}
                     format={formatTonnage}
                     delta={deltas.tonnage}
                     highlight
@@ -665,6 +749,7 @@ export default function Stats() {
                     counts={heatmapCounts}
                     weeks={12}
                     onCellTap={handleHeatmapTap}
+                    ignoreRestDays={ignoreRestDays}
                   />
                   <div className="text-faint mt-3 flex items-center justify-end gap-1.5 text-[10px]">
                     <span>Less</span>
@@ -989,17 +1074,25 @@ export default function Stats() {
                   }
                 />
                 <KpiTile
-                  label="Calories"
-                  value={bioSummary.totalCalories.toLocaleString()}
-                  numeric={bioSummary.totalCalories}
+                  label={valueMode === 'avg' ? 'Calories / session' : 'Calories'}
+                  value={
+                    valueMode === 'avg' && bioSummary.caloriesSamples === 0
+                      ? '—'
+                      : formatTonnage(caloriesValue)
+                  }
+                  numeric={caloriesValue}
                   format={formatTonnage}
                   delta={bioDeltas.calories}
-                  sub="kcal total"
+                  sub={valueMode === 'avg' ? 'kcal avg' : 'kcal total'}
                 />
                 <KpiTile
-                  label="Workout time"
-                  value={formatDuration(bioSummary.totalLengthMin)}
-                  numeric={bioSummary.totalLengthMin}
+                  label={valueMode === 'avg' ? 'Time / session' : 'Workout time'}
+                  value={
+                    valueMode === 'avg' && bioSummary.lengthSamples === 0
+                      ? '—'
+                      : formatDuration(lengthValue)
+                  }
+                  numeric={lengthValue}
                   format={formatDuration}
                   delta={bioDeltas.length}
                   sub={
