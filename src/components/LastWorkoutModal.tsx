@@ -1,4 +1,5 @@
 import { useEffect, useMemo } from 'react';
+import { createPortal } from 'react-dom';
 import { useApp } from '../context/AppContext';
 import type { Workout, WorkoutType } from '../types';
 import { workoutTypeLabel, workoutTypePillClasses } from '../lib/workoutType';
@@ -59,7 +60,7 @@ export default function LastWorkoutModal({
     return matches[0] ?? null;
   }, [state.workouts, workoutType, excludeWorkoutId]);
 
-  return (
+  return createPortal(
     <div
       className="fixed inset-0 z-50 flex flex-col"
       style={{
@@ -67,6 +68,7 @@ export default function LastWorkoutModal({
           'radial-gradient(120% 80% at 0% 0%, var(--bg-grad-1) 0%, transparent 55%),' +
           'radial-gradient(120% 80% at 100% 0%, var(--bg-grad-2) 0%, transparent 55%),' +
           'linear-gradient(180deg, var(--bg-grad-3) 0%, var(--bg-grad-4) 100%)',
+        height: '100dvh',
       }}
     >
       <header className="glass-bar flex items-center justify-between gap-2 px-3 py-2.5">
@@ -190,6 +192,7 @@ export default function LastWorkoutModal({
           )}
         </div>
       )}
-    </div>
+    </div>,
+    document.body,
   );
 }
